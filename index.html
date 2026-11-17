@@ -17,9 +17,11 @@ h1{font-size:clamp(26px,4vw,38px);margin:0 0 10px}
 p.sub{color:var(--muted);margin:0 0 32px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 @media(max-width:640px){.grid{grid-template-columns:1fr}}
-a.card{display:block;text-decoration:none;color:inherit;background:#fff;border:1.5px solid var(--line);border-left:5px solid var(--teal);border-radius:12px;padding:20px 22px;transition:border-color .15s,box-shadow .15s}
+a.card{display:block;overflow:hidden;padding:0 !important;text-decoration:none;color:inherit;background:#fff;border:1.5px solid var(--line);border-top:4px solid var(--teal);border-radius:12px;padding:20px 22px;transition:border-color .15s,box-shadow .15s}
 a.card:hover{border-color:var(--orange);box-shadow:0 6px 18px rgba(13,52,55,.08)}
 .lang{font-family:"Space Grotesk",sans-serif;font-size:13px;font-weight:700;color:var(--orange)}
+.card img{display:block;width:100%;aspect-ratio:1200/630;object-fit:cover;border-bottom:1px solid var(--line)}
+.card .bd{padding:16px 20px 18px}
 .card h2{font-size:20px;margin:4px 0 6px}
 .card p{margin:0;font-size:14.5px;color:var(--muted)}
 .note{margin-top:32px;font-size:13.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
@@ -31,10 +33,10 @@ a.card:hover{border-color:var(--orange);box-shadow:0 6px 18px rgba(13,52,55,.08)
   <h1>PCI DSS 過證懶人包｜預覽版</h1>
   <p class="sub">請選擇語系。各頁面皆為上線前預覽版本（noindex）。</p>
   <div class="grid">
-    <a class="card" href="pci-dss-compliance-for-dummies.html"><span class="lang">繁體中文 · zh-Hant</span><h2>【PCI DSS 過證懶人包】</h2><p>台灣、香港讀者</p></a>
-    <a class="card" href="pci-dss-compliance-for-dummies-zh-hans.html"><span class="lang">简体中文 · zh-Hans</span><h2>【PCI DSS 认证一文读懂】</h2><p>中国内地读者</p></a>
-    <a class="card" href="pci-dss-compliance-for-dummies-en.html"><span class="lang">English · en</span><h2>PCI DSS Compliance, Simplified</h2><p>Singapore, US and EU readers</p></a>
-    <a class="card" href="pci-dss-compliance-for-dummies-ja.html"><span class="lang">日本語 · ja</span><h2>PCI DSS準拠 はじめてガイド</h2><p>日本の読者向け</p></a>
+    <a class="card" href="pci-dss-compliance-for-dummies.html"><img src="pci-dss-dummies-cover-zh-hant-1200x630.jpg" alt=""><div class="bd"><span class="lang">繁體中文 · zh-Hant</span><h2>【PCI DSS 過證懶人包】</h2><p>台灣、香港讀者</p></div></a>
+    <a class="card" href="pci-dss-compliance-for-dummies-zh-hans.html"><img src="pci-dss-dummies-cover-zh-hans-1200x630.jpg" alt=""><div class="bd"><span class="lang">简体中文 · zh-Hans</span><h2>【PCI DSS 认证一文读懂】</h2><p>中国内地读者</p></div></a>
+    <a class="card" href="pci-dss-compliance-for-dummies-en.html"><img src="pci-dss-dummies-cover-en-1200x630.jpg" alt=""><div class="bd"><span class="lang">English · en</span><h2>Getting PCI DSS Certified: A Beginner's Guide</h2><p>Singapore, US and EU readers</p></div></a>
+    <a class="card" href="pci-dss-compliance-for-dummies-ja.html"><img src="pci-dss-dummies-cover-ja-1200x630.jpg" alt=""><div class="bd"><span class="lang">日本語 · ja</span><h2>PCI DSS準拠 はじめてガイド</h2><p>日本の読者向け</p></div></a>
   </div>
   <p class="note">更新日期：2026-11-17 · 正式網址：securevectors.com/{zh-hant|zh-hans|ja}/pci-dss-compliance-for-dummies</p>
 </div>
