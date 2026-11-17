@@ -1,0 +1,967 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 预览用：正式页面请勿加入 noindex；上线时删除下一行 -->
+<meta name="robots" content="noindex, nofollow">
+<title>PCI DSS 认证指南：是什么、流程、周期与费用（v4.0.1）｜安律国际</title>
+<meta name="description" content="第一次被收单机构或客户要求 PCI DSS 认证？依 v4.0.1 说明等级与 SAQ 判断、AOC 与 ROC、QSA 评估流程；首次评估约 3–5 个月，QSA 评估费用约 1.5 万–2.5 万美元，并整理通过后每季度与每年要做的工作。">
+<link rel="canonical" href="https://www.securevectors.com/zh-hans/pci-dss-compliance-for-dummies">
+<link rel="alternate" hreflang="zh-Hant" href="https://www.securevectors.com/zh-hant/pci-dss-compliance-for-dummies">
+<link rel="alternate" hreflang="zh-Hans" href="https://www.securevectors.com/zh-hans/pci-dss-compliance-for-dummies">
+<link rel="alternate" hreflang="ja" href="https://www.securevectors.com/ja/pci-dss-compliance-for-dummies">
+<link rel="alternate" hreflang="en" href="https://www.securevectors.com/pci-dss-compliance-for-dummies">
+<link rel="alternate" hreflang="x-default" href="https://www.securevectors.com/pci-dss-compliance-for-dummies">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【PCI DSS 认证一文读懂】是什么、谁需要、流程、周期与费用">
+<meta property="og:description" content="依 PCI DSS v4.0.1 整理 3W3H 六大问题，并补充通过之后每季度与每年要做的工作。">
+<meta property="og:url" content="https://www.securevectors.com/zh-hans/pci-dss-compliance-for-dummies">
+<!-- 封面图上传至 Webflow 后，替换下列网址 -->
+<meta property="og:image" content="https://www.securevectors.com/REPLACE-pci-dss-dummies-cover-zh-hans-1200x630.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Article","headline":"【PCI DSS 认证一文读懂】是什么、谁需要、流程、周期与费用","description":"依 PCI DSS v4.0.1 整理 3W3H 六大问题：PCI DSS 是什么、哪些企业需要、谁来评估、认证流程、周期与费用，以及通过之后每季度与每年要做的工作。","dateModified":"2026-11-17","image":"https://www.securevectors.com/REPLACE-pci-dss-dummies-cover-zh-hans-1200x630.jpg","inLanguage":"zh-Hans","mainEntityOfPage":"https://www.securevectors.com/zh-hans/pci-dss-compliance-for-dummies","author":{"@type":"Organization","name":"安律国际 QSA 团队","url":"https://www.securevectors.com/zh-hans/about-us"},"publisher":{"@type":"Organization","name":"安律国际（Secure Vectors）","url":"https://www.securevectors.com/"},"about":["PCI DSS","PCI DSS v4.0.1","Qualified Security Assessor","Attestation of Compliance","Self-Assessment Questionnaire"]},
+{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://www.securevectors.com/zh-hans"},{"@type":"ListItem","position":2,"name":"PCI DSS","item":"https://www.securevectors.com/zh-hans/pci-dss"},{"@type":"ListItem","position":3,"name":"PCI DSS 认证一文读懂","item":"https://www.securevectors.com/zh-hans/pci-dss-compliance-for-dummies"}]},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"支付页面交给支付服务商托管，还需要 PCI DSS 吗？","acceptedAnswer":{"@type":"Answer","text":"仍需要。外包可以大幅缩小范围，但商户通常仍须每年完成对应的 SAQ 并提交 AOC。适用哪一种 SAQ，取决于支付页面的嵌入方式。"}},
+{"@type":"Question","name":"PCI DSS 的 AOC 有效期多久？","acceptedAnswer":{"@type":"Answer","text":"PCI DSS 以 12 个月为验证周期，每年须重新评估并提交新的 AOC。提交时间依收单机构、卡组织或客户的要求而定。"}},
+{"@type":"Question","name":"咨询辅导和正式评估，可以找同一家 QSA 公司吗？","acceptedAnswer":{"@type":"Answer","text":"可以。依 PCI SSC 规定，参与设计或实施某项控制措施的 QSA，不能评估同一项控制措施；可由同一家公司内未参与的另一位 QSA 执行评估，QSA 公司须保留职责分离的记录。"}},
+{"@type":"Question","name":"PCI DSS 和 ISO 27001 有什么不同？","acceptedAnswer":{"@type":"Answer","text":"ISO 27001 是信息安全管理体系认证，范围由组织自行界定；PCI DSS 专门针对持卡人数据，要求更具体，并包含每季度扫描等固定频率的技术检测。已取得 ISO 27001 的企业，部分制度与流程可以沿用。"}}
+]}]}
+</script>
+<style>
+:root{
+  --navy:#0D3437; --blue:#125B60; --teal:#125B60; --teal-2:#8FBE3F; --teal-l:#E7F1F1; --green:#8FBE3F;
+  --orange:#F18B00; --orange-d:#B86500; --orange-h:#E07F00; --orange-l:#FEF1E0; --on-orange:#0D3437;
+  --ink:#14263A; --muted:#4A5B6C; --quiet:#6B7B8A; --line:#D9E3EA; --bg:#FFFFFF; --bg-2:#F4F7F9;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:128px}
+body{margin:0;font-family:"Noto Sans SC",system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.8;font-size:17px}
+.cjk-seg p,.cjk-seg li,.cjk-seg h1,.cjk-seg h2,.cjk-seg h3,.cjk-seg h4,.cjk-seg td,.cjk-seg th,.cjk-seg dd,.cjk-seg dt,.cjk-seg summary,.cjk-seg span,.cjk-seg a,.cjk-seg b,.cjk-seg button{word-break:keep-all;overflow-wrap:anywhere}
+a{color:var(--blue)}
+a:hover{color:var(--orange-d)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.narrow{max-width:860px;margin:0 auto}
+h1,h2,h3,h4{line-height:1.35;margin:0;color:var(--navy)}
+.en{font-family:"Space Grotesk","Noto Sans SC",sans-serif}
+
+header.site{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;height:66px;gap:16px}
+.logo{display:flex;align-items:center;text-decoration:none}
+.logo img{height:40px;width:auto;display:block}
+.logo .alt{font-family:"Space Grotesk",sans-serif;font-weight:700;color:var(--navy);letter-spacing:.06em}
+nav.main{display:flex;align-items:center;gap:20px}
+nav.main a{color:var(--muted);text-decoration:none;font-size:15px}
+nav.main a:hover{color:var(--navy)}
+nav.main .asv{color:var(--teal);font-weight:700}
+nav.main .asv::before{content:"● ";color:var(--orange)}
+nav.main .lang{border:1px solid var(--line);border-radius:6px;padding:4px 10px;font-size:13px}
+@media(max-width:1020px){nav.main a:not(.asv){display:none}}
+
+.tocbar{position:sticky;top:66px;z-index:35;background:#fff;border-bottom:1px solid var(--line)}
+.tocbar ol{display:flex;gap:2px;list-style:none;margin:0 auto;padding:0 20px;max-width:1180px;overflow-x:auto;scrollbar-width:none}
+.tocbar ol::-webkit-scrollbar{display:none}
+.tocbar li{flex:0 0 auto;margin:0}
+.tocbar a{display:block;padding:12px 11px;color:var(--muted);text-decoration:none;font-size:15px;border-bottom:3px solid transparent;white-space:nowrap}
+.tocbar a b{font-family:"Space Grotesk",sans-serif;color:var(--quiet);font-weight:700;margin-right:5px;font-size:13px}
+.tocbar a:hover{color:var(--navy)}
+.tocbar a.on{color:var(--navy);border-bottom-color:var(--orange);font-weight:700}
+.tocbar a.on b{color:var(--orange-d)}
+
+.hero{background:linear-gradient(180deg,var(--bg-2) 0%,#fff 100%);padding:40px 0 34px;border-bottom:1px solid var(--line)}
+.crumb{font-size:14px;color:var(--quiet);margin:0 0 16px}
+.crumb a{color:var(--quiet);text-decoration:none}
+.eyebrow{font-family:"Space Grotesk",sans-serif;font-size:13px;letter-spacing:.14em;color:var(--teal);font-weight:700;margin:0 0 10px;text-transform:uppercase}
+.hero h1{font-size:clamp(30px,4.4vw,46px);margin:0 0 14px}
+.hero .sub{font-size:19px;color:var(--muted);margin:0 0 14px;font-weight:500}
+.meta{font-size:14px;color:var(--quiet);margin:0}
+
+main{padding:36px 0 24px}
+.lead{font-size:18px;color:var(--muted)}
+section.part{padding:40px 0 8px;border-top:1px solid var(--line);margin-top:40px}
+section.part > h2{font-size:clamp(23px,2.9vw,31px);margin:0 0 18px;display:flex;gap:12px;align-items:baseline}
+section.part > h2 .no{font-family:"Space Grotesk",sans-serif;color:var(--orange-d);font-size:.9em;flex:0 0 auto}
+.answer{font-size:18px;color:var(--navy);font-weight:500;border-left:4px solid var(--teal);padding:2px 0 2px 16px;margin:0 0 20px}
+h3{font-size:20px;margin:30px 0 12px}
+p{margin:0 0 16px}
+ul,ol{padding-left:24px;margin:0 0 18px}
+li{margin-bottom:8px}
+.note{font-size:14.5px;color:var(--muted)}
+.keybox{background:var(--teal-l);border:1px solid #C7DEDF;border-left:5px solid var(--green);border-radius:10px;padding:22px 26px;margin:28px 0}
+.keybox h2{font-size:20px;margin:0 0 12px}
+.keybox ul{margin:0}
+.keybox li{margin-bottom:6px}
+figure{margin:28px 0;border:1px solid var(--line);border-radius:14px;padding:24px 26px;background:#fff}
+figure .ftag{font-family:"Space Grotesk",sans-serif;font-size:12px;letter-spacing:.12em;color:var(--teal);font-weight:700;margin:0 0 4px}
+figure .ftitle{font-size:21px;font-weight:700;color:var(--navy);margin:0 0 14px}
+figure .ftitle::after{content:"";display:block;width:44px;height:3px;background:var(--orange);margin-top:8px}
+figcaption{font-size:14.5px;color:var(--muted);margin-top:14px}
+
+.start{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 14px}
+.start .pill{border-radius:999px;padding:6px 14px;font-size:14.5px;font-weight:700}
+.start .p1{background:var(--bg-2);border:1px dashed #B5CCCD;color:var(--navy)}
+.start .p2{background:var(--teal);color:#fff}
+.start .ar{color:var(--quiet);font-size:14.5px}
+.cad{width:100%;border-collapse:separate;border-spacing:0;font-size:15px}
+.cad th,.cad td{border-bottom:1px solid var(--line);padding:10px 8px;text-align:center;vertical-align:middle}
+.cad th{background:var(--bg-2);font-weight:700;color:var(--navy);white-space:nowrap}
+.cad td:first-child,.cad th:first-child{text-align:left;white-space:nowrap}
+.cad td small{display:block;color:var(--quiet);font-size:12.5px}
+.dot{display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--green)}
+.dot.p{background:var(--teal)}
+.dot.o{background:var(--orange)}
+.span4{display:inline-block;width:92%;height:8px;border-radius:4px;background:repeating-linear-gradient(90deg,var(--teal) 0 10px,#fff 10px 14px);vertical-align:middle}
+
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0 22px}
+@media(max-width:820px){.grid3{grid-template-columns:1fr}}
+.goal{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:#fff}
+.goal .gn{font-size:15px;font-weight:700;color:var(--teal);margin:0 0 8px}
+.goal ul{list-style:none;padding:0;margin:0}
+.goal li{font-size:15px;margin:0 0 6px;padding-left:34px;position:relative;line-height:1.6}
+.goal li i{position:absolute;left:0;top:1px;font-style:normal;font-family:"Space Grotesk",sans-serif;font-weight:700;color:#fff;background:var(--blue);border-radius:6px;width:26px;text-align:center;font-size:13px;line-height:22px}
+.tw{overflow-x:auto;margin:10px 0 10px}
+.tcap{font-weight:700;color:var(--navy);font-size:16px;margin:22px 0 4px}
+.tcap span{font-family:"Space Grotesk",sans-serif;color:var(--orange-d);margin-right:6px}
+table{width:100%;border-collapse:collapse;font-size:15.5px}
+th,td{border-bottom:1px solid var(--line);padding:11px 10px;text-align:left;vertical-align:top}
+th{background:var(--bg-2);color:var(--navy);font-weight:700;white-space:nowrap}
+td.nw,th.nw{white-space:nowrap}
+td.lv{font-family:"Space Grotesk","Noto Sans SC",sans-serif;font-weight:700;color:var(--blue);white-space:nowrap}
+td.lv small{display:block;font-weight:500;color:var(--muted);font-family:"Noto Sans SC",sans-serif;font-size:13px}
+td.lv small.ef{font-family:"Space Grotesk",sans-serif;font-size:12px;color:var(--quiet);font-weight:500}
+tr.hl td{background:#FFF8EE}
+.tnote{font-size:14px;color:var(--muted);margin:6px 0 18px;line-height:1.7}
+.tnote p{margin:0 0 4px}
+.tnote details.mcn{border:none;background:none;margin:2px 0 6px}
+.tnote details.mcn summary{padding:2px 0;font-size:14px;font-weight:700;color:var(--teal)}
+.tnote details.mcn summary::after{position:static;margin-left:6px;font-size:16px}
+.tnote details.mcn .a{padding:4px 0 0 12px;border-left:2px solid var(--line);color:var(--muted)}
+.tnote details.mcn .a p{margin:0 0 6px}
+
+.tool{border:1.5px solid var(--teal);border-radius:14px;background:#fff;overflow:hidden;margin:20px 0 10px}
+.tool .th{background:var(--teal);color:#fff;padding:14px 22px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.tool .th b{font-size:18px}
+.tool .th span{font-size:13.5px;opacity:.92}
+.tool .tb{padding:20px 22px}
+.tq{margin:0 0 18px}
+.tq .ql{font-weight:700;color:var(--navy);margin:0 0 10px}
+.tq .ql i{font-style:normal;font-family:"Space Grotesk",sans-serif;color:var(--orange-d);margin-right:6px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opts.col{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media(max-width:640px){.opts.col{grid-template-columns:1fr}}
+.opt{font:inherit;font-size:15px;border:1.5px solid var(--line);background:#fff;border-radius:8px;padding:9px 14px;cursor:pointer;color:var(--navy);text-align:left;line-height:1.5}
+.opt:hover{border-color:var(--teal)}
+.opt[aria-pressed="true"]{border-color:var(--teal);background:var(--teal-l);font-weight:700}
+.opt b{display:block}
+.opt small{display:block;font-weight:400;color:var(--muted);font-size:13.5px}
+.roles{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:640px){.roles{grid-template-columns:1fr}}
+.role .opt{width:100%}
+.role details{border:none;margin:4px 0 0;background:none}
+.role summary{padding:2px 0 2px 2px;font-size:13.5px;font-weight:500;color:var(--teal)}
+.role summary::after{display:none}
+.role summary::before{content:"▸ "}
+.role details[open] summary::before{content:"▾ "}
+.role details .a{padding:2px 2px 4px;font-size:14px}
+.res{border-radius:10px;background:var(--bg-2);padding:18px 20px;margin-top:6px}
+.res .rl{font-family:"Space Grotesk","Noto Sans SC",sans-serif;font-size:21px;font-weight:700;color:var(--blue);margin:0 0 4px}
+.res.l1 .rl{color:var(--orange-d)}
+.res .saq{display:inline-block;background:var(--navy);color:#fff;border-radius:6px;padding:1px 10px;font-size:15px;margin-left:8px;vertical-align:2px}
+.res p{margin:0 0 8px;font-size:15.5px}
+.res .acts{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:8px;font-size:15px}
+.res .acts a{font-weight:700;text-decoration:none}
+.res .acts a:hover{text-decoration:underline}
+.res .carry{font-size:13.5px;color:#4E7A1E;margin:10px 0 0}
+.tool .reset{font:inherit;font-size:13.5px;background:none;border:none;color:#fff;text-decoration:underline;cursor:pointer;padding:0}
+.js .tq.hide{display:none}
+
+.md{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:14px 0 22px;background:#fff}
+.md .mdh{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;background:var(--bg-2);border-bottom:1px solid var(--line);gap:10px}
+.md .mdh b{font-size:15px;color:var(--navy)}
+.md .all{font:inherit;font-size:14px;background:#fff;border:1px solid var(--line);border-radius:6px;padding:5px 12px;cursor:pointer;color:var(--teal);font-weight:700;flex:0 0 auto}
+.md .all:hover{border-color:var(--teal)}
+.md .mdb{display:grid;grid-template-columns:240px 1fr;min-height:200px}
+.md .nav{border-right:1px solid var(--line);padding:8px;display:flex;flex-direction:column;gap:2px;background:#FBFCFD}
+.md .nav button{font:inherit;font-size:15px;text-align:left;border:none;background:none;padding:9px 12px;border-radius:8px;cursor:pointer;color:var(--muted);line-height:1.45}
+.md .nav button b{font-family:"Space Grotesk",sans-serif;color:var(--quiet);margin-right:8px;display:inline-block;min-width:16px}
+.md .nav button:hover{background:var(--bg-2);color:var(--navy)}
+.md .nav button[aria-selected="true"]{background:var(--teal-l);color:var(--navy);font-weight:700}
+.md .nav button[aria-selected="true"] b{color:var(--orange-d)}
+.md .pans{padding:18px 22px;min-width:0}
+.md .pan h4{font-size:18px;margin:0 0 8px}
+.md .pan h4 b{font-family:"Space Grotesk",sans-serif;color:var(--orange-d);margin-right:8px}
+.md .pan p{font-size:15.5px;color:var(--ink);margin:0 0 10px}
+.md .pan .cost{background:var(--orange-l);border-radius:8px;padding:10px 14px;font-size:15px;color:var(--ink);margin:4px 0 0}
+.md .pan .cost b{color:var(--orange-d)}
+.md .pan table{font-size:14.5px}
+.js .md .pan[hidden]{display:none}
+.md.expanded .mdb{grid-template-columns:1fr}
+.md.expanded .nav{display:none}
+.md.expanded .pan{padding:0 0 16px;margin:0 0 16px;border-bottom:1px dashed var(--line)}
+.md.expanded .pan:last-child{border-bottom:none;margin:0;padding:0}
+.no-js .md .mdb{grid-template-columns:1fr}
+.no-js .md .nav,.no-js .md .all{display:none}
+.no-js .md .pan{margin:0 0 16px}
+@media(max-width:720px){
+  .md .mdb{grid-template-columns:1fr}
+  .md .nav{flex-direction:row;overflow-x:auto;border-right:none;border-bottom:1px solid var(--line);scrollbar-width:none}
+  .md .nav button{white-space:nowrap;flex:0 0 auto}
+  .md .mdh b{font-size:14px}
+}
+
+.phase{margin:20px 0 8px}
+.phase .ph{display:flex;align-items:baseline;gap:10px;margin:0 0 10px;flex-wrap:wrap}
+.phase .ph b{font-size:18px;color:var(--navy)}
+.phase .ph span{font-size:14px;color:var(--quiet)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;align-items:stretch}
+@media(max-width:900px){.steps{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.steps{grid-template-columns:1fr}}
+.steps details{margin:0;border-radius:10px}
+.steps summary{padding:14px 14px 12px;display:flex;flex-direction:column;gap:6px;padding-right:14px}
+.steps summary::after{top:auto;bottom:8px;right:12px;font-size:18px}
+.steps .num{display:inline-flex;width:28px;height:28px;border-radius:50%;background:var(--teal);color:#fff;font-family:"Space Grotesk",sans-serif;font-weight:700;align-items:center;justify-content:center;font-size:14px}
+.phase.p2 .num{background:var(--blue)}
+.steps .nm{font-size:15.5px;line-height:1.45}
+.steps .sm{font-size:13.5px;font-weight:400;color:var(--muted);line-height:1.55;padding-bottom:14px}
+.steps .a{font-size:14.5px;padding:0 14px 14px}
+.steps details[open]{border-color:var(--teal)}
+.hdr-row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:0 0 4px}
+.allbtn{font:inherit;font-size:14px;background:#fff;border:1px solid var(--line);border-radius:6px;padding:5px 12px;cursor:pointer;color:var(--teal);font-weight:700}
+.no-js .allbtn{display:none}
+
+details{border:1px solid var(--line);border-radius:10px;margin:0 0 12px;background:#fff}
+summary{cursor:pointer;padding:16px 20px;font-weight:700;color:var(--navy);list-style:none;position:relative;padding-right:48px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:20px;top:12px;font-size:22px;color:var(--teal);font-weight:400}
+details[open] > summary::after{content:"−"}
+details .a{padding:0 20px 16px;color:var(--muted)}
+details .a p:last-child{margin:0}
+
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}
+.tabs button{font:inherit;font-size:15px;border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:8px 16px;cursor:pointer;color:var(--navy)}
+.tabs button[aria-selected="true"]{background:var(--navy);border-color:var(--navy);color:#fff;font-weight:700}
+.no-js .tabs{display:none}
+.panel{border:1px solid var(--line);border-radius:12px;padding:20px 22px;background:#fff;margin-bottom:12px}
+.panel h4{margin:0 0 6px;font-size:18px}
+.panel .dur{font-family:"Space Grotesk","Noto Sans SC",sans-serif;font-weight:700;color:var(--orange-d);font-size:20px;margin:0 0 8px}
+.panel p{margin:0 0 8px;color:var(--muted)}
+.panel ul{margin:6px 0 0;padding-left:20px}
+.panel li{color:var(--ink);font-size:15.5px;margin-bottom:10px}
+.panel li b{color:var(--navy)}
+.js .panel[hidden]{display:none}
+
+.bars{margin:8px 0 6px}
+.bar{display:grid;grid-template-columns:150px 1fr 110px;gap:12px;align-items:center;margin-bottom:10px;font-size:15px}
+.bar .t{height:14px;border-radius:7px;background:var(--bg-2);position:relative;overflow:hidden}
+.bar .t i{position:absolute;top:0;bottom:0;border-radius:7px;background:var(--teal)}
+.bar .t i.o{background:var(--orange)}
+.bar .d{font-weight:700;color:var(--navy);text-align:right}
+@media(max-width:600px){.bar{grid-template-columns:1fr 90px}.bar .t{grid-column:1/-1;grid-row:2}}
+
+.next{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;list-style:none;padding:0}
+.next li{margin:0}
+.next a{display:block;border:1px solid var(--line);border-radius:10px;padding:14px 16px;text-decoration:none;color:var(--navy);font-weight:500;background:#fff;height:100%}
+.next a small{display:block;color:var(--quiet);font-size:13.5px;font-weight:400}
+.next a:hover{border-color:var(--teal);color:var(--teal)}
+.next a.go{background:var(--orange);border-color:var(--orange);color:var(--on-orange);font-weight:700}
+.next a.go small{color:#3E5A5C}
+.next a.go:hover{background:var(--orange-h);color:var(--on-orange)}
+@media(max-width:640px){.next{grid-template-columns:1fr}}
+dl.gloss{margin:0}
+dl.gloss div{display:grid;grid-template-columns:230px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--line)}
+dl.gloss dt{font-weight:700;color:var(--navy)}
+dl.gloss dd{margin:0;color:var(--muted)}
+@media(max-width:640px){dl.gloss div{grid-template-columns:1fr;gap:2px}}
+.src{font-size:15px;color:var(--muted)}
+.byline{margin-top:24px;font-weight:700;color:var(--navy)}
+.disc{font-size:14px;color:var(--quiet);margin-top:10px}
+
+.band{background:var(--navy);color:#fff;margin-top:56px;padding:56px 0}
+.band .in{display:grid;grid-template-columns:1fr 1.15fr;gap:40px;align-items:start}
+@media(max-width:860px){.band .in{grid-template-columns:1fr}}
+.band h2{color:#fff;font-size:clamp(24px,3vw,32px);margin:0 0 10px}
+.band p{color:#CFE0E0;margin:0 0 14px}
+.cred{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:18px 0 0}
+.cred li{border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:4px 12px;font-size:13px;color:#DDEBEB;margin:0}
+form.cf{background:#fff;border-radius:12px;padding:22px;color:var(--ink)}
+form.cf .stp{font-size:13.5px;font-weight:700;color:var(--teal);margin:0 0 8px}
+form.cf .stp i{font-style:normal;display:inline-flex;width:20px;height:20px;border-radius:50%;background:var(--teal);color:#fff;align-items:center;justify-content:center;font-size:12px;margin-right:6px;font-family:"Space Grotesk",sans-serif}
+.sum{background:var(--bg-2);border-radius:10px;padding:12px 14px;margin:0 0 16px;font-size:14.5px}
+.sum .chips{display:flex;flex-wrap:wrap;gap:6px}
+.sum .chip{background:#fff;border:1px solid #C7DEDF;color:var(--teal);border-radius:999px;padding:3px 12px;font-weight:700;font-size:13.5px}
+.sum .empty{color:var(--quiet)}
+.svc{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 16px}
+.svc label{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--line);border-radius:999px;padding:5px 12px;font-size:14px;cursor:pointer;color:var(--navy);user-select:none}
+.svc input{accent-color:var(--teal);margin:0}
+.svc label.on{border-color:var(--orange);background:var(--orange-l);font-weight:700}
+form.cf .fl{display:block;font-size:14px;font-weight:700;color:var(--navy);margin:0 0 4px}
+form.cf input[type=text],form.cf select{width:100%;font:inherit;font-size:15px;border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin:0 0 14px;background:#fff;color:var(--ink)}
+form.cf .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+form.cf .row2{display:grid;grid-template-columns:110px 1fr;gap:8px}
+@media(max-width:520px){form.cf .row{grid-template-columns:1fr}}
+form.cf button[type=submit]{width:100%;font:inherit;font-weight:700;background:var(--orange);color:var(--on-orange);border:none;border-radius:8px;padding:13px;cursor:pointer;font-size:16px}
+form.cf button[type=submit]:hover{background:var(--orange-h)}
+form.cf .priv{font-size:12.5px;color:var(--quiet);margin:10px 0 0;text-align:center}
+form.cf .ok{display:none;background:var(--teal-l);border-radius:8px;padding:12px;margin-top:12px;font-size:14.5px;color:var(--teal)}
+
+footer{background:#082A2D;color:#A9C3C4;font-size:14px;padding:44px 0 24px}
+footer .cols{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+@media(max-width:820px){footer .cols{grid-template-columns:1fr 1fr}}
+footer h5{color:#fff;font-size:14px;margin:0 0 10px}
+footer a{display:block;color:#A9C3C4;text-decoration:none;margin:0 0 6px}
+footer a:hover{color:#fff}
+footer .lab{display:inline-block;margin:0 0 22px;color:#CFE0E0}
+footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;padding-top:16px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px}
+
+.mcta{display:none}
+@media(max-width:760px){
+  .mcta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:50;background:#fff;border-top:1px solid var(--line);padding:10px 14px;box-shadow:0 -4px 14px rgba(13,52,55,.10);transform:translateY(110%);transition:transform .25s}
+  .mcta.show{transform:none}
+  .mcta a{flex:1;text-align:center;text-decoration:none;font-weight:700;font-size:15px;border-radius:8px;padding:11px 8px;background:var(--orange);color:var(--on-orange)}
+  body.js{padding-bottom:70px}
+}
+</style>
+</head>
+<body class="no-js">
+
+<header class="site">
+  <div class="wrap">
+    <a class="logo" href="https://www.securevectors.com/zh-hans"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgaWQ9InN2ZzEiIHdpZHRoPSIzNDgiIGhlaWdodD0iMTYwIiB2aWV3Qm94PSI0IDIgMzQ4IDE2MCI+IDxkZWZzIGlkPSJkZWZzMSI+IDxjbGlwUGF0aCBjbGlwUGF0aFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgaWQ9ImNsaXBQYXRoMyI+IDxwYXRoIGQ9Ik0gMCwxMjcuNTU5IEggMjY5LjI5MSBWIDAgSCAwIFoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xMjEuOTE3NTEsLTc5LjE2NzkwMikiIGlkPSJwYXRoMyIgLz4gPC9jbGlwUGF0aD4gPGNsaXBQYXRoIGNsaXBQYXRoVW5pdHM9InVzZXJTcGFjZU9uVXNlIiBpZD0iY2xpcFBhdGg1Ij4gPHBhdGggZD0iTSAwLDEyNy41NTkgSCAyNjkuMjkxIFYgMCBIIDAgWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTExMi44OTE2LC03OC4wNTA4MDIpIiBpZD0icGF0aDUiIC8+IDwvY2xpcFBhdGg+IDxjbGlwUGF0aCBjbGlwUGF0aFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgaWQ9ImNsaXBQYXRoNyI+IDxwYXRoIGQ9Ik0gMCwxMjcuNTU5IEggMjY5LjI5MSBWIDAgSCAwIFoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xNi4wODM1MDEsLTc5LjY4MTYwMikiIGlkPSJwYXRoNyIgLz4gPC9jbGlwUGF0aD4gPGNsaXBQYXRoIGNsaXBQYXRoVW5pdHM9InVzZXJTcGFjZU9uVXNlIiBpZD0iY2xpcFBhdGg5Ij4gPHBhdGggZD0iTSAwLDEyNy41NTkgSCAyNjkuMjkxIFYgMCBIIDAgWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTc5LjUxMjY5OSwtODUuNDI2NzAyKSIgaWQ9InBhdGg5IiAvPiA8L2NsaXBQYXRoPiA8Y2xpcFBhdGggY2xpcFBhdGhVbml0cz0idXNlclNwYWNlT25Vc2UiIGlkPSJjbGlwUGF0aDExIj4gPHBhdGggZD0iTSAwLDEyNy41NTkgSCAyNjkuMjkxIFYgMCBIIDAgWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTE0Ni44NjIzLC0xMTEuMTAxNSkiIGlkPSJwYXRoMTEiIC8+IDwvY2xpcFBhdGg+IDxjbGlwUGF0aCBjbGlwUGF0aFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgaWQ9ImNsaXBQYXRoMTMiPiA8cGF0aCBkPSJNIDAsMTI3LjU1OSBIIDI2OS4yOTEgViAwIEggMCBaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMTkzLjYxNzIxLC05MC42NTUyMDIpIiBpZD0icGF0aDEzIiAvPiA8L2NsaXBQYXRoPiA8Y2xpcFBhdGggY2xpcFBhdGhVbml0cz0idXNlclNwYWNlT25Vc2UiIGlkPSJjbGlwUGF0aDE1Ij4gPHBhdGggZD0iTSAwLDEyNy41NTkgSCAyNjkuMjkxIFYgMCBIIDAgWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTI1NS42MDA2MSwtODUuNDkyMjAyKSIgaWQ9InBhdGgxNSIgLz4gPC9jbGlwUGF0aD4gPGNsaXBQYXRoIGNsaXBQYXRoVW5pdHM9InVzZXJTcGFjZU9uVXNlIiBpZD0iY2xpcFBhdGgxNyI+IDxwYXRoIGQ9Ik0gMCwxMjcuNTU5IEggMjY5LjI5MSBWIDAgSCAwIFoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yMS4zMTQwMDEsLTEwLjkzNDUwMykiIGlkPSJwYXRoMTciIC8+IDwvY2xpcFBhdGg+IDxjbGlwUGF0aCBjbGlwUGF0aFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgaWQ9ImNsaXBQYXRoMTkiPiA8cGF0aCBkPSJNIDAsMTI3LjU1OSBIIDI2OS4yOTEgViAwIEggMCBaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNzEuOTM3NTAyLC0zMC42Mzk1OTgpIiBpZD0icGF0aDE5IiAvPiA8L2NsaXBQYXRoPiA8Y2xpcFBhdGggY2xpcFBhdGhVbml0cz0idXNlclNwYWNlT25Vc2UiIGlkPSJjbGlwUGF0aDIxIj4gPHBhdGggZD0iTSAwLDEyNy41NTkgSCAyNjkuMjkxIFYgMCBIIDAgWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEzMS43NTI5LC00OC4yNTg4MDEpIiBpZD0icGF0aDIxIiAvPiA8L2NsaXBQYXRoPiA8Y2xpcFBhdGggY2xpcFBhdGhVbml0cz0idXNlclNwYWNlT25Vc2UiIGlkPSJjbGlwUGF0aDIzIj4gPHBhdGggZD0iTSAwLDEyNy41NTkgSCAyNjkuMjkxIFYgMCBIIDAgWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTIwMi4wMTg2LC0zMi43MTk3MDEpIiBpZD0icGF0aDIzIiAvPiA8L2NsaXBQYXRoPiA8Y2xpcFBhdGggY2xpcFBhdGhVbml0cz0idXNlclNwYWNlT25Vc2UiIGlkPSJjbGlwUGF0aDI1Ij4gPHBhdGggZD0iTSAwLDEyNy41NTkgSCAyNjkuMjkxIFYgMCBIIDAgWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTIzMi40MTExMSwtMjIuNDA2MjAzKSIgaWQ9InBhdGgyNSIgLz4gPC9jbGlwUGF0aD4gPGNsaXBQYXRoIGNsaXBQYXRoVW5pdHM9InVzZXJTcGFjZU9uVXNlIiBpZD0iY2xpcFBhdGgyNyI+IDxwYXRoIGQ9Ik0gMCwxMjcuNTU5IEggMjY5LjI5MSBWIDAgSCAwIFoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xNzAuODg1MzEsLTQ4LjgyODEwNCkiIGlkPSJwYXRoMjciIC8+IDwvY2xpcFBhdGg+IDxjbGlwUGF0aCBjbGlwUGF0aFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgaWQ9ImNsaXBQYXRoMjkiPiA8cGF0aCBkPSJNIDAsMTI3LjU1OSBIIDI2OS4yOTEgViAwIEggMCBaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMTExLjgxMDUxLC0yMS4xNzQ4MDEpIiBpZD0icGF0aDI5IiAvPiA8L2NsaXBQYXRoPiA8L2RlZnM+IDxnIGlkPSJsYXllci1NQzAiPiA8cGF0aCBpZD0icGF0aDEiIGQ9Ik0gMCwwIC04LjIxMiwtOC4yMTIgLTE2LjQyNCwwIC04LjIxMiw4LjIxMiBaIiBzdHlsZT0iZmlsbDojZjE4YjAwO2ZpbGwtb3BhY2l0eToxO2ZpbGwtcnVsZTpub256ZXJvO3N0cm9rZTpub25lIiB0cmFuc2Zvcm09Im1hdHJpeCgxLjMzMzMzMzMsMCwwLC0xLjMzMzMzMzMsMjM5LjE4MzYsMTI3LjQwNTQ3KSIgLz4gPHBhdGggaWQ9InBhdGgyIiBkPSJtIDAsMCBjIC0yLjgxMiwtMy4yNDMgLTYuOTUxLC01LjMwNiAtMTEuNTcsLTUuMzA2IC04LjQ1MSwwIC0xNS4zMjYsNi44NzQgLTE1LjMyNiwxNS4zMjYgMCw4LjQ1IDYuODc1LDE1LjMyNSAxNS4zMjYsMTUuMzI1IDMuNDQxLDAgNi42MSwtMS4xNTUgOS4xNywtMy4wNzUgbCA0LjgsNi4yOTEgYyAtMy44OTEsMi45MzggLTguNzMsNC42ODQgLTEzLjk3LDQuNjg0IC0xMi44MDYsMCAtMjMuMjI2LC0xMC40MTkgLTIzLjIyNiwtMjMuMjI1IDAsLTEyLjgwNyAxMC40MiwtMjMuMjI2IDIzLjIyNiwtMjMuMjI2IDcuMDU0LDAgMTMuMzgsMy4xNjUgMTcuNjQzLDguMTQ1IHoiIHN0eWxlPSJmaWxsOiNmMThiMDA7ZmlsbC1vcGFjaXR5OjE7ZmlsbC1ydWxlOm5vbnplcm87c3Ryb2tlOm5vbmUiIHRyYW5zZm9ybT0ibWF0cml4KDEuMzMzMzMzMywwLDAsLTEuMzMzMzMzMywxNjIuNTU2NjcsNjQuNTIxNDY3KSIgY2xpcC1wYXRoPSJ1cmwoI2NsaXBQYXRoMykiIC8+IDxwYXRoIGlkPSJwYXRoNCIgZD0ibSAwLDAgYyAwLjc4NiwwLjYxNCAzLjU0OSwzLjI5MyAzLjU0OSwzLjI5MyA2LjkzNCwxMy44NjUgMTQuMDM0LDI4LjEwMSAyNi4wOTksMzkuMTQ3IGwgLTAuNDU2LDEuMzk5IEMgMjEuNzM4LDM4Ljk1MiAxMC4yMTIsMjYuNjAzIDAuNzc3LDEwLjg3OCBjIDAsMCAtMS4yMTMsMi4yOTkgLTIuMTI0LDMuOTU5IC0wLjkxMiwxLjY2IC0yLjQ4Niw0LjIyNCAtNC45NzMsNC4zODkgLTAuMDQxLDAuMDAzIC0wLjA4MiwwLjAwNCAtMC4xMjMsMC4wMDQgLTIuNDg2LC0wLjAwMSAtNi4xNDEsLTQuNzkyIC02LjE0MSwtNC43OTIgMCwwIDIuNjE4LC0wLjYyMiA0LjQ0MSwtMy4yNDggMC45NjksLTEuMzk0IDQuNTQ2LC05LjEwNSA1LjQ3LC0xMS4xOSAwLjE1NCwtMC4zNSAwLjU1NywtMC41MjkgMC44NzUsLTAuNTI5IDAuMzM4LDAgMS4yNTYsMC4xMDQgMS43OTgsMC41MjkiIHN0eWxlPSJmaWxsOiM4ZmJlM2Y7ZmlsbC1vcGFjaXR5OjE7ZmlsbC1ydWxlOm5vbnplcm87c3Ryb2tlOm5vbmUiIHRyYW5zZm9ybT0ibWF0cml4KDEuMzMzMzMzMywwLDAsLTEuMzMzMzMzMywxNTAuNTIyMTMsNjYuMDEwOTMzKSIgY2xpcC1wYXRoPSJ1cmwoI2NsaXBQYXRoNSkiIC8+IDxwYXRoIGlkPSJwYXRoNiIgZD0ibSAwLDAgYyAwLjk4LC00LjMwOSA0LjEwNywtNi4wOTIgOS4wMTUsLTYuMDkgNC43OTgsMC4wMDIgNi44OTEsMS43OTkgNi44OSw0Ljg4IEMgMTUuOTA0LDIuMjU1IDEzLjc2NCwzLjY1IDYuMzk0LDUuMzQ3IC02LjA0Myw4LjI0NSAtOC45MiwxMi44MTEgLTguOTIyLDE4Ljc3OSAtOC45MjUsMjYuNzY2IC0yLjk0LDMyLjAxOCA3LjcyMywzMi4wMjIgMTkuNzg3LDMyLjAyNiAyNC41NjksMjUuNjI1IDI1LjIxNywxOC45OCBMIDE0LjgwNCwxOC45NzcgQyAxNC40MDEsMjEuNDg1IDEzLjA2OCwyNC40MSA3LjQ2OCwyNC40MDcgMy44NDgsMjQuNDA2IDEuNjIsMjIuOTQ4IDEuNjIxLDE5Ljk5MiAxLjYyMiwxNy4xMDEgMy4zOTUsMTUuOTIgMTAuNDc4LDE0LjI5NSAyMy40ODgsMTEuMjU0IDI2LjQ0Niw2LjQ1OCAyNi40NDgsMC4wNjggMjYuNDUxLC04LjI1IDIwLjEzOCwtMTMuODI0IDguMTksLTEzLjgyOCAtMy4xNCwtMTMuODMzIC05LjMxNSwtOC4zNzMgLTEwLjQxNCwtMC4wMDQgWiIgc3R5bGU9ImZpbGw6IzEyNWI2MDtmaWxsLW9wYWNpdHk6MTtmaWxsLXJ1bGU6bm9uemVybztzdHJva2U6bm9uZSIgdHJhbnNmb3JtPSJtYXRyaXgoMS4zMzMzMzMzLDAsMCwtMS4zMzMzMzMzLDIxLjQ0NDY2Nyw2My44MzY1MzMpIiBjbGlwLXBhdGg9InVybCgjY2xpcFBhdGg3KSIgLz4gPHBhdGggaWQ9InBhdGg4IiBkPSJtIDAsMCAtMjEuMTQ2LC0wLjAwOCAwLjAwMywtMTAuNDcgMjMuMzQ4LDAuMDA5IC0xLjIxMywtOC40MzkgLTMyLjE2MiwtMC4wMTIgLTAuMDE3LDQ0LjU1OSAzMi4wODgsMC4wMTEgMC4wMDMsLTguNDM5IC0yMi4wNTcsLTAuMDA4IDAuMDA0LC04Ljc3MSAyMS4xNDYsMC4wMDcgeiIgc3R5bGU9ImZpbGw6IzEyNWI2MDtmaWxsLW9wYWNpdHk6MTtmaWxsLXJ1bGU6bm9uemVybztzdHJva2U6bm9uZSIgdHJhbnNmb3JtPSJtYXRyaXgoMS4zMzMzMzMzLDAsMCwtMS4zMzMzMzMzLDEwNi4wMTY5Myw1Ni4xNzY0KSIgY2xpcC1wYXRoPSJ1cmwoI2NsaXBQYXRoOSkiIC8+IDxwYXRoIGlkPSJwYXRoMTAiIGQ9Im0gMCwwIDAuMDEsLTI2LjQ5OSBjIDAuMDAzLC04LjE3MyA0LjEzNywtMTAuNjQ1IDguNzcxLC0xMC42NDMgNS4yOTEsMC4wMDIgOC41MTIsMi45ODUgOC41MDksMTAuNjQ5IGwgLTAuMDEsMjYuNSAxMC4zNDksMC4wMDQgMC4wMSwtMjUuOTg5IEMgMjcuNjQ1LC00MS4zNjIgMTguNTUsLTQ1LjE5NiA4LjY1NCwtNDUuMiBjIC0xMC4yMDMsLTAuMDA0IC0xOC45ODgsMy45NiAtMTguOTk0LDE5LjA2OSBsIC0wLjAxLDI2LjEyNyB6IiBzdHlsZT0iZmlsbDojMTI1YjYwO2ZpbGwtb3BhY2l0eToxO2ZpbGwtcnVsZTpub256ZXJvO3N0cm9rZTpub25lIiB0cmFuc2Zvcm09Im1hdHJpeCgxLjMzMzMzMzMsMCwwLC0xLjMzMzMzMzMsMTk1LjgxNjQsMjEuOTQzMzMzKSIgY2xpcC1wYXRoPSJ1cmwoI2NsaXBQYXRoMTEpIiAvPiA8cGF0aCBpZD0icGF0aDEyIiBkPSJtIDAsMCAtMC4wMDUsMTIuMzkzIDUuMDcxLDAuMDAyIGMgNS4yNDUsMC4wMDEgOC4wNTgsLTEuNDQ4IDguMDU5LC01LjgwNCAwLjAwMiwtNC4zMzUgLTIuODEsLTYuNTg3IC04LjA1NCwtNi41ODkgeiBtIDEzLjg5NCwtMjQuMDkgMTEuNDgsMC4wMDQgLTEwLjA2NiwxNy43OTYgYyA0LjcyMywyLjE3NiA3Ljg3Myw2LjM0IDcuODcxLDEyLjg4NSAtMC4wMDQsMTAuNjYyIC03LjgxMywxMy45NDcgLTE3LjI5MywxMy45NDMgbCAtMTYuMTU3LC0wLjAwNiAwLjAxNywtNDQuNjMyIDEwLjI2MywwLjAwNCAtMC4wMDYsMTUuOTUyIDUuNDQ5LDAuMDAyIHoiIHN0eWxlPSJmaWxsOiMxMjViNjA7ZmlsbC1vcGFjaXR5OjE7ZmlsbC1ydWxlOm5vbnplcm87c3Ryb2tlOm5vbmUiIHRyYW5zZm9ybT0ibWF0cml4KDEuMzMzMzMzMywwLDAsLTEuMzMzMzMzMywyNTguMTU2MjcsNDkuMjA1MDY3KSIgY2xpcC1wYXRoPSJ1cmwoI2NsaXBQYXRoMTMpIiAvPiA8cGF0aCBpZD0icGF0aDE0IiBkPSJtIDAsMCAtMjEuMTQ2LC0wLjAwOCAwLjAwMywtMTAuNDcxIDIzLjM0OCwwLjAwOSAtMS4yMTMsLTguNDM5IC0zMi4xNjIsLTAuMDEyIC0wLjAxNyw0NC41NTkgMzIuMDg4LDAuMDExIDAuMDAzLC04LjQzOSAtMjIuMDU3LC0wLjAwOCAwLjAwNCwtOC43NyAyMS4xNDYsMC4wMDcgeiIgc3R5bGU9ImZpbGw6IzEyNWI2MDtmaWxsLW9wYWNpdHk6MTtmaWxsLXJ1bGU6bm9uemVybztzdHJva2U6bm9uZSIgdHJhbnNmb3JtPSJtYXRyaXgoMS4zMzMzMzMzLDAsMCwtMS4zMzMzMzMzLDM0MC44MDA4LDU2LjA4OTA2NykiIGNsaXAtcGF0aD0idXJsKCNjbGlwUGF0aDE1KSIgLz4gPHBhdGggaWQ9InBhdGgxNiIgZD0ibSAwLDAgLTE1LjE5MSw0MS40MDcgNS4wODQsMC4wMDIgNy41NSwtMjAuOTc1IEMgLTAuMzY1LDE0LjI5MiAxLjkyNiw3LjkwNyAyLjgzMiw0LjIyIGggMC4xMTkgYyAwLjg3NiwzLjI4OCAzLjM4Niw5Ljk3MyA1LjYwMiwxNi4wMDkgbCA3LjgzMSwyMS4xOSA0LjkxMSwwLjAwMSBMIDUuNTk3LDAuMDAyIFoiIHN0eWxlPSJmaWxsOiMxMjViNjA7ZmlsbC1vcGFjaXR5OjE7ZmlsbC1ydWxlOm5vbnplcm87c3Ryb2tlOm5vbmUiIHRyYW5zZm9ybT0ibWF0cml4KDEuMzMzMzMzMywwLDAsLTEuMzMzMzMzMywyOC40MTg2NjcsMTU1LjQ5OTMzKSIgY2xpcC1wYXRoPSJ1cmwoI2NsaXBQYXRoMTcpIiAvPiA8cGF0aCBpZD0icGF0aDE4IiBkPSJtIDAsMCAtMjAuNzcsLTAuMDA4IDAuMDA2LC0xNS41NTcgMjIuNzg5LDAuMDA4IC0wLjYyOSwtNC4xMyAtMjYuODIyLC0wLjAwOSAtMC4wMTQsNDEuNDEzIDI2LjQ0NCwwLjAxMSAwLjAwMiwtNC4xMjkgLTIxLjc4MSwtMC4wMDkgMC4wMDQsLTEzLjQ2OSAyMC43NjksMC4wMDggeiIgc3R5bGU9ImZpbGw6IzEyNWI2MDtmaWxsLW9wYWNpdHk6MTtmaWxsLXJ1bGU6bm9uemVybztzdHJva2U6bm9uZSIgdHJhbnNmb3JtPSJtYXRyaXgoMS4zMzMzMzMzLDAsMCwtMS4zMzMzMzMzLDk1LjkxNjY2NywxMjkuMjI1ODcpIiBjbGlwLXBhdGg9InVybCgjY2xpcFBhdGgxOSkiIC8+IDxwYXRoIGlkPSJwYXRoMjAiIGQ9Ik0gMCwwIC0xMy41NSwtMC4wMDUgLTEzLjU1Miw0LjEyNCAxOC4zNTgsNC4xMzYgMTguMzYsMC4wMDcgNC43NzksMC4wMDIgNC43OTIsLTM3LjI4MiAwLjAxMywtMzcuMjg0IFoiIHN0eWxlPSJmaWxsOiMxMjViNjA7ZmlsbC1vcGFjaXR5OjE7ZmlsbC1ydWxlOm5vbnplcm87c3Ryb2tlOm5vbmUiIHRyYW5zZm9ybT0ibWF0cml4KDEuMzMzMzMzMywwLDAsLTEuMzMzMzMzMywxNzUuNjcwNTMsMTA1LjczMzYpIiBjbGlwLXBhdGg9InVybCgjY2xpcFBhdGgyMSkiIC8+IDxwYXRoIGlkPSJwYXRoMjIiIGQ9Im0gMCwwIC0wLjAwNiwxNS44NDYgNy4yMjIsMC4wMDMgQyAxMy44NiwxNS44NTEgMTcuNTI2LDEzLjg0NSAxNy41MjgsOC4yMjEgMTcuNTMsMi42ODQgMTMuODY2LDAuMDA1IDcuMjIzLDAuMDAzIFogbSAxOC4wMzUsLTIxLjcxMiA1LjM5OCwwLjAwMiAtMTAuNzM5LDE4LjMzIGMgNS44MDcsMS4yNzkgOS41OTMsNS4xMTEgOS41OTEsMTEuNjAyIC0wLjAwMyw4LjQ3NCAtNS45MTcsMTEuNTAxIC0xNC4zMTIsMTEuNDk3IGwgLTEyLjcyNywtMC4wMDUgMC4wMTUsLTQxLjQzNiA0Ljc0NywwLjAwMiAtMC4wMDYsMTcuODQ5IDcuNzgsMC4wMDMgeiIgc3R5bGU9ImZpbGw6IzEyNWI2MDtmaWxsLW9wYWNpdHk6MTtmaWxsLXJ1bGU6bm9uemVybztzdHJva2U6bm9uZSIgdHJhbnNmb3JtPSJtYXRyaXgoMS4zMzMzMzMzLDAsMCwtMS4zMzMzMzMzLDI2OS4zNTgxMywxMjYuNDUyNCkiIGNsaXAtcGF0aD0idXJsKCNjbGlwUGF0aDIzKSIgLz4gPHBhdGggaWQ9InBhdGgyNCIgZD0ibSAwLDAgYyAxLjE2NSwtNS4xNDMgNC42NTEsLTguMDEzIDEwLjkxNywtOC4wMSA2LjgyNywwLjAwMiA5LjQ5NywzLjI4MSA5LjQ5NSw3LjM4NyAtMTBlLTQsNC4zMjUgLTIuMDU0LDYuODM5IC0xMC42MjQsOC45MjQgLTkuNDI4LDIuMzA4IC0xMi45NDksNS40ODQgLTEyLjk1MSwxMS4zNTYgLTAuMDAyLDUuOTE3IDQuMzQ0LDEwLjk1NyAxMy40NjYsMTAuOTYxIDkuNjE0LDAuMDAzIDEzLjYwNiwtNS42NSAxNC4xNTYsLTEwLjk1NCBsIC00LjgzOCwtMC4wMDIgYyAtMC44MTEsMy45MzMgLTMuMzEzLDcuMDEzIC05LjUwOSw3LjAxIEMgNC43NjIsMjYuNjcgMS43OTIsMjQuMjI5IDEuNzk0LDIwLjA2MiAxLjc5NSwxNS45NTQgNC4yNjEsMTQuMzQzIDExLjY0MiwxMi41NDQgMjMuNDAxLDkuNjY1IDI1LjM2Nyw1LjA0NCAyNS4zNjksLTAuMTU3IDI1LjM3MSwtNi42NDQgMjAuNTkzLC0xMS44OSAxMC42NDQsLTExLjg5MyAwLjI0OCwtMTEuODk2IC00LjAwOCwtNi4wOTUgLTQuODM5LC0wLjAwMiBaIiBzdHlsZT0iZmlsbDojMTI1YjYwO2ZpbGwtb3BhY2l0eToxO2ZpbGwtcnVsZTpub256ZXJvO3N0cm9rZTpub25lIiB0cmFuc2Zvcm09Im1hdHJpeCgxLjMzMzMzMzMsMCwwLC0xLjMzMzMzMzMsMzA5Ljg4MTQ3LDE0MC4yMDM3MykiIGNsaXAtcGF0aD0idXJsKCNjbGlwUGF0aDI1KSIgLz4gPHBhdGggaWQ9InBhdGgyNiIgZD0ibSAwLDAgYyAtOS40MzYsMCAtMTcuMTE0LC03LjY3NyAtMTcuMTE0LC0xNy4xMTMgMCwtOS40MzYgNy42NzgsLTE3LjExNCAxNy4xMTQsLTE3LjExNCA5LjQzNiwwIDE3LjExMyw3LjY3OCAxNy4xMTMsMTcuMTE0IEMgMTcuMTEzLC03LjY3NyA5LjQzNiwwIDAsMCBtIDAsLTM4LjMyNCBjIC0xMS42OTYsMCAtMjEuMjExLDkuNTE1IC0yMS4yMTEsMjEuMjExIDAsMTEuNjk1IDkuNTE1LDIxLjIxIDIxLjIxMSwyMS4yMSAxMS42OTUsMCAyMS4yMSwtOS41MTUgMjEuMjEsLTIxLjIxIDAsLTExLjY5NiAtOS41MTUsLTIxLjIxMSAtMjEuMjEsLTIxLjIxMSIgc3R5bGU9ImZpbGw6IzEyNWI2MDtmaWxsLW9wYWNpdHk6MTtmaWxsLXJ1bGU6bm9uemVybztzdHJva2U6bm9uZSIgdHJhbnNmb3JtPSJtYXRyaXgoMS4zMzMzMzMzLDAsMCwtMS4zMzMzMzMzLDIyNy44NDcwNywxMDQuOTc0NTMpIiBjbGlwLXBhdGg9InVybCgjY2xpcFBhdGgyNykiIC8+IDxwYXRoIGlkPSJwYXRoMjgiIGQ9Im0gMCwwIGMgLTMuMTM2LC0zLjk5NCAtNy45OTUsLTYuNTczIC0xMy40NTUsLTYuNTczIC05LjQzNiwwIC0xNy4xMTMsNy42NzcgLTE3LjExMywxNy4xMTMgMCw5LjQzNyA3LjY3NywxNy4xMTMgMTcuMTEzLDE3LjExMyA1LjQ2LDAgMTAuMzE5LC0yLjU3OSAxMy40NTUsLTYuNTczIGwgMy4yMjEsMi41MjQgYyAtMy44ODcsNC45NSAtOS45MDgsOC4xNDYgLTE2LjY3Niw4LjE0NiAtMTEuNjk1LDAgLTIxLjIxLC05LjUxNSAtMjEuMjEsLTIxLjIxIDAsLTExLjY5NSA5LjUxNSwtMjEuMjExIDIxLjIxLC0yMS4yMTEgNi43NjgsMCAxMi43OSwzLjE5NyAxNi42NzYsOC4xNDggeiIgc3R5bGU9ImZpbGw6IzEyNWI2MDtmaWxsLW9wYWNpdHk6MTtmaWxsLXJ1bGU6bm9uemVybztzdHJva2U6bm9uZSIgdHJhbnNmb3JtPSJtYXRyaXgoMS4zMzMzMzMzLDAsMCwtMS4zMzMzMzMzLDE0OS4wODA2NywxNDEuODQ1NikiIGNsaXAtcGF0aD0idXJsKCNjbGlwUGF0aDI5KSIgLz4gPC9nPiA8L3N2Zz4=" alt="安律国际 Secure Vectors"></a>
+    <nav class="main">
+      <a href="https://www.securevectors.com/zh-hans/pci-dss">合规认证 ▾</a>
+      <a href="https://www.securevectors.com/zh-hans/pci-dss-consulting">咨询服务 ▾</a>
+      <a href="https://www.securevectors.com/zh-hans/technical-inspection">安全实验室 ▾</a>
+      <a href="https://www.securevectors.com/zh-hans/secucompliance">合规管理方案 ▾</a>
+      <a href="https://www.securevectors.com/zh-hans/knowledge-center">新闻与活动 ▾</a>
+      <a class="asv" href="https://www.securevectors.com/zh-hans/pci-asv-buy-online">购买 PCI ASV</a>
+      <a class="lang" href="#">简体中文</a>
+    </nav>
+  </div>
+</header>
+
+<nav class="tocbar" aria-label="本文目录">
+  <ol>
+    <li><a href="#what"><b>01</b>是什么</a></li>
+    <li><a href="#who"><b>02</b>谁需要</a></li>
+    <li><a href="#assist"><b>03</b>谁评估</a></li>
+    <li><a href="#how"><b>04</b>流程</a></li>
+    <li><a href="#time"><b>05</b>周期</a></li>
+    <li><a href="#cost"><b>06</b>费用</a></li>
+    <li><a href="#maintain"><b>07</b>通过之后</a></li>
+    <li><a href="#local"><b>＋</b>本地补充</a></li>
+    <li><a href="#faq"><b>Q&amp;A</b>常见问题</a></li>
+  </ol>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <p class="crumb"><a href="https://www.securevectors.com/zh-hans">首页</a> ／ <a href="https://www.securevectors.com/zh-hans/pci-dss">PCI DSS</a> ／ 认证一文读懂</p>
+    <p class="eyebrow">知识 · PCI DSS v4.0.1</p>
+    <h1>【PCI DSS 认证一文读懂】</h1>
+    <p class="sub">第一次被收单机构或上级要求取得 PCI DSS 认证？从零开始，看懂最常被问到的六大问题（3W3H）。</p>
+    <p class="meta">更新日期：2026 年 11 月 · 文／安律国际 QSA 团队</p>
+  </div>
+</section>
+
+<main>
+<div class="wrap narrow">
+
+  <p class="lead">收单银行、合作伙伴或企业客户要求您提供 PCI DSS 合规证明（AOC）时，第一步是确认三件事：您属于哪一种角色、哪个等级，以及用什么方式验证。</p>
+  <p>本文依 PCI DSS v4.0.1，整理第一次接触 PCI DSS 合规时最常被问到的六个问题，并补充取得 AOC 之后每季度与每年要做的工作。内容以第一次接受 QSA 评估的服务提供商为例，商户的不同之处会在各段说明。想了解评估服务，请见 <a href="https://www.securevectors.com/zh-hans/pci-dss">PCI DSS 评估与认证</a>。</p>
+
+  <div class="keybox">
+    <h2>要点速览</h2>
+    <ul>
+      <li>PCI DSS 是保护银行卡数据的国际标准，现行版本为 v4.0.1。只要存储、处理或传输卡号，或可能影响卡号安全，就需要符合。</li>
+      <li>验证方式依等级而定：等级 1 须完成 ROC 与 AOC（服务提供商须由 QSA 评估），其他等级多以 SAQ 自我评估。依 Mastercard 规定，第三方处理商、3DS 服务提供商与电子钱包运营方不论交易量，一律列为等级 1；支付服务商（Payment Facilitator）年交易量超过 30 万笔，即为等级 1。</li>
+      <li>第一次评估约需 3–5 个月；中小型服务提供商的 QSA 评估费用约 1.5 万–2.5 万美元（不含差旅）。</li>
+      <li>取得 AOC 之后，依等级与 SAQ 类型，每季度执行 ASV 扫描、每年执行渗透测试，并每年重新评估。</li>
+    </ul>
+  </div>
+
+  <figure>
+    <p class="ftag">SECURE VECTORS · PCI DSS</p>
+    <p class="ftitle">PCI DSS 年度合规周期（以服务提供商等级 1 为例）</p>
+    <div class="start"><span class="pill p1">首次评估 约 3–5 个月</span><span class="ar">→</span><span class="pill p2">取得 AOC</span><span class="ar">→ 接下来 12 个月：</span></div>
+    <div class="tw" style="margin:0">
+    <table class="cad">
+      <thead><tr><th>项目</th><th>Q1</th><th>Q2</th><th>Q3</th><th>Q4</th></tr></thead>
+      <tbody>
+        <tr><td>ASV 外部漏洞扫描<small>11.3.2</small></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td></tr>
+        <tr><td>内部漏洞扫描<small>11.3.1</small></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td></tr>
+        <tr><td>网络分段测试<small>11.4.6・每 6 个月</small></td><td></td><td><span class="dot p"></span></td><td></td><td><span class="dot p"></span></td></tr>
+        <tr><td>内部与外部渗透测试<small>11.4.2、11.4.3・每年</small></td><td colspan="4"><span class="span4"></span><small>年度内择期执行；重大变更后也须测试</small></td></tr>
+        <tr><td>重新评估，提交新的 AOC</td><td></td><td></td><td></td><td><span class="dot o"></span></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <figcaption>商户若使用网络分段，分段测试为每年一次（要求 11.4.5）。以 SAQ 自我评估的企业，要做哪些项目依 SAQ 类型而定。详见 <a href="#maintain">07 通过之后</a>。</figcaption>
+  </figure>
+
+  <section class="part" id="what">
+    <h2><span class="no">01</span>PCI DSS 是什么？</h2>
+    <p class="answer">PCI DSS（Payment Card Industry Data Security Standard，支付卡行业数据安全标准）是保护持卡人数据的国际标准，由支付卡行业安全标准委员会（PCI SSC）制定。</p>
+    <p>PCI SSC 由 American Express、Discover、JCB、Mastercard 与 Visa 共同成立，中国银联于 2020 年加入成为策略会员。受理这些品牌银行卡的商户与服务提供商，不论规模大小都适用。现行版本为 v4.0.1，于 2024 年 6 月发布。</p>
+
+    <h3>PCI DSS 12 项要求（规范）</h3>
+    <p>标准共有 12 项要求，分为 6 个目标：</p>
+    <div class="grid3">
+      <div class="goal"><p class="gn">建立并维护安全的网络与系统</p><ul><li><i>1</i>安装并维护网络安全控制</li><li><i>2</i>所有系统组件采用安全配置</li></ul></div>
+      <div class="goal"><p class="gn">保护账户数据</p><ul><li><i>3</i>保护存储的账户数据</li><li><i>4</i>在公共网络传输时，以强加密保护持卡人数据</li></ul></div>
+      <div class="goal"><p class="gn">维护漏洞管理计划</p><ul><li><i>5</i>防范恶意软件</li><li><i>6</i>开发并维护安全的系统与软件</li></ul></div>
+      <div class="goal"><p class="gn">实施严格的访问控制</p><ul><li><i>7</i>按业务需要限制访问</li><li><i>8</i>识别用户并验证身份</li><li><i>9</i>限制物理访问</li></ul></div>
+      <div class="goal"><p class="gn">定期监控与测试网络</p><ul><li><i>10</i>记录并监控所有访问</li><li><i>11</i>定期测试系统与网络安全</li></ul></div>
+      <div class="goal"><p class="gn">维护信息安全策略</p><ul><li><i>12</i>以组织策略与计划支持信息安全</li></ul></div>
+    </div>
+
+    <h3>评估完成后会拿到哪些文件？</h3>
+    <div class="tw"><table>
+      <thead><tr><th>文件</th><th>说明</th><th class="nw">适用对象</th></tr></thead>
+      <tbody>
+        <tr><td class="lv">AOC<small>遵从性证明书</small><small class="ef">Attestation of Compliance</small></td><td>评估结果的摘要声明，业内常称“合规证明”，是提交给收单银行、卡组织或客户的正式文件，每 12 个月更新一次</td><td class="nw">所有等级</td></tr>
+        <tr><td class="lv">ROC<small>遵从性报告</small><small class="ef">Report on Compliance</small></td><td>评估人员逐项记录评估结果的完整报告，服务提供商须由 QSA 执行；完成后签署 ROC 版的 AOC</td><td class="nw">等级 1</td></tr>
+        <tr><td class="lv">SAQ<small>自我评估调查问卷</small><small class="ef">Self-Assessment Questionnaire</small></td><td>按支付方式选择类型，由企业自行填写；完成后签署 SAQ 所附的 AOC</td><td class="nw">等级 2 及以下</td></tr>
+      </tbody>
+    </table></div>
+    <p>PCI SSC 不颁发证书，企业的 PCI DSS 合规性以 AOC 为正式证明。市场上常说的“PCI DSS 证书”，是 QSA 公司依评估结果另行出具的证明，正式依据仍是 AOC。安律国际出具的证明，可在 <a href="https://cert.securevectors.com/">证书查询平台</a> 验证。</p>
+  </section>
+
+  <section class="part" id="who">
+    <h2><span class="no">02</span>哪些企业需要 PCI DSS？等级与 SAQ 怎么判断</h2>
+    <p class="answer">只要存储、处理或传输卡号，或可能影响卡号安全，就需要符合 PCI DSS。用哪种方式验证，取决于您的角色和等级。</p>
+
+    <div class="tool" id="level">
+      <div class="th"><b>30 秒判断等级与 SAQ 类型</b><span>回答 2–3 个问题 · <button type="button" class="reset" id="lvReset">重新选择</button></span></div>
+      <div class="tb">
+        <div class="tq" data-q="role">
+          <p class="ql"><i>Q1</i>您的角色是？</p>
+          <div class="roles">
+            <div class="role"><button type="button" class="opt" data-v="m"><b>商户</b><small>受理银行卡、销售商品或服务</small></button>
+              <details><summary>什么是商户？</summary><div class="a">受理银行卡、销售商品或服务的企业，包括实体门店、网店与数字内容服务商。</div></details></div>
+            <div class="role"><button type="button" class="opt" data-v="sp"><b>服务提供商</b><small>替其他企业处理卡号，或可能影响卡号安全</small></button>
+              <details><summary>什么是服务提供商？</summary><div class="a">替其他企业处理、传输或存储卡号，或可能影响卡号安全的机构，例如支付服务商、支付网关、电子钱包、收单处理机构、交易平台，以及数据中心、云服务与托管服务。</div></details></div>
+          </div>
+        </div>
+        <div class="tq hide" data-q="spType">
+          <p class="ql"><i>Q2</i>主要业务是？</p>
+          <div class="opts col"><button type="button" class="opt" data-v="tpp">第三方处理商、支付网关、3DS 服务、电子钱包或令牌服务</button><button type="button" class="opt" data-v="pf">支付服务商／聚合支付（Payment Facilitator）</button><button type="button" class="opt" data-v="other">云服务、托管、数据存储、客服中心等其他服务</button></div>
+        </div>
+        <div class="tq hide" data-q="spVol">
+          <p class="ql"><i>Q3</i>单一卡组织的年交易量？</p>
+          <div class="opts"><button type="button" class="opt" data-v="hi">超过 30 万笔</button><button type="button" class="opt" data-v="lo">30 万笔及以下</button></div>
+        </div>
+        <div class="tq hide" data-q="mVol">
+          <p class="ql"><i>Q2</i>单一卡组织的年交易量？</p>
+          <div class="opts"><button type="button" class="opt" data-v="1">超过 600 万笔</button><button type="button" class="opt" data-v="2">100 万–600 万笔</button><button type="button" class="opt" data-v="3">100 万笔及以下</button></div>
+        </div>
+        <div class="tq hide" data-q="pay">
+          <p class="ql"><i>Q3</i>主要的支付方式是？</p>
+          <div class="opts col">
+            <button type="button" class="opt" data-v="A">网店，支付页面由支付服务商托管、跳转或以 iframe 嵌入</button>
+            <button type="button" class="opt" data-v="A-EP">网店，支付字段由自有网页生成，卡号直接发送至支付服务商</button>
+            <button type="button" class="opt" data-v="B／B-IP">实体门店，只使用独立式刷卡终端</button>
+            <button type="button" class="opt" data-v="C-VT">在电脑上通过支付服务商的网页虚拟终端输入卡号</button>
+            <button type="button" class="opt" data-v="C">收银或支付系统联网，不存储电子卡号</button>
+            <button type="button" class="opt" data-v="P2PE">使用经 PCI 列名的点对点加密（P2PE）方案</button>
+            <button type="button" class="opt" data-v="SPoC">手机或平板搭配安全读卡器（SPoC 方案）</button>
+            <button type="button" class="opt" data-v="D">自行存储卡号、多种支付方式并存，或以上都不符合</button>
+          </div>
+        </div>
+        <div class="res" id="lvRes" aria-live="polite"><p style="margin:0">选择上方选项后，这里会显示您的等级、验证方式与建议的 SAQ 类型。</p></div>
+      </div>
+    </div>
+
+    <p class="tcap"><span>表 1</span>PCI DSS 等级与验证方式</p>
+    <div class="tw"><table>
+      <thead><tr><th>类型</th><th>等级</th><th>年交易量</th><th>验证方式</th></tr></thead>
+      <tbody>
+        <tr class="hl"><td class="nw">服务提供商</td><td class="lv">1<small class="ef">Level 1</small></td><td class="nw">超过 30 万笔 ※</td><td class="nw">ROC＋AOC＋每季度 ASV</td></tr>
+        <tr><td class="nw">服务提供商</td><td class="lv">2<small class="ef">Level 2</small></td><td class="nw">30 万笔及以下</td><td class="nw">SAQ D＋AOC＋每季度 ASV</td></tr>
+        <tr class="hl"><td class="nw">商户</td><td class="lv">1<small class="ef">Level 1</small></td><td class="nw">超过 600 万笔</td><td class="nw">ROC＋AOC＋每季度 ASV</td></tr>
+        <tr><td class="nw">商户</td><td class="lv">2<small class="ef">Level 2</small></td><td class="nw">100 万–600 万笔</td><td class="nw">SAQ＋AOC（ASV 依 SAQ 类型）</td></tr>
+        <tr><td class="nw">商户</td><td class="lv">3<small class="ef">Level 3</small></td><td class="nw">100 万笔及以下</td><td class="nw">SAQ＋AOC（ASV 依 SAQ 类型）</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tnote">
+      <p>交易量以单一卡组织的年交易量计算。Visa 自 2024 年 4 月起，将商户等级 3、4 合并为等级 3；Mastercard 仍分 4 级。</p>
+      <details class="mcn"><summary>※ Mastercard 补充规定</summary><div class="a"><p>依 Mastercard 规定，第三方处理商（TPP）、3DS 服务提供商、电子钱包运营方（SDWO）与令牌服务提供商（TSP）不论交易量，一律列为等级 1；支付服务商（Payment Facilitator）年交易量超过 30 万笔为等级 1。等级 2 服务提供商如发生确认的数据泄露，将改列为等级 1。</p><p>Mastercard 等级 2 商户如适用 SAQ A、A-EP 或 D，须另由 QSA 或 ISA（经 PCI SSC 培训的内部评估员）协助验证。</p></div></details>
+      <p>实际等级以收单机构的通知为准。</p>
+    </div>
+
+    <h3>等级 2 及以下：还要选择 SAQ 类型</h3>
+    <p>等级 2 及以下的商户，还要按支付方式选择 SAQ 类型。类型不同，要回答的题数差别很大：支付页面完全由支付服务商托管的 SAQ A 最精简，自行处理卡号的 SAQ D 则涵盖全部要求。</p>
+    <div class="md">
+      <div class="mdh"><b>SAQ 类型一览</b><button type="button" class="all">全部展开</button></div>
+      <div class="mdb">
+        <div class="nav" role="tablist" aria-label="SAQ 类型"></div>
+        <div class="pans">
+          <div class="pan" data-k="A" data-t="支付完全外包"><h4><b>A</b>支付完全外包</h4><p>网店的支付页面由支付服务商托管、跳转或以 iframe 嵌入；邮购、电话订购全部外包。</p></div>
+          <div class="pan" data-k="A-EP" data-t="网页影响支付安全"><h4><b>A-EP</b>网页影响支付安全</h4><p>支付字段由自有网页生成，卡号直接发送至支付服务商，网站本身不接收卡号。</p></div>
+          <div class="pan" data-k="B" data-t="拨号或独立式终端"><h4><b>B</b>拨号或独立式终端</h4><p>只使用压印机或拨号、独立式刷卡终端，不存储电子卡号。</p></div>
+          <div class="pan" data-k="B-IP" data-t="联网独立式终端"><h4><b>B-IP</b>联网的独立式终端</h4><p>只使用经 PCI 认可、通过网络连接的独立式刷卡终端，不存储电子卡号。</p></div>
+          <div class="pan" data-k="C-VT" data-t="网页虚拟终端"><h4><b>C-VT</b>网页虚拟终端</h4><p>通过支付服务商的网页虚拟终端，以键盘逐笔输入卡号，不存储电子卡号。</p></div>
+          <div class="pan" data-k="C" data-t="联网的支付系统"><h4><b>C</b>联网的支付系统</h4><p>收银或支付系统联网，不存储电子卡号。</p></div>
+          <div class="pan" data-k="P2PE" data-t="点对点加密方案"><h4><b>P2PE</b>点对点加密方案</h4><p>使用经 PCI 列名的点对点加密方案，不存储电子卡号。</p></div>
+          <div class="pan" data-k="SPoC" data-t="手机搭配读卡器"><h4><b>SPoC</b>手机或平板搭配安全读卡器</h4><p>使用经 PCI 列名的 SPoC 方案：以手机或平板搭配外接安全读卡器收款，并落实方案提供商使用手册中的控制措施。</p><p class="cost"><b>注意：</b>无需外接读卡器的手机感应收款（MPoC）属于另一项 PCI 标准，SAQ SPoC 不涵盖；适用的 SAQ 类型请向收单机构确认。</p></div>
+          <div class="pan" data-k="D" data-t="商户"><h4><b>D</b>商户</h4><p>不符合以上任何一种，例如自行存储卡号。</p></div>
+          <div class="pan" data-k="D" data-t="服务提供商"><h4><b>D</b>服务提供商</h4><p>等级 2 服务提供商使用。</p></div>
+        </div>
+      </div>
+    </div>
+    <p>可按支付方式找出适用的 SAQ 类型，详见〈<a href="https://www.securevectors.com/zh-hans/news/what-is-your-saq-type">您适用哪一种 PCI DSS SAQ 类型？</a>〉，或使用 <a href="https://www.securevectors.com/zh-hans/saq-diy">SAQ DIY</a> 在线填写。</p>
+
+    <h3>两个常见误区</h3>
+    <ul>
+      <li><b>“不存卡号，就不用管”</b>：处理或传输卡号同样在范围内。管理主机、身份认证服务器、日志服务器等可能影响卡号安全的系统，也可能需要纳入。</li>
+      <li><b>“等级 2 服务提供商自评就行”</b>：卡组织的最低要求是 SAQ，但收单银行或企业客户可以在合同中要求提供 QSA 签署的 ROC 与 AOC，建议先与对方确认。</li>
+    </ul>
+  </section>
+
+  <section class="part" id="assist">
+    <h2><span class="no">03</span>谁来评估？QSA、ASV 与收单机构的角色</h2>
+    <p class="answer">PCI DSS 评估由 PCI SSC 认可的 QSA 执行。QSA 公司是聘有 QSA 的机构，可以提供咨询辅导，也可以执行正式评估。</p>
+    <div class="tw"><table>
+      <thead><tr><th>角色</th><th>负责什么</th></tr></thead>
+      <tbody>
+        <tr><td class="lv">QSA<small>合格安全性评估商</small></td><td>执行评估，出具 ROC 与 AOC</td></tr>
+        <tr><td class="lv">QSA 公司<small>QSA Company</small></td><td>聘有 QSA，提供差距分析、咨询辅导与正式评估 ※</td></tr>
+        <tr><td class="lv">ASV<small>经批准的扫描服务商</small></td><td>执行外部漏洞扫描，受评企业须每季度完成一次</td></tr>
+        <tr><td class="lv">收单机构<small>收单银行等</small></td><td>通知您的等级、验证方式与 AOC 提交时间</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tnote"><p>※ QSA 不能评估自己协助设计或实施的控制措施，须由未参与的另一位 QSA 执行评估。</p></div>
+    <p>服务提供商另有专属要求，例如每季度检查员工是否按安全策略作业（要求 12.4.2），详见〈<a href="https://www.securevectors.com/zh-hans/news/pci-dss-v4-0-12-4-2-2">如何满足 PCI DSS v4.0 要求 12.4.2</a>〉。</p>
+
+    <h3>选择 QSA 公司的 5 个要点</h3>
+    <ol>
+      <li><b>资质</b>：在 <a href="https://www.pcisecuritystandards.org/assessors_and_solutions/qualified_security_assessors">PCI SSC 官网</a> 确认对方名列 QSA 公司，且服务地区覆盖您的运营地点。</li>
+      <li><b>是否同时是 ASV</b>：每季度扫描和年度评估由同一家负责，沟通更简单。</li>
+      <li><b>服务提供商经验</b>：请对方分享同类企业的案例。</li>
+      <li><b>本地支持</b>：中文文件、现场评估，以及后续沟通。</li>
+      <li><b>报价透明</b>：评估天数、抽样方式与报告时间，是否说明清楚。</li>
+    </ol>
+  </section>
+
+  <section class="part" id="how">
+    <h2><span class="no">04</span>PCI DSS 认证流程：8 个步骤</h2>
+    <p class="answer">PCI DSS 评估（审核）分两个阶段：先准备与整改，再由 QSA 评估并出具报告。点击各步骤可查看说明。</p>
+    <div class="hdr-row"><span></span><button type="button" class="allbtn" data-target="#how .steps">全部展开</button></div>
+    <div class="phase p1">
+      <div class="ph"><b>阶段一：准备与整改</b><span>约 2–3 个月</span></div>
+      <div class="steps">
+        <details><summary><span class="num">1</span><span class="nm">界定范围</span><span class="sm">梳理卡号流向</span></summary><div class="a"><p>梳理卡号在系统中的流向，确认哪些系统要纳入评估。范围越清楚，后续要处理的系统越少。</p></div></details>
+        <details><summary><span class="num">2</span><span class="nm">差距分析</span><span class="sm">对照 12 项要求</span></summary><div class="a"><p>逐项对照 12 项要求，找出尚不符合的地方，排好整改顺序。</p></div></details>
+        <details><summary><span class="num">3</span><span class="nm">整改与建设</span><span class="sm">架构、设备、制度</span></summary><div class="a"><p>调整系统与网络架构，补充所需的安全设备，制定或更新制度与操作规程。</p></div></details>
+        <details><summary><span class="num">4</span><span class="nm">技术检测</span><span class="sm">扫描、测试与修复</span></summary><div class="a"><p>执行漏洞扫描（含 ASV）、渗透测试、无线网络扫描、卡号扫描与代码检测，并修复发现的问题。延伸阅读：〈<a href="https://www.securevectors.com/zh-hans/news/pci-dss-vulnerability-scan-vs-penetration-test">漏洞扫描不是渗透测试</a>〉〈<a href="https://www.securevectors.com/zh-hans/news/pci-dss-6-4-3-11-6-1-payment-page-scripts">6.4.3 与 11.6.1 支付页面脚本</a>〉。</p></div></details>
+      </div>
+    </div>
+    <div class="phase p2">
+      <div class="ph"><b>阶段二：评估与报告</b><span>约 1–1.5 个月</span></div>
+      <div class="steps">
+        <details><summary><span class="num">5</span><span class="nm">整理证据</span><span class="sm">配置、日志与记录</span></summary><div class="a"><p>准备系统配置、日志、记录与培训证明等文件。可参考〈<a href="https://www.securevectors.com/zh-hans/news/fim-file-integrity-monitoring-pci-dss-11-5-2">FIM 文件完整性监控合规解读</a>〉。</p></div></details>
+        <details><summary><span class="num">6</span><span class="nm">内部预审</span><span class="sm">评估前先自查</span></summary><div class="a"><p>正式评估前先自查一次，确认整改都已完成。</p></div></details>
+        <details><summary><span class="num">7</span><span class="nm">QSA 现场评估</span><span class="sm">访谈、抽样与检查</span></summary><div class="a"><p>QSA 通过访谈、抽样与配置检查，确认实际做法与文件一致。中小型服务提供商约需 3–5 天。</p></div></details>
+        <details><summary><span class="num">8</span><span class="nm">报告与提交</span><span class="sm">ROC、AOC 交收单机构</span></summary><div class="a"><p>QSA 出具 ROC 与 AOC，由您提交给收单机构或卡组织。</p></div></details>
+      </div>
+    </div>
+    <p class="note" style="margin-top:16px">相关服务：<a href="https://www.securevectors.com/zh-hans/pci-dss-consulting">PCI DSS 咨询服务</a>、<a href="https://www.securevectors.com/zh-hans/technical-inspection">技术检测服务</a>、<a href="https://www.securevectors.com/zh-hans/pci-dss-training-course">PCI DSS 培训课程</a>。</p>
+  </section>
+
+  <section class="part" id="time">
+    <h2><span class="no">05</span>PCI DSS 认证需要多久？</h2>
+    <p class="answer">第一次评估，从启动到取得 AOC 约需 3–5 个月。</p>
+    <div class="bars" role="img" aria-label="准备阶段 1 至 2 个月；资料准备阶段约 1 个月；QSA 现场评估 3 至 5 天；报告阶段 0.5 至 1 个月">
+      <div class="bar"><span>准备阶段</span><span class="t"><i style="left:0;width:40%"></i></span><span class="d">1–2 个月</span></div>
+      <div class="bar"><span>资料准备阶段</span><span class="t"><i style="left:40%;width:20%"></i></span><span class="d">约 1 个月</span></div>
+      <div class="bar"><span>QSA 现场评估</span><span class="t"><i class="o" style="left:60%;width:3%"></i></span><span class="d">3–5 天</span></div>
+      <div class="bar"><span>报告阶段</span><span class="t"><i style="left:63%;width:20%"></i></span><span class="d">0.5–1 个月</span></div>
+    </div>
+    <p>周期主要受以下因素影响：范围大小、架构是否需要调整、设备采购时间、检测后的修复次数，以及内部能投入的人力。</p>
+
+    <h3>您目前是哪一种情况？</h3>
+    <div class="tabs" role="tablist" aria-label="周期情况" data-carry="sit">
+      <button type="button" role="tab" aria-selected="true" aria-controls="sc1" id="t-sc1">首次评估</button>
+      <button type="button" role="tab" aria-selected="false" aria-controls="sc2" id="t-sc2">已缩小范围</button>
+      <button type="button" role="tab" aria-selected="false" aria-controls="sc3" id="t-sc3">年度复评</button>
+    </div>
+    <div class="panel" role="tabpanel" id="sc1" aria-labelledby="t-sc1"><h4>首次评估的服务提供商</h4><p class="dur">约 3–5 个月</p><p>架构调整与检测修复最耗时。越早完成范围界定与差距分析，后续越顺利。</p></div>
+    <div class="panel" role="tabpanel" id="sc2" aria-labelledby="t-sc2"><h4>已缩小范围</h4><p class="dur">通常比首次快</p><p>例如支付页面交由支付服务商托管，或以令牌（token）替代卡号，需要处理的系统就少了。</p></div>
+    <div class="panel" role="tabpanel" id="sc3" aria-labelledby="t-sc3"><h4>年度复评</h4><p class="dur">通常比首次快</p><p>上一年的整改如已完成、架构没有大幅变动，且每季度扫描与年度测试的记录都已保存，复评会顺利很多。</p></div>
+  </section>
+
+  <section class="part" id="cost">
+    <h2><span class="no">06</span>PCI DSS 认证费用怎么估算？</h2>
+    <p class="answer">以首次评估的中小型服务提供商为例，QSA 评估费用约 1.5 万–2.5 万美元（不含差旅）。此外可能还需要系统、设备与技术检测等整改费用。</p>
+
+    <h3>可能增加的费用</h3>
+    <div class="md">
+      <div class="mdh"><b>点击左侧项目，查看说明与参考金额（美元）</b><button type="button" class="all">全部展开</button></div>
+      <div class="mdb">
+        <div class="nav" role="tablist" aria-label="费用项目"></div>
+        <div class="pans">
+          <div class="pan" data-k="A" data-t="系统"><h4><b>A</b>系统</h4><p>安全等级需求不同的服务，例如网站、应用与数据库，可能需要拆分到不同主机（要求 2.2.3）。也可能要增设时间同步（NTP）、文件完整性监控（FIM）与日志服务器。可以使用虚拟机。</p><p class="cost"><b>参考：</b>可能增设 5–6 台服务器，一次性约 15,000 美元。</p></div>
+          <div class="pan" data-k="B" data-t="安全设备"><h4><b>B</b>安全设备</h4><p>防火墙、入侵防御（IPS）、入侵检测（IDS）与 Web 应用防火墙（WAF）。</p><p class="cost"><b>参考：</b>中端设备一次性约 10,000–16,000 美元起；改用云 WAF，每年约 1,500–10,000 美元。</p></div>
+          <div class="pan" data-k="C" data-t="数据加密"><h4><b>C</b>数据加密</h4><p>例如硬件安全模块（HSM，俗称加密机），或改用软件加密。</p><p class="cost"><b>参考：</b>HSM 最高约 30,000 美元，价格差异大。</p></div>
+          <div class="pan" data-k="D" data-t="人员培训"><h4><b>D</b>人员培训</h4><p>安全意识、安全开发与应急响应演练。如由内部员工执行漏洞扫描或渗透测试，员工也需要相应的培训。</p><p class="cost"><b>参考：</b>每年约 600–1,600 美元。</p></div>
+          <div class="pan" data-k="E" data-t="技术检测"><h4><b>E</b>技术检测</h4><p>漏洞扫描（含 ASV）、渗透测试、无线网络扫描、卡号扫描与代码检测。详见 <a href="https://www.securevectors.com/zh-hans/technical-inspection">技术检测服务</a> 与 <a href="https://www.securevectors.com/zh-hans/pci-asv-buy-online">ASV 在线购买</a>。</p><p class="cost"><b>参考：</b>依服务器与应用数量，每年约 16,000–29,000 美元；部分项目可由经过培训的内部员工执行。</p></div>
+          <div class="pan" data-k="F" data-t="卡组织注册"><h4><b>F</b>卡组织注册</h4><p>服务提供商可能需要登记 <a href="https://www.visa.com/splisting/index.html">Visa Global Registry</a> 或 <a href="https://www.mastercard.com/global/en/business/cybersecurity-fraud-prevention/site-data-protection-pci.html">Mastercard SDP</a>。</p><p class="cost"><b>参考：</b>每年约 3,000–5,000 美元。Visa 的登记费向收单机构收取，收单机构可能转由企业承担；Mastercard 另计。</p></div>
+          <div class="pan" data-k="G" data-t="费用总览"><h4><b>G</b>费用总览</h4>
+            <div class="tw" style="margin:0"><table>
+              <thead><tr><th>项目</th><th>参考金额（美元）</th><th>性质</th></tr></thead>
+              <tbody>
+                <tr><td class="nw">QSA 评估</td><td>15,000–25,000（不含差旅）</td><td class="nw">每次评估</td></tr>
+                <tr><td class="nw">系统</td><td>约 15,000</td><td class="nw">一次性</td></tr>
+                <tr><td class="nw">安全设备</td><td>10,000–16,000 起；云 WAF 每年 1,500–10,000</td><td class="nw">一次性／每年</td></tr>
+                <tr><td class="nw">数据加密</td><td>最高约 30,000</td><td class="nw">一次性</td></tr>
+                <tr><td class="nw">人员培训</td><td>600–1,600</td><td class="nw">每年</td></tr>
+                <tr><td class="nw">技术检测</td><td>16,000–29,000</td><td class="nw">每年</td></tr>
+                <tr><td class="nw">卡组织注册</td><td>3,000–5,000</td><td class="nw">每年</td></tr>
+              </tbody>
+            </table></div>
+            <p class="note" style="margin-top:8px">以上为亚洲中小型服务提供商的参考值，实际依当地市场与评估范围而定。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>影响 QSA 评估费用的因素</h3>
+    <ol>
+      <li><b>系统复杂度</b>：主机数量、操作系统种类、安装的组件，以及安全配置的组数。</li>
+      <li><b>安全设备与网段</b>：设备越多、网段越复杂，要检查的配置、更新、权限与日志就越多。</li>
+      <li><b>对接的收单机构与服务提供商</b>：对接越多，数据流越复杂。</li>
+      <li><b>卡号的存储与加密方式</b>：存储方式越多样，要检查的项目越多。</li>
+      <li><b>运营场所数量</b>：门店、机房与办公室越多，评估天数越多；存有卡号的灾备机房也要纳入。</li>
+    </ol>
+    <p>费用也因地区而异，因为 PCI SSC 的年费与 QSA 的人力成本各地不同。实际报价依上述因素估算。</p>
+  </section>
+
+  <section class="part" id="maintain">
+    <h2><span class="no">07</span>通过之后：每季度与每年要做的工作</h2>
+    <p class="answer">AOC 每 12 个月更新一次。在此期间，以下工作需要持续进行：</p>
+    <div class="tw"><table>
+      <thead><tr><th>频率</th><th>工作</th><th>对应要求</th></tr></thead>
+      <tbody>
+        <tr><td class="nw">每季度</td><td>ASV 外部漏洞扫描</td><td class="en nw">11.3.2</td></tr>
+        <tr><td class="nw">每季度</td><td>内部漏洞扫描</td><td class="en nw">11.3.1</td></tr>
+        <tr><td class="nw">每季度（服务提供商）</td><td>检查员工是否按安全策略作业</td><td class="en nw">12.4.2</td></tr>
+        <tr><td class="nw">每 6 个月（服务提供商）</td><td>网络分段测试；分段方式变更后也要测试</td><td class="en nw">11.4.6</td></tr>
+        <tr><td class="nw">每年，以及重大变更后</td><td>内部与外部渗透测试</td><td class="en nw">11.4.2、11.4.3</td></tr>
+        <tr><td class="nw">每年</td><td>重新评估，提交新的 AOC</td><td></td></tr>
+      </tbody>
+    </table></div>
+    <p>系统部署在云上，仍须对自己管理的部分（例如虚拟网络内的主机与应用）执行内部渗透测试；云服务商负责的基础设施，以其 AOC 与责任矩阵（Responsibility Matrix）为准。以 SAQ 自我评估的企业，要做哪些项目依 SAQ 类型而定。</p>
+    <p>ASV 扫描常见的不通过原因，可参考〈<a href="https://www.securevectors.com/zh-hans/news/why-your-asv-scan-keeps-failing-cvss-thresholds-false-positives-what-to-fix">为什么您的 ASV 扫描总是不通过</a>〉。需要集中管理扫描计划、证据与到期提醒，可参考 <a href="https://www.securevectors.com/zh-hans/secucompliance">SecuCompliance</a>；跨部门协作可搭配 <a href="https://www.securevectors.com/zh-hans/secucollab">SecuCollab</a>。</p>
+
+    <h3>相关标准</h3>
+    <p>如果您的业务也包含 3-D Secure 验证（ACS、DS、3DS Server），另需符合 <a href="https://www.securevectors.com/zh-hans/pci-3ds">PCI 3DS</a>；处理 PIN 的机构则适用 <a href="https://www.securevectors.com/zh-hans/pci-pin-security">PCI PIN Security</a>。两者都可以与 PCI DSS 安排在同一时间评估。</p>
+  </section>
+
+  <section class="part" id="local">
+    <h2>本地补充：中国内地与香港</h2>
+    <p class="answer">PCI DSS 的要求全球一致，差别在于由谁提出要求、评估范围涵盖哪些场所，以及证据能否跨境调阅。</p>
+    <div class="tabs" role="tablist" aria-label="地区" data-carry="region">
+      <button type="button" role="tab" aria-selected="true" aria-controls="lc-cn" id="t-cn">中国内地</button>
+      <button type="button" role="tab" aria-selected="false" aria-controls="lc-hk" id="t-hk">香港</button>
+    </div>
+    <div class="panel" role="tabpanel" id="lc-cn" aria-labelledby="t-cn"><h4>中国内地</h4>
+      <ul>
+        <li><b>谁来要求</b>：PCI DSS 由国际卡组织与收单机构要求，常见于外卡收单、跨境电商与跨境支付业务。中国银联为 PCI SSC 策略会员。</li>
+        <li><b>与国内要求并行</b>：《网络安全法》第二十一条规定国家实行网络安全等级保护制度。PCI DSS 不能替代等级保护，两者的部分控制措施与证据可以共用，建议同步规划。</li>
+        <li><b>数据出境</b>：2024 年 3 月施行的《促进和规范数据跨境流动规定》第五条规定，为订立、履行个人作为一方当事人的合同（如跨境购物、支付）所必需向境外提供个人信息的，免于申报数据出境安全评估、订立个人信息出境标准合同或通过个人信息保护认证。持卡人数据环境的位置、日志与评估证据的存放地点，以及能否远程调阅，建议在范围界定时一并确认。</li>
+        <li><b>现场评估</b>：安律国际的 QSA 服务覆盖全球；涉及内地场所时，于范围界定阶段一并规划。</li>
+      </ul>
+    </div>
+    <div class="panel" role="tabpanel" id="lc-hk" aria-labelledby="t-hk"><h4>香港</h4>
+      <ul>
+        <li><b>谁来要求</b>：PCI DSS 由卡组织与收单机构要求。香港金融管理局对储值支付工具（SVF）持牌机构的监管指引没有直接点名 PCI DSS，但要求建立科技风险管理框架并定期执行安全测试；PCI DSS 的评估与测试记录，可以作为佐证。</li>
+        <li><b>跨境场所也在范围内</b>：在香港运营、但开发、客服或数据处理设在内地的企业，内地场所如接触卡号或可能影响卡号安全，同样要纳入评估，QSA 可能需要到当地抽样或现场评估。</li>
+        <li><b>数据可以放在哪里</b>：涉及内地个人信息的跨境传输，另受《个人信息保护法》规范；粤港澳大湾区 9 个内地城市与香港之间，自 2023 年 12 月起另有便利措施。这会影响卡号、日志与评估证据的存放位置，以及能否远程调阅。</li>
+        <li><b>现场评估</b>：安律国际可安排香港现场评估；涉及其他地区场所时，于范围界定阶段一并规划。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="part" id="next">
+    <h2>下一步</h2>
+    <ul class="next">
+      <li><a href="#level">判断您的等级与 SAQ 类型 →<small>3 个问题，得出验证方式</small></a></li>
+      <li><a href="https://www.securevectors.com/zh-hans/saq-diy">SAQ 在线自评 →<small>等级 2 及以下的商户</small></a></li>
+      <li><a href="https://www.securevectors.com/zh-hans/pci-asv-buy-online">购买 ASV 扫描 →<small>每季度外部漏洞扫描</small></a></li>
+      <li><a href="https://www.securevectors.com/zh-hans/pci-dss-training-course">PCI DSS 培训 →<small>内部员工课程</small></a></li>
+      <li style="grid-column:1/-1"><a class="go" href="#contact">把需求交给 QSA 团队 →<small>您在本页的选择会自动带入，只需留下公司与联系方式</small></a></li>
+    </ul>
+  </section>
+
+  <section class="part" id="faq">
+    <h2>常见问题</h2>
+    <details><summary>Q：支付页面交给支付服务商托管，还需要 PCI DSS 吗？</summary><div class="a"><p>仍需要。外包可以大幅缩小范围，但商户通常仍须每年完成对应的 SAQ 并提交 AOC。适用哪一种 SAQ，取决于支付页面的嵌入方式，详见〈<a href="https://www.securevectors.com/zh-hans/news/what-is-your-saq-type">您适用哪一种 PCI DSS SAQ 类型？</a>〉。</p></div></details>
+    <details><summary>Q：PCI DSS 的 AOC 有效期多久？</summary><div class="a"><p>PCI DSS 以 12 个月为验证周期，每年须重新评估并提交新的 AOC。提交时间依收单机构、卡组织或客户的要求而定。</p></div></details>
+    <details><summary>Q：咨询辅导和正式评估，可以找同一家 QSA 公司吗？</summary><div class="a"><p>可以。依 PCI SSC 规定，参与设计或实施某项控制措施的 QSA，不能评估同一项控制措施；可由同一家公司内未参与的另一位 QSA 执行评估，QSA 公司须保留职责分离的记录。</p></div></details>
+    <details><summary>Q：PCI DSS 和 ISO 27001 有什么不同？</summary><div class="a"><p>ISO 27001 是信息安全管理体系认证，范围由组织自行界定；PCI DSS 专门针对持卡人数据，要求更具体，并包含每季度扫描等固定频率的技术检测。已取得 ISO 27001 的企业，部分制度与流程可以沿用。</p></div></details>
+  </section>
+
+  <section class="part" id="terms">
+    <h2>术语对照</h2>
+    <dl class="gloss">
+      <div><dt>CDE（持卡人数据环境）</dt><dd>存储、处理或传输卡号的人员、流程与系统。</dd></div>
+      <div><dt>PAN（主帐户号）</dt><dd>银行卡卡号。</dd></div>
+      <div><dt>网络分段（Segmentation）</dt><dd>将 CDE 与其他网络隔开，以缩小评估范围。</dd></div>
+      <div><dt>令牌化（Tokenization）</dt><dd>以令牌（token）替代卡号，使系统中不再出现真实卡号。</dd></div>
+      <div><dt>HSM（硬件安全模块）</dt><dd>用于密钥管理与加密的专用设备，俗称加密机。</dd></div>
+      <div><dt>FIM（文件完整性监控）</dt><dd>检测重要文件是否遭未经授权的修改。</dd></div>
+      <div><dt>SVF（储值支付工具）</dt><dd>香港金融管理局发牌监管的电子钱包与储值卡等支付工具。</dd></div>
+    </dl>
+  </section>
+
+  <section class="part" id="sources">
+    <h2>资料来源</h2>
+    <ul class="src">
+      <li><a href="https://www.pcisecuritystandards.org/document_library/">PCI SSC 文件库：PCI DSS v4.0.1、SAQ 说明文件</a></li>
+      <li><a href="https://www.pcisecuritystandards.org/zh/glossary/">PCI SSC 词汇表（简体中文）</a></li>
+      <li><a href="https://www.pcisecuritystandards.org/faq/articles/Frequently_Asked_Question/Is-a-QSA-Employee-that-designs-develops-or-implements-specific-controls-for-a-customer-also-permitted-to-assess-those-same-controls">PCI SSC FAQ：QSA 的独立性要求</a></li>
+      <li><a href="https://www.pcisecuritystandards.org/faq/articles/Frequently_Asked_Question/how-often-must-service-providers-test-penetration-testing-segmentation-controls-under-pci-dss">PCI SSC FAQ：服务提供商网络分段测试频率</a></li>
+      <li><a href="https://www.pcisecuritystandards.org/about_us/press_releases/unionpay-joins-pci-ssc-as-strategic-member/">PCI SSC：中国银联加入成为策略会员</a></li>
+      <li><a href="https://mastercard.com/global/en/business/overview/safety-and-security/security-recommendations/site-data-protection-PCI/merchants-need-to-know.html">Mastercard：What merchants need to know（商户等级）</a></li>
+      <li><a href="https://mastercard.com/content/dam/public/mastercardcom/globalrisk/pdf/Service%20Provider%20Categories%20and%20PCI%20(30%20Sept.%202020).pdf">Mastercard：Service Provider Categories and PCI（服务提供商等级）</a></li>
+      <li><a href="https://usa.visa.com/dam/VCOM/download/merchants/cisp-what-to-do-if-compromised.pdf">Visa：What To Do If Compromised v10.0（商户等级）</a></li>
+      <li><a href="https://review.visa.com.br/content/dam/VCOM/download/business/resources-and-tools/DataSecurityComplianceServiceProviders.pdf">Visa：Data Security Compliance Requirements for Service Providers</a></li>
+      <li><a href="https://www.cac.gov.cn/2024-03/22/c_1712776611775634.htm">国家互联网信息办公室：《促进和规范数据跨境流动规定》</a></li>
+      <li><a href="https://www.hkma.gov.hk/media/eng/doc/key-functions/financial-infrastructure/Guidelines-on-supervision-of-SVF-licensees_Eng.pdf">香港金融管理局：Guideline on Supervision of SVF Licensees</a></li>
+    </ul>
+    <p class="byline">文／安律国际 QSA 团队</p>
+    <p class="disc">＊本文为标准解读性质。实际评估范围与方案，将依收单机构要求及贵公司的支付环境个案确认。</p>
+  </section>
+
+</div>
+</main>
+
+<section class="band" id="contact">
+  <div class="wrap">
+    <div class="in">
+      <div>
+        <h2>与 PCI 专家聊聊</h2>
+        <p>您在本页的选择已自动带入右侧。留下公司与联系方式，我们将在一个工作日内回复。</p>
+        <ul class="cred"><li>PCI SSC 合格安全性评估商（QSA）</li><li>PCI 经批准的扫描服务商（ASV）</li><li>PCI 3DS 评估机构</li><li>PCI PIN Security 评估机构</li></ul>
+      </div>
+      <form class="cf" id="cf" action="#" novalidate>
+        <p class="stp"><i>1</i>您在本页的选择</p>
+        <div class="sum" id="sum"><span class="empty">尚未作答。可回到 <a href="#level">等级判断</a>，或直接勾选下方需求。</span></div>
+        <p class="stp"><i>2</i>需要的服务（可多选）</p>
+        <div class="svc" id="svc">
+          <label><input type="checkbox" data-k="dss" value="PCI DSS 评估与认证">PCI DSS 评估与认证</label>
+          <label><input type="checkbox" data-k="gap" value="差距分析与咨询辅导">差距分析与咨询辅导</label>
+          <label><input type="checkbox" data-k="saq" value="SAQ 协助">SAQ 协助</label>
+          <label><input type="checkbox" data-k="asv" value="ASV 漏洞扫描">ASV 漏洞扫描</label>
+          <label><input type="checkbox" data-k="pt" value="渗透测试与技术检测">渗透测试与技术检测</label>
+          <label><input type="checkbox" data-k="tds" value="PCI 3DS／PIN Security">PCI 3DS／PIN Security</label>
+        </div>
+        <p class="stp"><i>3</i>联系信息</p>
+        <div class="row">
+          <div><label class="fl" for="f-co">公司名称</label><input type="text" id="f-co" name="company" autocomplete="organization"></div>
+          <div><label class="fl" for="f-name">联系人</label><input type="text" id="f-name" name="name" autocomplete="name"></div>
+        </div>
+        <label class="fl" for="f-val">联系方式</label>
+        <div class="row2">
+          <select id="f-way" name="contact_method" aria-label="联系方式"><option value="email">邮箱</option><option value="phone">电话</option><option value="wechat">微信</option></select>
+          <input type="text" id="f-val" name="contact_value" placeholder="name@company.com">
+        </div>
+        <input type="hidden" name="selections" id="f-sel">
+        <button type="submit">提交 →</button>
+        <p class="priv">我们尊重您的隐私，不会将您的资料提供给第三方。</p>
+        <p class="ok" id="cfOk">预览版：上线时此表单将对接 Webflow 表单。</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a class="lab" href="https://www.securevectorlab.com/">安合规律检验 — ISO/IEC 17025 实验室 →</a>
+    <div class="cols">
+      <div><h5>认证服务</h5><a href="https://www.securevectors.com/zh-hans/pci-dss">PCI DSS</a><a href="https://www.securevectors.com/zh-hans/pci-3ds">PCI 3DS</a><a href="https://www.securevectors.com/zh-hans/pci-pin-security">PCI PIN Security</a><a href="https://www.securevectors.com/zh-hans/pci-asv-buy-online">PCI ASV 漏洞扫描</a><a href="https://www.securevectors.com/zh-hans/technical-inspection">技术检测服务</a></div>
+      <div><h5>解决方案</h5><a href="https://www.securevectors.com/zh-hans/secucompliance">SecuCompliance</a><a href="https://www.securevectors.com/zh-hans/secucollab">SecuCollab</a><a href="https://www.securevectors.com/zh-hans/saq-diy">SAQ DIY</a><a href="https://www.securevectors.com/zh-hans/pci-dss-training-course">培训课程</a><a href="https://cert.securevectors.com/">证书查询</a></div>
+      <div><h5>关于我们</h5><a href="https://www.securevectors.com/zh-hans/about-us">公司简介</a><a href="https://www.securevectors.com/zh-hans/knowledge-center">最新消息</a><a href="https://www.securevectors.com/zh-hans/events">活动信息</a><a href="https://www.securevectors.com/zh-hans/testimonials">客户评价</a><a href="https://www.securevectors.com/zh-hans/privacy-policy">隐私政策</a></div>
+      <div><h5>联系我们</h5><span style="display:block;margin:0 0 6px">台北 · 台湾</span><a href="tel:+886233931006">+886 2-3393-1006</a><a href="mailto:service@securevectors.com">service@securevectors.com</a><a href="https://www.securevectors.com/zh-hans/contact-us">查看所有据点 →</a></div>
+    </div>
+    <div class="bottom"><span>PCI SSC 合格安全性评估商（QSA）· PCI ASV · PCI 3DS 评估机构 · PCI PIN Security 评估机构</span><span>© 2026 安律国际股份有限公司</span></div>
+  </div>
+</footer>
+
+<div class="mcta" id="mcta"><a href="#contact">留下需求，QSA 团队回复您 →</a></div>
+
+<script>
+window.I18N={
+  cjk:true, prot:/(安律国际|安合规律|Secure Vectors)/, sep:'：',
+  k:{role:'角色',biz:'业务',vol:'交易量',level:'等级',pay:'支付方式',saq:'建议 SAQ',sit:'情况',region:'地区'},
+  empty:'<span class="empty">尚未作答。可回到 <a href="#level">等级判断</a>，或直接勾选下方需求。</span>',
+  wait:'请继续回答下一题。', init:'选择上方选项后，这里会显示您的等级、验证方式与建议的 SAQ 类型。',
+  carried:'✓ 已带入页尾的联系表单', saqBadge:'建议 SAQ',
+  sp:'服务提供商', m:'商户', spL1:'服务提供商 等级 1', spL2:'服务提供商 等级 2', mL1:'商户 等级 1', mL2:'商户 等级 2', mL3:'商户 等级 3', saqDsp:'D（服务提供商）',
+  r:{
+    tpp:'<p>依 Mastercard 规定，第三方处理商、3DS 服务提供商、电子钱包运营方与令牌服务提供商不论交易量，一律列为等级 1。验证方式：由 QSA 评估，完成 ROC 与 AOC，以及每季度 ASV 扫描。</p>',
+    spHi:'<p>年交易量超过 30 万笔。验证方式：由 QSA 评估，完成 ROC 与 AOC，以及每季度 ASV 扫描。</p>',
+    spLo:'<p>验证方式：SAQ D（服务提供商版）、AOC，以及每季度 ASV 扫描。收单银行或企业客户可能在合同中要求 QSA 签署的 ROC 与 AOC，建议先与对方确认。</p>',
+    m1:'<p>验证方式：ROC、AOC，以及每季度 ASV 扫描。ROC 多由 QSA 评估；部分卡组织也接受经 PCI SSC 培训的内部评估员（ISA）。</p>',
+    saq:'<p>填写完成后，签署 SAQ 所附的 AOC。是否需要每季度 ASV 扫描，依 SAQ 类型而定；多种支付方式并存时，请向收单机构确认适用类型。</p>',
+    mc:function(t){return '<p>依 Mastercard 规定，等级 2 商户适用 SAQ '+t+' 时，须另由 QSA 或 ISA 协助验证。</p>'}
+  },
+  a:{read03:'接着阅读：03 谁来评估 →',read04:'接着阅读：04 认证流程 →',cost:'看费用怎么估算',after:'看通过之后要做的工作',saqdiy:'SAQ DIY 在线填写 →',saqart:'我适用哪一种 SAQ？'},
+  u:{saqdiy:'https://www.securevectors.com/zh-hans/saq-diy',saqart:'https://www.securevectors.com/zh-hans/news/what-is-your-saq-type'},
+  pay:{'A':'支付页面外包','A-EP':'自有网页生成支付字段','B／B-IP':'独立式刷卡终端','C-VT':'网页虚拟终端','C':'联网支付系统','P2PE':'P2PE 方案','SPoC':'手机搭配读卡器','D':'自行存储卡号／多种方式'},
+  expand:'全部展开', backView:'返回分项查看', collapseAll:'全部收起',
+  ph:{email:'name@company.com',phone:'+86 138 0000 0000',wechat:'微信号'}
+};
+</script>
+<script>document.body.classList.remove('no-js');document.body.classList.add('js');
+(function(){
+  var T=window.I18N;
+  var carry={}, svcBox=document.getElementById('svc'), sumBox=document.getElementById('sum'), selIn=document.getElementById('f-sel');
+  var ORDER=['role','biz','vol','level','pay','saq','sit','region'];
+  function render(){
+    var keys=ORDER.filter(function(k){return carry[k]});
+    if(!keys.length){sumBox.innerHTML=T.empty;selIn.value='';return}
+    sumBox.innerHTML='<div class="chips">'+keys.map(function(k){return '<span class="chip">'+T.k[k]+T.sep+carry[k]+'</span>'}).join('')+'</div>';
+    selIn.value=keys.map(function(k){return T.k[k]+'='+carry[k]}).join('; ');
+  }
+  function setSvc(list){svcBox.querySelectorAll('input').forEach(function(i){var on=list.indexOf(i.dataset.k)>-1;i.checked=on;i.parentNode.classList.toggle('on',on)})}
+  svcBox.addEventListener('change',function(e){e.target.parentNode.classList.toggle('on',e.target.checked)});
+
+  var st={}, res=document.getElementById('lvRes');
+  var q=function(n){return document.querySelector('.tq[data-q="'+n+'"]')};
+  function show(n,on){q(n).classList.toggle('hide',!on)}
+  function clear(n){q(n).querySelectorAll('.opt').forEach(function(x){x.setAttribute('aria-pressed','false')})}
+  function lbl(n,v){var b=q(n).querySelector('.opt[data-v="'+v+'"]');return b?(b.querySelector('b')?b.querySelector('b').textContent:b.textContent.trim()):v}
+  function wait(){res.className='res';res.innerHTML='<p style="margin:0">'+T.wait+'</p>'}
+  function out(cls,lv,saq,txt,links){
+    res.className='res '+cls;
+    res.innerHTML='<p class="rl">'+lv+(saq?'<span class="saq">'+T.saqBadge+' '+saq+'</span>':'')+'</p>'+txt+'<div class="acts">'+links+'</div><p class="carry">'+T.carried+'</p>';
+  }
+  var A=function(h,t){return '<a href="'+h+'">'+t+'</a>'};
+  var L1=['dss','gap','asv'];
+  function calc(){
+    carry={sit:carry.sit,region:carry.region};
+    if(st.role)carry.role=st.role==='sp'?T.sp:T.m;
+    if(st.role==='sp'){
+      if(st.spType)carry.biz=lbl('spType',st.spType);
+      if(st.spType==='tpp'){carry.level=T.spL1;setSvc(L1);out('l1',T.spL1,'',T.r.tpp,A('#assist',T.a.read03)+A('#cost',T.a.cost));}
+      else if(st.spType&&st.spVol){
+        carry.vol=lbl('spVol',st.spVol);
+        if(st.spVol==='hi'){carry.level=T.spL1;setSvc(L1);out('l1',T.spL1,'',T.r.spHi,A('#assist',T.a.read03)+A('#cost',T.a.cost));}
+        else{carry.level=T.spL2;carry.saq=T.saqDsp;setSvc(['dss','asv']);out('',T.spL2,'D',T.r.spLo,A('#assist',T.a.read03)+A('#maintain',T.a.after));}
+      }
+    }
+    if(st.role==='m'&&st.mVol){
+      carry.vol=lbl('mVol',st.mVol);
+      if(st.mVol==='1'){carry.level=T.mL1;setSvc(L1);out('l1',T.mL1,'',T.r.m1,A('#how',T.a.read04)+A('#cost',T.a.cost));}
+      else{
+        var lv=st.mVol==='2'?T.mL2:T.mL3;carry.level=lv;
+        if(st.pay){carry.pay=T.pay[st.pay];carry.saq=st.pay;setSvc(st.pay==='D'?['saq','gap','asv']:['saq','asv']);
+          out('',lv,st.pay,T.r.saq+(st.mVol==='2'&&['A','A-EP','D'].indexOf(st.pay)>-1?T.r.mc(st.pay):''),A(T.u.saqdiy,T.a.saqdiy)+A(T.u.saqart,T.a.saqart)+A('#maintain',T.a.after));}
+        else wait();
+      }
+    }
+    render();
+  }
+  document.querySelectorAll('.tq').forEach(function(box){
+    box.querySelectorAll('.opt').forEach(function(b){
+      b.addEventListener('click',function(){
+        box.querySelectorAll('.opt').forEach(function(x){x.setAttribute('aria-pressed',x===b)});
+        var k=box.dataset.q;st[k]=b.dataset.v;
+        if(k==='role'){st={role:b.dataset.v};['spType','spVol','mVol','pay'].forEach(function(n){show(n,false);clear(n)});show(st.role==='sp'?'spType':'mVol',true);setSvc([]);wait()}
+        if(k==='spType'){delete st.spVol;clear('spVol');show('spVol',st.spType!=='tpp');if(st.spType!=='tpp')wait()}
+        if(k==='mVol'){delete st.pay;clear('pay');show('pay',st.mVol!=='1')}
+        calc();
+      });
+    });
+  });
+  document.getElementById('lvReset').addEventListener('click',function(){
+    st={};['spType','spVol','mVol','pay'].forEach(function(n){show(n,false)});
+    document.querySelectorAll('.tool .opt').forEach(function(x){x.setAttribute('aria-pressed','false')});
+    res.className='res';res.innerHTML='<p style="margin:0">'+T.init+'</p>';
+    carry={sit:carry.sit,region:carry.region};setSvc([]);render();
+  });
+
+  document.querySelectorAll('.tabs').forEach(function(tl){
+    var btns=tl.querySelectorAll('[role=tab]'), key=tl.dataset.carry;
+    function sel(b,user){btns.forEach(function(x){var on=x===b;x.setAttribute('aria-selected',on);document.getElementById(x.getAttribute('aria-controls')).hidden=!on});if(user&&key){carry[key]=b.textContent.trim();render()}}
+    btns.forEach(function(b){b.addEventListener('click',function(){sel(b,true)})});
+    sel(btns[0],false);
+  });
+
+  document.querySelectorAll('.md').forEach(function(md){
+    var nav=md.querySelector('.nav'), pans=[].slice.call(md.querySelectorAll('.pan')), all=md.querySelector('.all');
+    var btns=pans.map(function(p,i){
+      var b=document.createElement('button');b.type='button';b.setAttribute('role','tab');
+      b.innerHTML='<b>'+p.dataset.k+'</b>'+p.dataset.t;
+      b.addEventListener('click',function(){pick(i)});nav.appendChild(b);return b;
+    });
+    var cur=0;
+    function pick(i){cur=i;btns.forEach(function(b,j){b.setAttribute('aria-selected',i===j)});pans.forEach(function(p,j){p.hidden=i!==j})}
+    pick(0);
+    all.addEventListener('click',function(){
+      var on=md.classList.toggle('expanded');all.textContent=on?T.backView:T.expand;
+      if(on)pans.forEach(function(p){p.hidden=false});else pick(cur);
+    });
+  });
+  document.querySelectorAll('.allbtn').forEach(function(b){
+    b.addEventListener('click',function(){
+      var ds=document.querySelectorAll(b.dataset.target+' details'), open=[].some.call(ds,function(d){return !d.open});
+      ds.forEach(function(d){d.open=open});b.textContent=open?T.collapseAll:T.expand;
+    });
+  });
+
+  var links=[].slice.call(document.querySelectorAll('.tocbar a')), map={};
+  links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a});
+  var secs=Object.keys(map).map(function(id){return document.getElementById(id)}).filter(Boolean);
+  var how=document.getElementById('how'), contact=document.getElementById('contact'), mcta=document.getElementById('mcta');
+  function spy(){
+    var y=window.scrollY+140, c=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)c=s.id});
+    links.forEach(function(a){a.classList.remove('on')});
+    if(c&&map[c]){map[c].classList.add('on');var bar=map[c].parentNode.parentNode;var l=map[c].offsetLeft-20;if(l<bar.scrollLeft||l>bar.scrollLeft+bar.clientWidth-120)bar.scrollLeft=l}
+    mcta.classList.toggle('show',window.scrollY+innerHeight>how.offsetTop+200&&window.scrollY+innerHeight<contact.offsetTop+120);
+  }
+  window.addEventListener('scroll',spy,{passive:true});spy();
+
+  var way=document.getElementById('f-way'), val=document.getElementById('f-val');
+  way.addEventListener('change',function(){val.placeholder=T.ph[way.value]||''});
+  document.getElementById('cf').addEventListener('submit',function(e){e.preventDefault();document.getElementById('cfOk').style.display='block'});
+})();
+
+(function(){
+  var T=window.I18N;
+  if(!T.cjk||!(window.Intl&&Intl.Segmenter))return;
+  var seg=new Intl.Segmenter(document.documentElement.lang,{granularity:'word'});
+  var CJK=/[぀-ヿ㐀-鿿]/, NOSTART=/^[，。、；：！？）」』】》〉・ー,.;:!?)\]%]/, NOEND=/[（「『【《〈(\[]$/;
+  var PROT=T.prot;
+  var SKIP={SCRIPT:1,STYLE:1,TEXTAREA:1,OPTION:1,SELECT:1,CODE:1,TITLE:1};
+  function wrap(root){
+    var tw=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:function(n){
+      var p=n.parentElement;return(!p||SKIP[p.tagName]||p.closest('.nw,.lv,th,.chip,.cad')||!CJK.test(n.nodeValue))?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT}});
+    var list=[];while(tw.nextNode())list.push(tw.currentNode);
+    list.forEach(function(n){
+      var parts=[];n.nodeValue.split(PROT).forEach(function(c,k){if(!c)return;if(k%2)parts.push(c);else Array.from(seg.segment(c),function(x){parts.push(x.segment)})});
+      if(parts.length<2)return;
+      var f=document.createDocumentFragment(),prev='';
+      parts.forEach(function(s,i){
+        if(i&&!NOSTART.test(s)&&!NOEND.test(prev)&&!/\s$/.test(prev)&&!/^\s/.test(s))f.appendChild(document.createElement('wbr'));
+        f.appendChild(document.createTextNode(s));prev=s;
+      });
+      n.parentNode.replaceChild(f,n);
+    });
+  }
+  document.documentElement.classList.add('cjk-seg');
+  wrap(document.body);
+  var mo=new MutationObserver(function(ms){ms.forEach(function(m){m.addedNodes.forEach(function(n){if(n.nodeType===1&&n.tagName!=='WBR')wrap(n)})})});
+  ['lvRes','sum'].forEach(function(id){var el=document.getElementById(id);if(el)mo.observe(el,{childList:true,subtree:true})});
+})();
+</script>
+</body>
+</html>
