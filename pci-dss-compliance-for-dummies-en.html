@@ -30,7 +30,7 @@
 {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.securevectors.com/"},{"@type":"ListItem","position":2,"name":"PCI DSS","item":"https://www.securevectors.com/pci-dss"},{"@type":"ListItem","position":3,"name":"Getting PCI DSS Certified","item":"https://www.securevectors.com/pci-dss-compliance-for-dummies"}]},
 {"@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"If a payment provider hosts our payment page, do we still need PCI DSS?","acceptedAnswer":{"@type":"Answer","text":"Yes. Outsourcing can greatly reduce your scope, but merchants usually still need to complete the applicable SAQ and submit an AOC every year. Which SAQ applies depends on how the payment page is embedded."}},
-{"@type":"Question","name":"How long is a PCI DSS AOC valid?","acceptedAnswer":{"@type":"Answer","text":"PCI DSS is validated on a 12-month cycle. You need to reassess and submit a new AOC every year. Submission timing is set by your acquirer, the card brands, or your clients."}},
+{"@type":"Question","name":"How long is a PCI DSS AOC valid?","acceptedAnswer":{"@type":"Answer","text":"PCI DSS is validated on a 12-month cycle. Complete your annual assessment and submit a new AOC before the previous one expires, so your compliance status never lapses. Submission timing is set by your acquirer, the card brands, or your clients."}},
 {"@type":"Question","name":"Can the same QSA company provide consulting and perform the formal assessment?","acceptedAnswer":{"@type":"Answer","text":"Yes. Under PCI SSC rules, a QSA who designed or implemented a control cannot assess that control. A different QSA at the same company who was not involved may perform the assessment, and the QSA company must document the separation of duties."}},
 {"@type":"Question","name":"How is PCI DSS different from ISO 27001?","acceptedAnswer":{"@type":"Answer","text":"ISO 27001 certifies an information security management system whose scope the organization defines. PCI DSS focuses specifically on cardholder data, with more prescriptive requirements and fixed-frequency technical testing such as quarterly scans. Organizations certified to ISO 27001 can reuse some policies and processes."}}
 ]}]}
@@ -114,6 +114,7 @@ figcaption{font-size:14.5px;color:var(--muted);margin-top:14px}
 .cad th{background:var(--bg-2);font-weight:700;color:var(--navy);white-space:nowrap}
 .cad td:first-child,.cad th:first-child{text-align:left;white-space:nowrap}
 .cad td small{display:block;color:var(--quiet);font-size:12.5px}
+.cad td:first-child small{white-space:normal;max-width:420px;line-height:1.55;margin-top:2px}
 .dot{display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--green)}
 .dot.p{background:var(--teal)}
 .dot.o{background:var(--orange)}
@@ -374,15 +375,15 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
 <div class="wrap narrow">
 
   <p class="lead">When an acquiring bank, partner or enterprise client asks for your PCI DSS Attestation of Compliance (AOC), start by confirming three things: your role, your level, and how you need to validate.</p>
-  <p>Based on PCI DSS v4.0.1, this guide answers the six questions people ask most when they first deal with PCI DSS compliance, and covers what you need to do every quarter and year after you receive your AOC. It uses a service provider facing its first QSA assessment as the main example and notes where merchants differ. For our assessment services, see <a href="https://www.securevectors.com/pci-dss">PCI DSS Assessment &amp; Certification</a>.</p>
+  <p>Based on PCI DSS v4.0.1, this guide answers the six questions people ask most when they first deal with PCI DSS compliance, and covers what you need to do every quarter and year after you receive your AOC. It uses a service provider facing its first QSA assessment as the main example and notes where merchants differ. For our assessment services, see <a href="https://www.securevectors.com/pci-dss">PCI DSS Certification Services</a>.</p>
 
   <div class="keybox">
     <h2>Key takeaways</h2>
     <ul>
       <li>PCI DSS is the global standard for protecting payment card data; the current version is v4.0.1. It applies to any organization that stores, processes or transmits card numbers, or can affect their security.</li>
-      <li>How you validate depends on your level. Level 1 requires a Report on Compliance (ROC) and AOC (service providers must use a QSA); other levels mostly use a Self-Assessment Questionnaire (SAQ). Under Mastercard rules, third-party processors, 3-D Secure service providers and staged digital wallet operators are Level 1 regardless of volume; payment facilitators become Level 1 above 300,000 transactions a year.</li>
-      <li>A first assessment typically takes 3–5 months. For a small to mid-sized service provider, QSA fees are about US$15,000–25,000, excluding travel.</li>
-      <li>After you receive your AOC, depending on your level and SAQ type, you run ASV scans every quarter, penetration tests every year, and reassess annually.</li>
+      <li>How you validate depends on your level. At Level 1, a QSA issues the Report on Compliance (ROC) and AOC; other levels mostly use a Self-Assessment Questionnaire (SAQ). Under Mastercard rules, third-party processors, 3-D Secure service providers and staged digital wallet operators are Level 1 regardless of volume; payment facilitators become Level 1 above 300,000 transactions a year.</li>
+      <li>A first assessment typically takes 3–5 months. For a small to mid-sized service provider, QSA fees are about US$15,000–25,000, excluding travel (for reference only).</li>
+      <li>After you receive your AOC, depending on your level and SAQ type, you run ASV scans every quarter, penetration tests every year, and compile the year's evidence for an annual assessment.</li>
     </ul>
   </div>
 
@@ -398,7 +399,7 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
         <tr><td>Internal vulnerability scan<small>11.3.1</small></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td></tr>
         <tr><td>Segmentation testing<small>11.4.6 · every 6 months</small></td><td></td><td><span class="dot p"></span></td><td></td><td><span class="dot p"></span></td></tr>
         <tr><td>Internal and external penetration tests<small>11.4.2, 11.4.3 · annually</small></td><td colspan="4"><span class="span4"></span><small>Any time during the year, and after significant changes</small></td></tr>
-        <tr><td>Reassessment and new AOC</td><td></td><td></td><td></td><td><span class="dot o"></span></td></tr>
+        <tr><td>Annual assessment<small>Before your previous AOC turns one year old, compile the year's evidence (quarterly scan reports, penetration test reports, logs and records) for QSA review and receive a new AOC, so your compliance status never lapses</small></td><td></td><td></td><td></td><td><span class="dot o"></span></td></tr>
       </tbody>
     </table>
     </div>
@@ -426,7 +427,7 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
       <thead><tr><th>Document</th><th>What it is</th><th class="nw">Who uses it</th></tr></thead>
       <tbody>
         <tr><td class="lv">AOC<small>Attestation of Compliance</small></td><td>A summary declaration of your assessment results — the formal document you submit to your acquirer, the card brands or clients. Renewed every 12 months.</td><td class="nw">All levels</td></tr>
-        <tr><td class="lv">ROC<small>Report on Compliance</small></td><td>The full report in which the assessor records the result for each requirement; service providers must use a QSA. Followed by the AOC for ROC.</td><td class="nw">Level 1</td></tr>
+        <tr><td class="lv">ROC<small>Report on Compliance</small></td><td>The full report in which the QSA records the result for each requirement; the QSA issues the AOC with it.</td><td class="nw">Level 1</td></tr>
         <tr><td class="lv">SAQ<small>Self-Assessment Questionnaire</small></td><td>Completed by your organization; the type depends on how you accept payments. Followed by the AOC included with the SAQ.</td><td class="nw">Level 2 and below</td></tr>
       </tbody>
     </table></div>
@@ -584,21 +585,11 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
       <div class="bar"><span>Reporting</span><span class="t"><i style="left:63%;width:20%"></i></span><span class="d">0.5–1 month</span></div>
     </div>
     <p>The timeline depends mostly on scope size, whether architecture changes are needed, equipment lead times, how many rounds of fixes testing requires, and how much internal staff time you can commit.</p>
-
-    <h3>Which situation are you in?</h3>
-    <div class="tabs" role="tablist" aria-label="Situation" data-carry="sit">
-      <button type="button" role="tab" aria-selected="true" aria-controls="sc1" id="t-sc1">First assessment</button>
-      <button type="button" role="tab" aria-selected="false" aria-controls="sc2" id="t-sc2">Reduced scope</button>
-      <button type="button" role="tab" aria-selected="false" aria-controls="sc3" id="t-sc3">Annual reassessment</button>
-    </div>
-    <div class="panel" role="tabpanel" id="sc1" aria-labelledby="t-sc1"><h4>A service provider's first assessment</h4><p class="dur">About 3–5 months</p><p>Architecture changes and fixing test findings take the most time. The earlier you finish scoping and gap analysis, the smoother the rest goes.</p></div>
-    <div class="panel" role="tabpanel" id="sc2" aria-labelledby="t-sc2"><h4>Reduced scope</h4><p class="dur">Usually faster than a first assessment</p><p>For example, if a payment provider hosts your payment page or tokens replace card numbers, fewer systems need attention.</p></div>
-    <div class="panel" role="tabpanel" id="sc3" aria-labelledby="t-sc3"><h4>Annual reassessment</h4><p class="dur">Usually faster than a first assessment</p><p>If last year's fixes are complete, your architecture hasn't changed much and you've kept records of quarterly scans and annual tests, reassessment goes much more smoothly.</p></div>
   </section>
 
   <section class="part" id="cost">
     <h2><span class="no">06</span>How much does PCI DSS certification cost?</h2>
-    <p class="answer">For a small to mid-sized service provider's first assessment, QSA fees are about US$15,000–25,000, excluding travel. You may also need to budget for system, security tool and testing improvements.</p>
+    <p class="answer">For a small to mid-sized service provider's first assessment, QSA fees are about US$15,000–25,000, excluding travel. You may also need to budget for system, security tool and testing improvements. All figures are for reference only; actual costs depend on your environment and assessment scope.</p>
 
     <h3>Costs you may need to add</h3>
     <div class="md">
@@ -625,7 +616,7 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
                 <tr><td class="nw">Brand registration</td><td>3,000–5,000</td><td class="nw">Annual</td></tr>
               </tbody>
             </table></div>
-            <p class="note" style="margin-top:8px">Indicative figures for small to mid-sized service providers in Asia; actual costs depend on your market and scope.</p>
+            <p class="note" style="margin-top:8px">All figures are for reference only; actual costs depend on your environment and assessment scope.</p>
           </div>
         </div>
       </div>
@@ -653,7 +644,7 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
         <tr><td class="nw">Quarterly (service providers)</td><td>Review that staff follow security policies</td><td class="en nw">12.4.2</td></tr>
         <tr><td class="nw">Every 6 months (service providers)</td><td>Segmentation testing, and after any segmentation change</td><td class="en nw">11.4.6</td></tr>
         <tr><td class="nw">Annually and after significant changes</td><td>Internal and external penetration tests</td><td class="en nw">11.4.2, 11.4.3</td></tr>
-        <tr><td class="nw">Annually</td><td>Reassessment and new AOC</td><td></td></tr>
+        <tr><td class="nw">Annually (before the previous AOC expires)</td><td>Compile the year's evidence for the annual assessment and receive a new AOC</td><td></td></tr>
       </tbody>
     </table></div>
     <p>If your systems run in the cloud, you still need internal penetration tests for the parts you manage, such as hosts and applications inside your virtual network. Infrastructure your cloud provider manages is covered by its AOC and responsibility matrix. If you self-assess with an SAQ, which activities apply depends on your SAQ type.</p>
@@ -701,7 +692,7 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
   <section class="part" id="faq">
     <h2>FAQ</h2>
     <details><summary>Q: If a payment provider hosts our payment page, do we still need PCI DSS?</summary><div class="a"><p>Yes. Outsourcing can greatly reduce your scope, but merchants usually still need to complete the applicable SAQ and submit an AOC every year. Which SAQ applies depends on how the payment page is embedded — see <a href="https://www.securevectors.com/news/what-is-your-saq-type">Which PCI DSS SAQ type applies to you?</a></p></div></details>
-    <details><summary>Q: How long is a PCI DSS AOC valid?</summary><div class="a"><p>PCI DSS is validated on a 12-month cycle. You need to reassess and submit a new AOC every year. Submission timing is set by your acquirer, the card brands, or your clients.</p></div></details>
+    <details><summary>Q: How long is a PCI DSS AOC valid?</summary><div class="a"><p>PCI DSS is validated on a 12-month cycle. Complete your annual assessment and submit a new AOC before the previous one expires, so your compliance status never lapses. Submission timing is set by your acquirer, the card brands, or your clients.</p></div></details>
     <details><summary>Q: Can the same QSA company provide consulting and perform the formal assessment?</summary><div class="a"><p>Yes. Under PCI SSC rules, a QSA who designed or implemented a control cannot assess that control. A different QSA at the same company who was not involved may perform the assessment, and the QSA company must document the separation of duties.</p></div></details>
     <details><summary>Q: How is PCI DSS different from ISO 27001?</summary><div class="a"><p>ISO 27001 certifies an information security management system whose scope the organization defines. PCI DSS focuses specifically on cardholder data, with more prescriptive requirements and fixed-frequency technical testing such as quarterly scans. Organizations certified to ISO 27001 can reuse some policies and processes.</p></div></details>
   </section>
@@ -745,7 +736,7 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
       <div>
         <h2>Talk to a PCI expert</h2>
         <p>Your selections on this page are already filled in. Leave your company and contact details and we'll reply within one business day.</p>
-        <ul class="cred"><li>PCI SSC Qualified Security Assessor (QSA)</li><li>PCI Approved Scanning Vendor (ASV)</li><li>PCI 3DS Assessor</li><li>PCI PIN Security Assessor</li></ul>
+        <ul class="cred"><li>PCI SSC Qualified Security Assessor (QSA)</li><li>Approved Scanning Vendor (ASV)</li><li>PCI 3DS Assessor</li><li>Qualified PIN Assessor (QPA)</li></ul>
       </div>
       <form class="cf" id="cf" action="#" novalidate>
         <p class="stp"><i>1</i>Your selections</p>
@@ -787,7 +778,7 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
       <div><h5>Company</h5><a href="https://www.securevectors.com/about-us">About us</a><a href="https://www.securevectors.com/knowledge-center">News</a><a href="https://www.securevectors.com/events">Events</a><a href="https://www.securevectors.com/testimonials">Testimonials</a><a href="https://www.securevectors.com/privacy-policy">Privacy policy</a></div>
       <div><h5>Contact</h5><span style="display:block;margin:0 0 6px">Taipei, Taiwan</span><a href="tel:+886233931006">+886 2-3393-1006</a><a href="mailto:service@securevectors.com">service@securevectors.com</a><a href="https://www.securevectors.com/contact-us">All locations →</a></div>
     </div>
-    <div class="bottom"><span>PCI SSC QSA · PCI ASV · PCI 3DS Assessor · PCI PIN Security Assessor</span><span>© 2026 Secure Vectors</span></div>
+    <div class="bottom"><span>PCI SSC Qualified Security Assessor (QSA) · Approved Scanning Vendor (ASV) · PCI 3DS Assessor · Qualified PIN Assessor (QPA)</span><span>© 2026 Secure Vectors</span></div>
   </div>
 </footer>
 
@@ -802,10 +793,10 @@ window.I18N={
   carried:'✓ Added to the contact form below', saqBadge:'Suggested SAQ',
   sp:'Service provider', m:'Merchant', spL1:'Service provider Level 1', spL2:'Service provider Level 2', mL1:'Merchant Level 1', mL2:'Merchant Level 2', mL3:'Merchant Level 3', saqDsp:'D (service provider)',
   r:{
-    tpp:'<p>Under Mastercard rules, third-party processors, 3-D Secure service providers, staged digital wallet operators and token service providers are Level 1 regardless of volume. Validation: QSA assessment, ROC and AOC, plus quarterly ASV scans.</p>',
-    spHi:'<p>More than 300,000 transactions a year. Validation: QSA assessment, ROC and AOC, plus quarterly ASV scans.</p>',
+    tpp:'<p>Under Mastercard rules, third-party processors, 3-D Secure service providers, staged digital wallet operators and token service providers are Level 1 regardless of volume. Validation: a QSA issues the ROC and AOC, plus quarterly ASV scans.</p>',
+    spHi:'<p>More than 300,000 transactions a year. Validation: a QSA issues the ROC and AOC, plus quarterly ASV scans.</p>',
     spLo:'<p>Validation: SAQ D for service providers, AOC, plus quarterly ASV scans. Acquirers or enterprise clients may require a QSA-signed ROC and AOC by contract, so check with them first.</p>',
-    m1:'<p>Validation: ROC and AOC, plus quarterly ASV scans. The ROC is usually performed by a QSA; some card brands also accept an internal assessor trained by PCI SSC (ISA).</p>',
+    m1:'<p>Validation: a QSA issues the ROC and AOC, plus quarterly ASV scans.</p>',
     saq:'<p>Once complete, sign the AOC included with the SAQ. Whether quarterly ASV scans are required depends on the SAQ type. If you use several payment methods, confirm the applicable SAQ with your acquirer.</p>',
     mc:function(t){return '<p>Under Mastercard rules, Level 2 merchants completing SAQ '+t+' must also engage a QSA or ISA for validation.</p>'}
   },

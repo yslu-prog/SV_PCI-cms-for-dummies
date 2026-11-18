@@ -30,7 +30,7 @@
 {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://www.securevectors.com/ja"},{"@type":"ListItem","position":2,"name":"PCI DSS","item":"https://www.securevectors.com/ja/pci-dss"},{"@type":"ListItem","position":3,"name":"PCI DSS準拠 はじめてガイド","item":"https://www.securevectors.com/ja/pci-dss-compliance-for-dummies"}]},
 {"@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"決済ページを決済代行業者に任せていても、PCI DSSは必要ですか？","acceptedAnswer":{"@type":"Answer","text":"必要です。外部委託により対象範囲を大きく縮小できますが、加盟店は通常、該当する自己問診（SAQ）を毎年完了し、準拠証明書（AOC）を提出する必要があります。どのSAQに該当するかは、決済ページの組み込み方式によって決まります。"}},
-{"@type":"Question","name":"PCI DSSの準拠証明書（AOC）の有効期間は？","acceptedAnswer":{"@type":"Answer","text":"PCI DSSは12か月ごとに検証するため、毎年再審査を受け、新しいAOCを提出する必要があります。提出時期はアクワイアラ、ペイメントブランド、または取引先の要求によります。"}},
+{"@type":"Question","name":"PCI DSSの準拠証明書（AOC）の有効期間は？","acceptedAnswer":{"@type":"Answer","text":"PCI DSSは12か月ごとに検証します。前回のAOCの期限前に年次審査を終え、新しいAOCを提出すれば、準拠状態が途切れません。提出時期はアクワイアラ、ペイメントブランド、または取引先の要求によります。"}},
 {"@type":"Question","name":"コンサルティングと正式な審査を、同じQSA企業に依頼できますか？","acceptedAnswer":{"@type":"Answer","text":"できます。PCI SSCの規定では、ある管理策の設計・導入に関与したQSAはその管理策を評価できませんが、同じ企業内の関与していない別のQSAが審査を行うことは可能です。QSA企業は職務分離の記録を残す必要があります。"}},
 {"@type":"Question","name":"PCI DSSとISO 27001の違いは？","acceptedAnswer":{"@type":"Answer","text":"ISO 27001は組織が範囲を定める情報セキュリティマネジメントシステムの認証です。PCI DSSはカード会員データに特化し、要件がより具体的で、四半期ごとのスキャンなど頻度の定められた技術的テストを含みます。ISO 27001取得企業は、一部の方針や手順を流用できます。"}}
 ]}]}
@@ -114,6 +114,7 @@ figcaption{font-size:14.5px;color:var(--muted);margin-top:14px}
 .cad th{background:var(--bg-2);font-weight:700;color:var(--navy);white-space:nowrap}
 .cad td:first-child,.cad th:first-child{text-align:left;white-space:nowrap}
 .cad td small{display:block;color:var(--quiet);font-size:12.5px}
+.cad td:first-child small{white-space:normal;max-width:420px;line-height:1.55;margin-top:2px}
 .dot{display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--green)}
 .dot.p{background:var(--teal)}
 .dot.o{background:var(--orange)}
@@ -374,15 +375,15 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
 <div class="wrap narrow">
 
   <p class="lead">アクワイアラ（加盟店契約会社）、提携先、取引先企業からPCI DSSの準拠証明書（AOC）の提出を求められたら、まず3点を確認します。自社の立場、レベル、そして検証の方法です。</p>
-  <p>本記事では、PCI DSS v4.0.1に基づき、初めてPCI DSS準拠に取り組む際によく寄せられる6つの疑問と、AOC取得後に毎四半期・毎年行う作業を解説します。初めてQSAの審査を受けるサービスプロバイダーを例に説明し、加盟店との違いは各章で補足します。審査サービスについては <a href="https://www.securevectors.com/ja/pci-dss">PCI DSS審査・認証</a> をご覧ください。</p>
+  <p>本記事では、PCI DSS v4.0.1に基づき、初めてPCI DSS準拠に取り組む際によく寄せられる6つの疑問と、AOC取得後に毎四半期・毎年行う作業を解説します。初めてQSAの審査を受けるサービスプロバイダーを例に説明し、加盟店との違いは各章で補足します。審査サービスについては <a href="https://www.securevectors.com/ja/pci-dss">PCI DSS認証サービス</a> をご覧ください。</p>
 
   <div class="keybox">
     <h2>この記事のポイント</h2>
     <ul>
       <li>PCI DSSはカード情報を保護するための国際基準で、現行版はv4.0.1です。カード番号を保存・処理・伝送する、またはそのセキュリティに影響を与え得る組織が対象です。</li>
-      <li>検証方法はレベルによって異なります。レベル1はコンプライアンス報告書（ROC）とAOCが必要で（サービスプロバイダーはQSAによる審査が必須）、それ以外のレベルは主に自己問診（SAQ）で検証します。Mastercardの規定では、第三者処理業者、3-Dセキュアサービスプロバイダー、ステージド・デジタルウォレット事業者は取引件数にかかわらずレベル1、ペイメントファシリテーターは年間30万件を超えるとレベル1です。</li>
-      <li>初回の審査には約3〜5か月かかります。中小規模のサービスプロバイダーの場合、QSAの審査費用は約1.5万〜2.5万米ドル（旅費別）です。</li>
-      <li>AOC取得後は、レベルとSAQの種類に応じて、四半期ごとのASVスキャン、年1回のペネトレーションテスト、年次の再審査を行います。</li>
+      <li>検証方法はレベルによって異なります。レベル1はQSAがコンプライアンス報告書（ROC）とAOCを発行し、それ以外のレベルは主に自己問診（SAQ）で検証します。Mastercardの規定では、第三者処理業者、3-Dセキュアサービスプロバイダー、ステージド・デジタルウォレット事業者は取引件数にかかわらずレベル1、ペイメントファシリテーターは年間30万件を超えるとレベル1です。</li>
+      <li>初回の審査には約3〜5か月かかります。中小規模のサービスプロバイダーの場合、QSAの審査費用は約1.5万〜2.5万米ドル（旅費別、参考値）です。</li>
+      <li>AOC取得後は、レベルとSAQの種類に応じて、四半期ごとのASVスキャン、年1回のペネトレーションテストを行い、1年分の証跡をまとめて年次審査を受けます。</li>
     </ul>
   </div>
 
@@ -398,7 +399,7 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
         <tr><td>内部脆弱性スキャン<small>11.3.1</small></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td></tr>
         <tr><td>セグメンテーションテスト<small>11.4.6・6か月ごと</small></td><td></td><td><span class="dot p"></span></td><td></td><td><span class="dot p"></span></td></tr>
         <tr><td>内部・外部ペネトレーションテスト<small>11.4.2、11.4.3・年1回</small></td><td colspan="4"><span class="span4"></span><small>年内の任意の時期に実施。重大な変更後も実施</small></td></tr>
-        <tr><td>再審査・新しいAOCの提出</td><td></td><td></td><td></td><td><span class="dot o"></span></td></tr>
+        <tr><td>年次審査<small>前回のAOCから1年が経過する前に、1年分の証跡（四半期スキャン報告書、ペネトレーションテスト報告書、ログ・記録）をまとめてQSAの審査を受け、新しいAOCを取得。準拠状態を途切れさせないため</small></td><td></td><td></td><td></td><td><span class="dot o"></span></td></tr>
       </tbody>
     </table>
     </div>
@@ -426,7 +427,7 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
       <thead><tr><th>書類</th><th>内容</th><th class="nw">対象</th></tr></thead>
       <tbody>
         <tr><td class="lv">AOC<small>準拠証明書</small><small class="ef">Attestation of Compliance</small></td><td>審査結果の要約宣言書。アクワイアラ、ペイメントブランド、取引先に提出する正式な書類で、12か月ごとに更新します</td><td class="nw">全レベル</td></tr>
-        <tr><td class="lv">ROC<small>コンプライアンス報告書</small><small class="ef">Report on Compliance</small></td><td>評価者が要件ごとの結果を記録した詳細な報告書（準拠報告書とも呼ばれます）。サービスプロバイダーはQSAによる作成が必須で、完了後にROC用のAOCに署名します</td><td class="nw">レベル1</td></tr>
+        <tr><td class="lv">ROC<small>コンプライアンス報告書</small><small class="ef">Report on Compliance</small></td><td>QSAが要件ごとの結果を記録した詳細な報告書（準拠報告書とも呼ばれます）。QSAがAOCとあわせて発行します</td><td class="nw">レベル1</td></tr>
         <tr><td class="lv">SAQ<small>自己問診</small><small class="ef">Self-Assessment Questionnaire</small></td><td>決済方法に応じて種類を選び、自社で回答します。完了後、SAQに付属するAOCに署名します</td><td class="nw">レベル2以下</td></tr>
       </tbody>
     </table></div>
@@ -491,7 +492,7 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
     </table></div>
     <div class="tnote">
       <p>取引件数はペイメントブランドごとの年間件数です。Visaは2024年4月から加盟店のレベル3と4をレベル3に統合しました。Mastercardは引き続き4段階です。</p>
-      <details class="mcn"><summary>※ Mastercardの補足規定</summary><div class="a"><p>Mastercardの規定では、第三者処理業者（TPP）、3-Dセキュアサービスプロバイダー、ステージド・デジタルウォレット事業者（SDWO）、トークンサービスプロバイダー（TSP）は取引件数にかかわらずレベル1、ペイメントファシリテーターは年間30万件超でレベル1です。レベル2のサービスプロバイダーでデータ侵害が確認された場合は、レベル1に変更されます。</p><p>Mastercardのレベル2加盟店がSAQ A、A-EP、Dに該当する場合は、QSAまたはISA（PCI SSCの研修を受けた社内評価者）による検証も必要です。</p></div></details>
+      <details class="mcn"><summary>※ ブランド別の補足規定（Mastercard・JCB）</summary><div class="a"><p>Mastercardの規定では、第三者処理業者（TPP）、3-Dセキュアサービスプロバイダー、ステージド・デジタルウォレット事業者（SDWO）、トークンサービスプロバイダー（TSP）は取引件数にかかわらずレベル1、ペイメントファシリテーターは年間30万件超でレベル1です。レベル2のサービスプロバイダーでデータ侵害が確認された場合は、レベル1に変更されます。</p><p>Mastercardのレベル2加盟店がSAQ A、A-EP、Dに該当する場合は、QSAまたはISA（PCI SSCの研修を受けた社内評価者）による検証も必要です。</p><p>JCBは年間100万件以上の加盟店とTPPに年1回のオンサイト審査を求め、IPSPは件数にかかわらずオンサイト審査の対象です。</p></div></details>
       <p>実際のレベルはアクワイアラからの通知で確定します。</p>
     </div>
 
@@ -584,21 +585,11 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
       <div class="bar"><span>報告</span><span class="t"><i style="left:63%;width:20%"></i></span><span class="d">0.5〜1か月</span></div>
     </div>
     <p>期間は主に、対象範囲の広さ、構成変更の要否、機器の調達期間、テスト後の修正回数、社内で割ける人員によって変わります。</p>
-
-    <h3>自社の状況は？</h3>
-    <div class="tabs" role="tablist" aria-label="状況" data-carry="sit">
-      <button type="button" role="tab" aria-selected="true" aria-controls="sc1" id="t-sc1">初回審査</button>
-      <button type="button" role="tab" aria-selected="false" aria-controls="sc2" id="t-sc2">範囲を縮小済み</button>
-      <button type="button" role="tab" aria-selected="false" aria-controls="sc3" id="t-sc3">年次再審査</button>
-    </div>
-    <div class="panel" role="tabpanel" id="sc1" aria-labelledby="t-sc1"><h4>サービスプロバイダーの初回審査</h4><p class="dur">約3〜5か月</p><p>最も時間がかかるのは、構成の見直しとテスト結果の修正です。対象範囲の特定とギャップ分析を早く終えるほど、その後がスムーズになります。</p></div>
-    <div class="panel" role="tabpanel" id="sc2" aria-labelledby="t-sc2"><h4>範囲を縮小済み</h4><p class="dur">通常は初回より短期間</p><p>たとえば決済ページを決済代行業者に委託している、またはカード番号をトークンに置き換えている場合、対応するシステムが少なくなります。</p></div>
-    <div class="panel" role="tabpanel" id="sc3" aria-labelledby="t-sc3"><h4>年次再審査</h4><p class="dur">通常は初回より短期間</p><p>前年の改善が完了し、構成に大きな変更がなく、四半期スキャンと年次テストの記録が保管されていれば、再審査はずっとスムーズです。</p></div>
   </section>
 
   <section class="part" id="cost">
     <h2><span class="no">06</span>PCI DSS準拠の費用は？</h2>
-    <p class="answer">中小規模のサービスプロバイダーが初めて審査を受ける場合、QSAの審査費用は約1.5万〜2.5万米ドル（旅費別）です。このほか、システム、機器、技術的テストなどの改善費用がかかる場合があります。</p>
+    <p class="answer">中小規模のサービスプロバイダーが初めて審査を受ける場合、QSAの審査費用は約1.5万〜2.5万米ドル（旅費別）です。このほか、システム、機器、技術的テストなどの改善費用がかかる場合があります。金額はすべて参考値です。実際の費用は貴社の環境と審査範囲によって異なります。</p>
 
     <h3>追加でかかる可能性のある費用</h3>
     <div class="md">
@@ -625,7 +616,7 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
                 <tr><td class="nw">ブランド登録</td><td>3,000〜5,000</td><td class="nw">年間</td></tr>
               </tbody>
             </table></div>
-            <p class="note" style="margin-top:8px">アジアの中小規模サービスプロバイダーを想定した参考値です。実際の費用は市場と対象範囲によって異なります。</p>
+            <p class="note" style="margin-top:8px">金額はすべて参考値です。実際の費用は貴社の環境と審査範囲によって異なります。</p>
           </div>
         </div>
       </div>
@@ -653,7 +644,7 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
         <tr><td class="nw">四半期ごと（SP）</td><td>従業員がセキュリティポリシーに従っているかの確認</td><td class="en nw">12.4.2</td></tr>
         <tr><td class="nw">6か月ごと（SP）</td><td>セグメンテーションテスト（変更後も実施）</td><td class="en nw">11.4.6</td></tr>
         <tr><td class="nw">年1回・重大な変更後</td><td>内部・外部ペネトレーションテスト</td><td class="en nw">11.4.2、11.4.3</td></tr>
-        <tr><td class="nw">年1回</td><td>再審査・新しいAOCの提出</td><td></td></tr>
+        <tr><td class="nw">年1回（前回AOCの期限前）</td><td>1年分の証跡をまとめて年次審査を受け、新しいAOCを取得</td><td></td></tr>
       </tbody>
     </table></div>
     <p>SP＝サービスプロバイダー。システムをクラウドで運用している場合も、自社で管理する部分（仮想ネットワーク内のホストやアプリケーションなど）には内部ペネトレーションテストが必要です。クラウド事業者が管理するインフラは、その事業者のAOCと責任分担マトリクス（Responsibility Matrix）で確認します。SAQで自己評価する企業は、SAQの種類によって必要な作業が異なります。</p>
@@ -676,6 +667,7 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
         <li><b>クレジットカード・セキュリティガイドライン</b>：クレジット取引セキュリティ対策協議会のガイドラインでは、加盟店は「カード情報を保持しない非保持化（非保持と同等/相当を含む）、又はカード情報を保持する場合は PCI DSS に準拠する」ことが求められています。</li>
         <li><b>カード会社と決済代行業者</b>：同ガイドラインでは、カード会社（イシュアー）と決済代行業者等（PSP）は、対面・非対面を問わずPCI DSSに準拠し、維持・運用することが求められています。</li>
         <li><b>EC加盟店</b>：カード情報の保護に加え、EMV 3-Dセキュアをはじめとする不正利用対策も求められています。</li>
+        <li><b>JCBの規定（JCB Data Security Program）</b>：EC・通信販売・電話注文の加盟店と第三者処理業者（TPP）は、JCBの年間取引件数が100万件以上ならQSAによる年1回のオンサイト審査と四半期ごとのASVスキャン、100万件未満なら年1回の自己問診と四半期ごとのスキャンが必要です。インターネット決済サービスプロバイダー（IPSP）は、取引件数にかかわらずオンサイト審査と四半期スキャンが必要です。対面取引の加盟店も2020年4月から同じ基準です。JCBの基準（100万件）はVisa・Mastercard（600万件）より低いため、日本の加盟店はJCBの基準で先にオンサイト審査の対象になる場合があります。</li>
       </ul>
     </div>
     <div class="panel" role="tabpanel" id="lc-os" aria-labelledby="t-os"><h4>海外拠点・クラウド</h4>
@@ -701,7 +693,7 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
   <section class="part" id="faq">
     <h2>よくある質問</h2>
     <details><summary>Q：決済ページを決済代行業者に任せていても、PCI DSSは必要ですか？</summary><div class="a"><p>必要です。外部委託により対象範囲を大きく縮小できますが、加盟店は通常、該当するSAQを毎年完了し、AOCを提出する必要があります。どのSAQに該当するかは決済ページの組み込み方式によって決まります。〈<a href="https://www.securevectors.com/ja/news/what-is-your-saq-type">自社に該当するPCI DSS SAQの種類は？</a>〉もご覧ください。</p></div></details>
-    <details><summary>Q：PCI DSSの準拠証明書（AOC）の有効期間は？</summary><div class="a"><p>PCI DSSは12か月ごとに検証するため、毎年再審査を受け、新しいAOCを提出する必要があります。提出時期はアクワイアラ、ペイメントブランド、または取引先の要求によります。</p></div></details>
+    <details><summary>Q：PCI DSSの準拠証明書（AOC）の有効期間は？</summary><div class="a"><p>PCI DSSは12か月ごとに検証します。前回のAOCの期限前に年次審査を終え、新しいAOCを提出すれば、準拠状態が途切れません。提出時期はアクワイアラ、ペイメントブランド、または取引先の要求によります。</p></div></details>
     <details><summary>Q：コンサルティングと正式な審査を、同じQSA企業に依頼できますか？</summary><div class="a"><p>できます。PCI SSCの規定では、ある管理策の設計・導入に関与したQSAはその管理策を評価できませんが、同じ企業内の関与していない別のQSAが審査を行うことは可能です。QSA企業は職務分離の記録を残す必要があります。</p></div></details>
     <details><summary>Q：PCI DSSとISO 27001の違いは？</summary><div class="a"><p>ISO 27001は組織が範囲を定める情報セキュリティマネジメントシステムの認証です。PCI DSSはカード会員データに特化し、要件がより具体的で、四半期ごとのスキャンなど頻度の定められた技術的テストを含みます。ISO 27001取得企業は、一部の方針や手順を流用できます。</p></div></details>
   </section>
@@ -733,6 +725,7 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
       <li><a href="https://review.visa.com.br/content/dam/VCOM/download/business/resources-and-tools/DataSecurityComplianceServiceProviders.pdf">Visa：Data Security Compliance Requirements for Service Providers</a></li>
       <li><a href="https://www.j-credit.or.jp/security/pdf/Creditcardsecurityguidelines_4.0_published.pdf">クレジット取引セキュリティ対策協議会：クレジットカード・セキュリティガイドライン</a></li>
       <li><a href="https://www.jcb.co.jp/merchant/release/kappu_security.html">JCB：改正割賦販売法（セキュリティ対策）について</a></li>
+      <li><a href="https://www.global.jcb/en/products/security/data-security-program/index.html">JCB：JCB Data Security Program</a></li>
     </ul>
     <p class="byline">執筆：Secure Vectors QSAチーム</p>
     <p class="disc">＊本記事は基準の解説を目的としています。実際の審査範囲と方法は、アクワイアラの要件と貴社の決済環境に基づき個別に確認します。</p>
@@ -747,7 +740,7 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
       <div>
         <h2>PCIの専門家に相談する</h2>
         <p>このページで選んだ内容は右のフォームに自動で入力されています。会社名と連絡先をご記入いただければ、1営業日以内にご連絡します。</p>
-        <ul class="cred"><li>PCI SSC 認定セキュリティ評価者（QSA）</li><li>PCI 承認スキャニングベンダ（ASV）</li><li>PCI 3DS 評価機関</li><li>PCI PIN Security 評価機関</li></ul>
+        <ul class="cred"><li>PCI SSC 認定セキュリティ評価者（QSA）</li><li>承認されたスキャニングベンダ（ASV）</li><li>PCI 3DS 評価機関（3DS Assessor）</li><li>PIN 評価機関（QPA）</li></ul>
       </div>
       <form class="cf" id="cf" action="#" novalidate>
         <p class="stp"><i>1</i>このページでの選択内容</p>
@@ -789,7 +782,7 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
       <div><h5>会社情報</h5><a href="https://www.securevectors.com/ja/about-us">会社概要</a><a href="https://www.securevectors.com/ja/knowledge-center">ニュース</a><a href="https://www.securevectors.com/ja/events">イベント</a><a href="https://www.securevectors.com/ja/testimonials">お客様の声</a><a href="https://www.securevectors.com/ja/privacy-policy">プライバシーポリシー</a></div>
       <div><h5>お問い合わせ</h5><span style="display:block;margin:0 0 6px">台北（台湾）</span><a href="tel:+886233931006">+886 2-3393-1006</a><a href="mailto:service@securevectors.com">service@securevectors.com</a><a href="https://www.securevectors.com/ja/contact-us">拠点一覧 →</a></div>
     </div>
-    <div class="bottom"><span>PCI SSC QSA · PCI ASV · PCI 3DS評価機関 · PCI PIN Security評価機関</span><span>© 2026 Secure Vectors</span></div>
+    <div class="bottom"><span>PCI SSC 認定セキュリティ評価者（QSA）· 承認されたスキャニングベンダ（ASV）· PCI 3DS 評価機関（3DS Assessor）· PIN 評価機関（QPA）</span><span>© 2026 Secure Vectors</span></div>
   </div>
 </footer>
 
@@ -804,10 +797,10 @@ window.I18N={
   carried:'✓ ページ下部のお問い合わせフォームに反映しました', saqBadge:'推奨SAQ',
   sp:'サービスプロバイダー', m:'加盟店', spL1:'サービスプロバイダー レベル1', spL2:'サービスプロバイダー レベル2', mL1:'加盟店 レベル1', mL2:'加盟店 レベル2', mL3:'加盟店 レベル3', saqDsp:'D（サービスプロバイダー）',
   r:{
-    tpp:'<p>Mastercardの規定では、第三者処理業者、3-Dセキュアサービスプロバイダー、ステージド・デジタルウォレット事業者、トークンサービスプロバイダーは取引件数にかかわらずレベル1です。検証方法：QSAによる審査、ROCとAOC、四半期ごとのASVスキャン。</p>',
-    spHi:'<p>年間30万件超。検証方法：QSAによる審査、ROCとAOC、四半期ごとのASVスキャン。</p>',
+    tpp:'<p>Mastercardの規定では、第三者処理業者、3-Dセキュアサービスプロバイダー、ステージド・デジタルウォレット事業者、トークンサービスプロバイダーは取引件数にかかわらずレベル1です。検証方法：QSAがROCとAOCを発行し、四半期ごとにASVスキャンを実施。</p>',
+    spHi:'<p>年間30万件超。検証方法：QSAがROCとAOCを発行し、四半期ごとにASVスキャンを実施。</p>',
     spLo:'<p>検証方法：SAQ D（サービスプロバイダー版）、AOC、四半期ごとのASVスキャン。アクワイアラや取引先企業が契約でQSA署名のROCとAOCを求める場合があるため、事前にご確認ください。</p>',
-    m1:'<p>検証方法：ROCとAOC、四半期ごとのASVスキャン。ROCは通常QSAが作成しますが、一部のペイメントブランドはPCI SSCの研修を受けた社内評価者（ISA）も認めています。</p>',
+    m1:'<p>検証方法：QSAがROCとAOCを発行し、四半期ごとにASVスキャンを実施。</p>',
     saq:'<p>回答後、SAQに付属するAOCに署名します。四半期ASVスキャンの要否はSAQの種類によって異なります。複数の決済方法を併用している場合は、該当するSAQをアクワイアラにご確認ください。</p>',
     mc:function(t){return '<p>Mastercardの規定では、レベル2加盟店がSAQ '+t+'に該当する場合、QSAまたはISAによる検証も必要です。</p>'}
   },

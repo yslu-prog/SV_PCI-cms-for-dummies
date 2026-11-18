@@ -30,7 +30,7 @@
 {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://www.securevectors.com/zh-hans"},{"@type":"ListItem","position":2,"name":"PCI DSS","item":"https://www.securevectors.com/zh-hans/pci-dss"},{"@type":"ListItem","position":3,"name":"PCI DSS 认证一文读懂","item":"https://www.securevectors.com/zh-hans/pci-dss-compliance-for-dummies"}]},
 {"@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"支付页面交给支付服务商托管，还需要 PCI DSS 吗？","acceptedAnswer":{"@type":"Answer","text":"仍需要。外包可以大幅缩小范围，但商户通常仍须每年完成对应的 SAQ 并提交 AOC。适用哪一种 SAQ，取决于支付页面的嵌入方式。"}},
-{"@type":"Question","name":"PCI DSS 的 AOC 有效期多久？","acceptedAnswer":{"@type":"Answer","text":"PCI DSS 以 12 个月为验证周期，每年须重新评估并提交新的 AOC。提交时间依收单机构、卡组织或客户的要求而定。"}},
+{"@type":"Question","name":"PCI DSS 的 AOC 有效期多久？","acceptedAnswer":{"@type":"Answer","text":"PCI DSS 以 12 个月为验证周期。每年须在上一份 AOC 到期前完成年度复审，并提交新的 AOC，合规状态才不会中断。提交时间依收单机构、卡组织或客户的要求而定。"}},
 {"@type":"Question","name":"咨询辅导和正式评估，可以找同一家 QSA 公司吗？","acceptedAnswer":{"@type":"Answer","text":"可以。依 PCI SSC 规定，参与设计或实施某项控制措施的 QSA，不能评估同一项控制措施；可由同一家公司内未参与的另一位 QSA 执行评估，QSA 公司须保留职责分离的记录。"}},
 {"@type":"Question","name":"PCI DSS 和 ISO 27001 有什么不同？","acceptedAnswer":{"@type":"Answer","text":"ISO 27001 是信息安全管理体系认证，范围由组织自行界定；PCI DSS 专门针对持卡人数据，要求更具体，并包含每季度扫描等固定频率的技术检测。已取得 ISO 27001 的企业，部分制度与流程可以沿用。"}}
 ]}]}
@@ -114,6 +114,7 @@ figcaption{font-size:14.5px;color:var(--muted);margin-top:14px}
 .cad th{background:var(--bg-2);font-weight:700;color:var(--navy);white-space:nowrap}
 .cad td:first-child,.cad th:first-child{text-align:left;white-space:nowrap}
 .cad td small{display:block;color:var(--quiet);font-size:12.5px}
+.cad td:first-child small{white-space:normal;max-width:420px;line-height:1.55;margin-top:2px}
 .dot{display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--green)}
 .dot.p{background:var(--teal)}
 .dot.o{background:var(--orange)}
@@ -374,15 +375,15 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
 <div class="wrap narrow">
 
   <p class="lead">收单银行、合作伙伴或企业客户要求您提供 PCI DSS 合规证明（AOC）时，第一步是确认三件事：您属于哪一种角色、哪个等级，以及用什么方式验证。</p>
-  <p>本文依 PCI DSS v4.0.1，整理第一次接触 PCI DSS 合规时最常被问到的六个问题，并补充取得 AOC 之后每季度与每年要做的工作。内容以第一次接受 QSA 评估的服务提供商为例，商户的不同之处会在各段说明。想了解评估服务，请见 <a href="https://www.securevectors.com/zh-hans/pci-dss">PCI DSS 评估与认证</a>。</p>
+  <p>本文依 PCI DSS v4.0.1，整理第一次接触 PCI DSS 合规时最常被问到的六个问题，并补充取得 AOC 之后每季度与每年要做的工作。内容以第一次接受 QSA 评估的服务提供商为例，商户的不同之处会在各段说明。想了解评估服务，请见 <a href="https://www.securevectors.com/zh-hans/pci-dss">PCI DSS 认证服务</a>。</p>
 
   <div class="keybox">
     <h2>要点速览</h2>
     <ul>
       <li>PCI DSS 是保护银行卡数据的国际标准，现行版本为 v4.0.1。只要存储、处理或传输卡号，或可能影响卡号安全，就需要符合。</li>
-      <li>验证方式依等级而定：等级 1 须完成 ROC 与 AOC（服务提供商须由 QSA 评估），其他等级多以 SAQ 自我评估。依 Mastercard 规定，第三方处理商、3DS 服务提供商与电子钱包运营方不论交易量，一律列为等级 1；支付服务商（Payment Facilitator）年交易量超过 30 万笔，即为等级 1。</li>
-      <li>第一次评估约需 3–5 个月；中小型服务提供商的 QSA 评估费用约 1.5 万–2.5 万美元（不含差旅）。</li>
-      <li>取得 AOC 之后，依等级与 SAQ 类型，每季度执行 ASV 扫描、每年执行渗透测试，并每年重新评估。</li>
+      <li>验证方式依等级而定：等级 1 由 QSA 出具 ROC 与 AOC，其他等级多以 SAQ 自我评估。依 Mastercard 规定，第三方处理商、3DS 服务提供商与电子钱包运营方不论交易量，一律列为等级 1；支付服务商（Payment Facilitator）年交易量超过 30 万笔，即为等级 1。</li>
+      <li>第一次评估约需 3–5 个月；中小型服务提供商的 QSA 评估费用约 1.5 万–2.5 万美元（不含差旅，仅供参考）。</li>
+      <li>取得 AOC 之后，依等级与 SAQ 类型，每季度执行 ASV 扫描、每年执行渗透测试，并汇总全年证据进行年度复审。</li>
     </ul>
   </div>
 
@@ -398,7 +399,7 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
         <tr><td>内部漏洞扫描<small>11.3.1</small></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td></tr>
         <tr><td>网络分段测试<small>11.4.6・每 6 个月</small></td><td></td><td><span class="dot p"></span></td><td></td><td><span class="dot p"></span></td></tr>
         <tr><td>内部与外部渗透测试<small>11.4.2、11.4.3・每年</small></td><td colspan="4"><span class="span4"></span><small>年度内择期执行；重大变更后也须测试</small></td></tr>
-        <tr><td>重新评估，提交新的 AOC</td><td></td><td></td><td></td><td><span class="dot o"></span></td></tr>
+        <tr><td>年度复审<small>在上一份 AOC 满一年前，汇总这一年的证据（每季度扫描报告、渗透测试报告、日志与记录），交由 QSA 评估并取得新的 AOC，确保合规状态不中断</small></td><td></td><td></td><td></td><td><span class="dot o"></span></td></tr>
       </tbody>
     </table>
     </div>
@@ -426,7 +427,7 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
       <thead><tr><th>文件</th><th>说明</th><th class="nw">适用对象</th></tr></thead>
       <tbody>
         <tr><td class="lv">AOC<small>遵从性证明书</small><small class="ef">Attestation of Compliance</small></td><td>评估结果的摘要声明，业内常称“合规证明”，是提交给收单银行、卡组织或客户的正式文件，每 12 个月更新一次</td><td class="nw">所有等级</td></tr>
-        <tr><td class="lv">ROC<small>遵从性报告</small><small class="ef">Report on Compliance</small></td><td>评估人员逐项记录评估结果的完整报告，服务提供商须由 QSA 执行；完成后签署 ROC 版的 AOC</td><td class="nw">等级 1</td></tr>
+        <tr><td class="lv">ROC<small>遵从性报告</small><small class="ef">Report on Compliance</small></td><td>QSA 逐项记录评估结果的完整报告，并一并出具 AOC</td><td class="nw">等级 1</td></tr>
         <tr><td class="lv">SAQ<small>自我评估调查问卷</small><small class="ef">Self-Assessment Questionnaire</small></td><td>按支付方式选择类型，由企业自行填写；完成后签署 SAQ 所附的 AOC</td><td class="nw">等级 2 及以下</td></tr>
       </tbody>
     </table></div>
@@ -584,21 +585,11 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
       <div class="bar"><span>报告阶段</span><span class="t"><i style="left:63%;width:20%"></i></span><span class="d">0.5–1 个月</span></div>
     </div>
     <p>周期主要受以下因素影响：范围大小、架构是否需要调整、设备采购时间、检测后的修复次数，以及内部能投入的人力。</p>
-
-    <h3>您目前是哪一种情况？</h3>
-    <div class="tabs" role="tablist" aria-label="周期情况" data-carry="sit">
-      <button type="button" role="tab" aria-selected="true" aria-controls="sc1" id="t-sc1">首次评估</button>
-      <button type="button" role="tab" aria-selected="false" aria-controls="sc2" id="t-sc2">已缩小范围</button>
-      <button type="button" role="tab" aria-selected="false" aria-controls="sc3" id="t-sc3">年度复评</button>
-    </div>
-    <div class="panel" role="tabpanel" id="sc1" aria-labelledby="t-sc1"><h4>首次评估的服务提供商</h4><p class="dur">约 3–5 个月</p><p>架构调整与检测修复最耗时。越早完成范围界定与差距分析，后续越顺利。</p></div>
-    <div class="panel" role="tabpanel" id="sc2" aria-labelledby="t-sc2"><h4>已缩小范围</h4><p class="dur">通常比首次快</p><p>例如支付页面交由支付服务商托管，或以令牌（token）替代卡号，需要处理的系统就少了。</p></div>
-    <div class="panel" role="tabpanel" id="sc3" aria-labelledby="t-sc3"><h4>年度复评</h4><p class="dur">通常比首次快</p><p>上一年的整改如已完成、架构没有大幅变动，且每季度扫描与年度测试的记录都已保存，复评会顺利很多。</p></div>
   </section>
 
   <section class="part" id="cost">
     <h2><span class="no">06</span>PCI DSS 认证费用怎么估算？</h2>
-    <p class="answer">以首次评估的中小型服务提供商为例，QSA 评估费用约 1.5 万–2.5 万美元（不含差旅）。此外可能还需要系统、设备与技术检测等整改费用。</p>
+    <p class="answer">以首次评估的中小型服务提供商为例，QSA 评估费用约 1.5 万–2.5 万美元（不含差旅）。此外可能还需要系统、设备与技术检测等整改费用。以上金额仅供参考，实际费用视贵公司环境与评估范围而定。</p>
 
     <h3>可能增加的费用</h3>
     <div class="md">
@@ -625,7 +616,7 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
                 <tr><td class="nw">卡组织注册</td><td>3,000–5,000</td><td class="nw">每年</td></tr>
               </tbody>
             </table></div>
-            <p class="note" style="margin-top:8px">以上为亚洲中小型服务提供商的参考值，实际依当地市场与评估范围而定。</p>
+            <p class="note" style="margin-top:8px">以上金额仅供参考，实际费用视贵公司环境与评估范围而定。</p>
           </div>
         </div>
       </div>
@@ -653,7 +644,7 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
         <tr><td class="nw">每季度（服务提供商）</td><td>检查员工是否按安全策略作业</td><td class="en nw">12.4.2</td></tr>
         <tr><td class="nw">每 6 个月（服务提供商）</td><td>网络分段测试；分段方式变更后也要测试</td><td class="en nw">11.4.6</td></tr>
         <tr><td class="nw">每年，以及重大变更后</td><td>内部与外部渗透测试</td><td class="en nw">11.4.2、11.4.3</td></tr>
-        <tr><td class="nw">每年</td><td>重新评估，提交新的 AOC</td><td></td></tr>
+        <tr><td class="nw">每年（上一份 AOC 到期前）</td><td>汇总全年证据进行年度复审，取得新的 AOC</td><td></td></tr>
       </tbody>
     </table></div>
     <p>系统部署在云上，仍须对自己管理的部分（例如虚拟网络内的主机与应用）执行内部渗透测试；云服务商负责的基础设施，以其 AOC 与责任矩阵（Responsibility Matrix）为准。以 SAQ 自我评估的企业，要做哪些项目依 SAQ 类型而定。</p>
@@ -672,7 +663,8 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
     </div>
     <div class="panel" role="tabpanel" id="lc-cn" aria-labelledby="t-cn"><h4>中国内地</h4>
       <ul>
-        <li><b>谁来要求</b>：PCI DSS 由国际卡组织与收单机构要求，常见于外卡收单、跨境电商与跨境支付业务。中国银联为 PCI SSC 策略会员。</li>
+        <li><b>银联的要求</b>：PCI SSC 已将银联列为参与支付品牌（Participating Payment Brand），PCI DSS v4.0 起的文件均已纳入银联。各支付品牌自行规定验证要求，银联卡业务的验证方式与提交时间，请向收单机构或银联确认。外卡收单、跨境电商与跨境支付业务，则由国际卡组织与收单机构要求 PCI DSS。</li>
+        <li><b>银联卡收单的国内规定</b>：中国人民银行《银行卡收单业务管理办法》第二十八条规定，收单机构不得以任何形式存储银行卡磁道信息或芯片信息、卡片验证码、卡片有效期、个人标识码等敏感信息，并应采取有效措施防止特约商户和外包服务机构存储；因特殊业务需要且经持卡人本人同意等情形除外。第三十六条也规定，收单机构的管理责任和风险承担责任不因外包关系而转移，因此收单机构通常会要求外包服务机构提供安全合规证明。其中“卡片有效期”在 PCI DSS 中可在加密保护下存储，《办法》则原则上禁止，要求更为严格。</li>
         <li><b>与国内要求并行</b>：《网络安全法》第二十一条规定国家实行网络安全等级保护制度。PCI DSS 不能替代等级保护，两者的部分控制措施与证据可以共用，建议同步规划。</li>
         <li><b>数据出境</b>：2024 年 3 月施行的《促进和规范数据跨境流动规定》第五条规定，为订立、履行个人作为一方当事人的合同（如跨境购物、支付）所必需向境外提供个人信息的，免于申报数据出境安全评估、订立个人信息出境标准合同或通过个人信息保护认证。持卡人数据环境的位置、日志与评估证据的存放地点，以及能否远程调阅，建议在范围界定时一并确认。</li>
         <li><b>现场评估</b>：安律国际的 QSA 服务覆盖全球；涉及内地场所时，于范围界定阶段一并规划。</li>
@@ -702,7 +694,7 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
   <section class="part" id="faq">
     <h2>常见问题</h2>
     <details><summary>Q：支付页面交给支付服务商托管，还需要 PCI DSS 吗？</summary><div class="a"><p>仍需要。外包可以大幅缩小范围，但商户通常仍须每年完成对应的 SAQ 并提交 AOC。适用哪一种 SAQ，取决于支付页面的嵌入方式，详见〈<a href="https://www.securevectors.com/zh-hans/news/what-is-your-saq-type">您适用哪一种 PCI DSS SAQ 类型？</a>〉。</p></div></details>
-    <details><summary>Q：PCI DSS 的 AOC 有效期多久？</summary><div class="a"><p>PCI DSS 以 12 个月为验证周期，每年须重新评估并提交新的 AOC。提交时间依收单机构、卡组织或客户的要求而定。</p></div></details>
+    <details><summary>Q：PCI DSS 的 AOC 有效期多久？</summary><div class="a"><p>PCI DSS 以 12 个月为验证周期。每年须在上一份 AOC 到期前完成年度复审，并提交新的 AOC，合规状态才不会中断。提交时间依收单机构、卡组织或客户的要求而定。</p></div></details>
     <details><summary>Q：咨询辅导和正式评估，可以找同一家 QSA 公司吗？</summary><div class="a"><p>可以。依 PCI SSC 规定，参与设计或实施某项控制措施的 QSA，不能评估同一项控制措施；可由同一家公司内未参与的另一位 QSA 执行评估，QSA 公司须保留职责分离的记录。</p></div></details>
     <details><summary>Q：PCI DSS 和 ISO 27001 有什么不同？</summary><div class="a"><p>ISO 27001 是信息安全管理体系认证，范围由组织自行界定；PCI DSS 专门针对持卡人数据，要求更具体，并包含每季度扫描等固定频率的技术检测。已取得 ISO 27001 的企业，部分制度与流程可以沿用。</p></div></details>
   </section>
@@ -732,6 +724,8 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
       <li><a href="https://mastercard.com/content/dam/public/mastercardcom/globalrisk/pdf/Service%20Provider%20Categories%20and%20PCI%20(30%20Sept.%202020).pdf">Mastercard：Service Provider Categories and PCI（服务提供商等级）</a></li>
       <li><a href="https://usa.visa.com/dam/VCOM/download/merchants/cisp-what-to-do-if-compromised.pdf">Visa：What To Do If Compromised v10.0（商户等级）</a></li>
       <li><a href="https://review.visa.com.br/content/dam/VCOM/download/business/resources-and-tools/DataSecurityComplianceServiceProviders.pdf">Visa：Data Security Compliance Requirements for Service Providers</a></li>
+      <li><a href="https://www.pcisecuritystandards.org/faqs/1561/">PCI SSC FAQ 1561：银联纳入 PCI DSS 文件的影响</a></li>
+      <li><a href="https://fgw.sh.gov.cn/cmsres/b9/b91df0558a28438a854bfe291d81643f/77360ff7206e671406805a134ba4e58d.pdf">中国人民银行：《银行卡收单业务管理办法》（2013 年第 9 号公告）</a></li>
       <li><a href="https://www.cac.gov.cn/2024-03/22/c_1712776611775634.htm">国家互联网信息办公室：《促进和规范数据跨境流动规定》</a></li>
       <li><a href="https://www.hkma.gov.hk/media/eng/doc/key-functions/financial-infrastructure/Guidelines-on-supervision-of-SVF-licensees_Eng.pdf">香港金融管理局：Guideline on Supervision of SVF Licensees</a></li>
     </ul>
@@ -748,7 +742,7 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
       <div>
         <h2>与 PCI 专家聊聊</h2>
         <p>您在本页的选择已自动带入右侧。留下公司与联系方式，我们将在一个工作日内回复。</p>
-        <ul class="cred"><li>PCI SSC 合格安全性评估商（QSA）</li><li>PCI 经批准的扫描服务商（ASV）</li><li>PCI 3DS 评估机构</li><li>PCI PIN Security 评估机构</li></ul>
+        <ul class="cred"><li>PCI SSC 合格安全性评估商（QSA）</li><li>经批准的扫描服务商（ASV）</li><li>PCI 3DS 评估机构（3DS Assessor）</li><li>PIN 评估机构（QPA）</li></ul>
       </div>
       <form class="cf" id="cf" action="#" novalidate>
         <p class="stp"><i>1</i>您在本页的选择</p>
@@ -790,7 +784,7 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
       <div><h5>关于我们</h5><a href="https://www.securevectors.com/zh-hans/about-us">公司简介</a><a href="https://www.securevectors.com/zh-hans/knowledge-center">最新消息</a><a href="https://www.securevectors.com/zh-hans/events">活动信息</a><a href="https://www.securevectors.com/zh-hans/testimonials">客户评价</a><a href="https://www.securevectors.com/zh-hans/privacy-policy">隐私政策</a></div>
       <div><h5>联系我们</h5><span style="display:block;margin:0 0 6px">台北 · 台湾</span><a href="tel:+886233931006">+886 2-3393-1006</a><a href="mailto:service@securevectors.com">service@securevectors.com</a><a href="https://www.securevectors.com/zh-hans/contact-us">查看所有据点 →</a></div>
     </div>
-    <div class="bottom"><span>PCI SSC 合格安全性评估商（QSA）· PCI ASV · PCI 3DS 评估机构 · PCI PIN Security 评估机构</span><span>© 2026 安律国际股份有限公司</span></div>
+    <div class="bottom"><span>PCI SSC 合格安全性评估商（QSA）· 经批准的扫描服务商（ASV）· PCI 3DS 评估机构（3DS Assessor）· PIN 评估机构（QPA）</span><span>© 2026 安律国际股份有限公司</span></div>
   </div>
 </footer>
 
@@ -805,10 +799,10 @@ window.I18N={
   carried:'✓ 已带入页尾的联系表单', saqBadge:'建议 SAQ',
   sp:'服务提供商', m:'商户', spL1:'服务提供商 等级 1', spL2:'服务提供商 等级 2', mL1:'商户 等级 1', mL2:'商户 等级 2', mL3:'商户 等级 3', saqDsp:'D（服务提供商）',
   r:{
-    tpp:'<p>依 Mastercard 规定，第三方处理商、3DS 服务提供商、电子钱包运营方与令牌服务提供商不论交易量，一律列为等级 1。验证方式：由 QSA 评估，完成 ROC 与 AOC，以及每季度 ASV 扫描。</p>',
-    spHi:'<p>年交易量超过 30 万笔。验证方式：由 QSA 评估，完成 ROC 与 AOC，以及每季度 ASV 扫描。</p>',
+    tpp:'<p>依 Mastercard 规定，第三方处理商、3DS 服务提供商、电子钱包运营方与令牌服务提供商不论交易量，一律列为等级 1。验证方式：由 QSA 出具 ROC 与 AOC，并每季度执行 ASV 扫描。</p>',
+    spHi:'<p>年交易量超过 30 万笔。验证方式：由 QSA 出具 ROC 与 AOC，并每季度执行 ASV 扫描。</p>',
     spLo:'<p>验证方式：SAQ D（服务提供商版）、AOC，以及每季度 ASV 扫描。收单银行或企业客户可能在合同中要求 QSA 签署的 ROC 与 AOC，建议先与对方确认。</p>',
-    m1:'<p>验证方式：ROC、AOC，以及每季度 ASV 扫描。ROC 多由 QSA 评估；部分卡组织也接受经 PCI SSC 培训的内部评估员（ISA）。</p>',
+    m1:'<p>验证方式：由 QSA 出具 ROC 与 AOC，并每季度执行 ASV 扫描。</p>',
     saq:'<p>填写完成后，签署 SAQ 所附的 AOC。是否需要每季度 ASV 扫描，依 SAQ 类型而定；多种支付方式并存时，请向收单机构确认适用类型。</p>',
     mc:function(t){return '<p>依 Mastercard 规定，等级 2 商户适用 SAQ '+t+' 时，须另由 QSA 或 ISA 协助验证。</p>'}
   },

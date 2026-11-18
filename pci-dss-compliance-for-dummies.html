@@ -6,7 +6,7 @@
 <!-- 預覽用：正式頁面請勿加入 noindex；上線時刪除下一行 -->
 <meta name="robots" content="noindex, nofollow">
 <title>PCI DSS 認證懶人包：是什麼、流程、時程與費用（v4.0.1）｜安律國際</title>
-<meta name="description" content="第一次被收單機構或客戶要求 PCI DSS 認證？依 v4.0.1 說明等級與 SAQ 判斷、AOC 與 ROC、QSA 評估流程；首次評估約 3–5 個月，QSA 評估費用約新台幣 45–80 萬元，並整理通過後每季與每年要做的事。">
+<meta name="description" content="第一次被收單機構或客戶要求 PCI DSS 認證？依 v4.0.1 說明等級與 SAQ 判斷、AOC 與 ROC、QSA 審查流程；首次審查約 3–5 個月，QSA 審查費用約新台幣 45–80 萬元，並整理通過後每季與每年要做的事。">
 <link rel="canonical" href="https://www.securevectors.com/zh-hant/pci-dss-compliance-for-dummies">
 <link rel="alternate" hreflang="zh-Hant" href="https://www.securevectors.com/zh-hant/pci-dss-compliance-for-dummies">
 <link rel="alternate" hreflang="zh-Hans" href="https://www.securevectors.com/zh-hans/pci-dss-compliance-for-dummies">
@@ -26,12 +26,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
-{"@type":"Article","headline":"【PCI DSS 過證懶人包】是什麼、誰需要、流程、時程與費用一次看懂","description":"依 PCI DSS v4.0.1 整理 3W3H 六大問題：PCI DSS 是什麼、哪些企業需要、誰來評估、認證流程、時程與費用，以及通過之後每季與每年要做的事。","dateModified":"2026-11-17","image":"https://www.securevectors.com/REPLACE-pci-dss-dummies-cover-zh-hant-1200x630.jpg","inLanguage":"zh-Hant","mainEntityOfPage":"https://www.securevectors.com/zh-hant/pci-dss-compliance-for-dummies","author":{"@type":"Organization","name":"安律國際 QSA 團隊","url":"https://www.securevectors.com/zh-hant/about-us"},"publisher":{"@type":"Organization","name":"安律國際股份有限公司（Secure Vectors）","url":"https://www.securevectors.com/","logo":{"@type":"ImageObject","url":"https://cdn.prod.website-files.com/6a584d9666c0b548007a776f/6a5de36630cc59044eec7935_sv-logo.svg"}},"about":["PCI DSS","PCI DSS v4.0.1","Qualified Security Assessor","Attestation of Compliance","Self-Assessment Questionnaire"]},
+{"@type":"Article","headline":"【PCI DSS 過證懶人包】是什麼、誰需要、流程、時程與費用一次看懂","description":"依 PCI DSS v4.0.1 整理 3W3H 六大問題：PCI DSS 是什麼、哪些企業需要、誰來審查、認證流程、時程與費用，以及通過之後每季與每年要做的事。","dateModified":"2026-11-17","image":"https://www.securevectors.com/REPLACE-pci-dss-dummies-cover-zh-hant-1200x630.jpg","inLanguage":"zh-Hant","mainEntityOfPage":"https://www.securevectors.com/zh-hant/pci-dss-compliance-for-dummies","author":{"@type":"Organization","name":"安律國際 QSA 團隊","url":"https://www.securevectors.com/zh-hant/about-us"},"publisher":{"@type":"Organization","name":"安律國際股份有限公司（Secure Vectors）","url":"https://www.securevectors.com/","logo":{"@type":"ImageObject","url":"https://cdn.prod.website-files.com/6a584d9666c0b548007a776f/6a5de36630cc59044eec7935_sv-logo.svg"}},"about":["PCI DSS","PCI DSS v4.0.1","Qualified Security Assessor","Attestation of Compliance","Self-Assessment Questionnaire"]},
 {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://www.securevectors.com/zh-hant"},{"@type":"ListItem","position":2,"name":"PCI DSS","item":"https://www.securevectors.com/zh-hant/pci-dss"},{"@type":"ListItem","position":3,"name":"PCI DSS 過證懶人包","item":"https://www.securevectors.com/zh-hant/pci-dss-compliance-for-dummies"}]},
 {"@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"付款頁面交給金流業者託管，還需要 PCI DSS 嗎？","acceptedAnswer":{"@type":"Answer","text":"仍需要。外包可以大幅縮小範圍，但特約商店通常仍須每年完成對應的 SAQ 並提交 AOC。適用哪一種 SAQ，取決於付款頁面的嵌入方式。"}},
-{"@type":"Question","name":"PCI DSS 的 AOC 效期多久？","acceptedAnswer":{"@type":"Answer","text":"PCI DSS 以 12 個月為驗證週期，每年須重新評估並提交新的 AOC。提交時程依收單機構、卡組織或客戶的要求而定。"}},
-{"@type":"Question","name":"顧問輔導和正式評估，可以找同一家 QSAC 嗎？","acceptedAnswer":{"@type":"Answer","text":"可以。依 PCI SSC 規定，參與設計或建置某項控制措施的 QSA，不能評估同一項控制措施；可由同一家公司內未參與的另一位 QSA 執行評估，QSAC 須保留職務分離的紀錄。"}},
+{"@type":"Question","name":"PCI DSS 的 AOC 效期多久？","acceptedAnswer":{"@type":"Answer","text":"PCI DSS 以 12 個月為驗證週期。每年須在前一份 AOC 屆滿前完成年度審查，並提交新的 AOC，合規狀態才不會中斷。提交時程依收單機構、卡組織或客戶的要求而定。"}},
+{"@type":"Question","name":"顧問輔導和正式審查，可以找同一家 QSAC 嗎？","acceptedAnswer":{"@type":"Answer","text":"可以。依 PCI SSC 規定，參與設計或建置某項控制措施的 QSA，不能審查同一項控制措施；可由同一家公司內未參與的另一位 QSA 執行審查，QSAC 須保留職務分離的紀錄。"}},
 {"@type":"Question","name":"PCI DSS 和 ISO 27001 有什麼不同？","acceptedAnswer":{"@type":"Answer","text":"ISO 27001 是資訊安全管理系統驗證，範圍由組織自訂；PCI DSS 專門針對持卡人資料，要求更具體，並包含每季掃描等固定頻率的技術檢測。已取得 ISO 27001 的機構，部分政策與流程可沿用。"}}
 ]}]}
 </script>
@@ -114,6 +114,7 @@ figcaption{font-size:14.5px;color:var(--muted);margin-top:14px}
 .cad th{background:var(--bg-2);font-weight:700;color:var(--navy);white-space:nowrap}
 .cad td:first-child,.cad th:first-child{text-align:left;white-space:nowrap}
 .cad td small{display:block;color:var(--quiet);font-size:12.5px}
+.cad td:first-child small{white-space:normal;max-width:420px;line-height:1.55;margin-top:2px}
 .dot{display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--green)}
 .dot.p{background:var(--teal)}
 .dot.o{background:var(--orange)}
@@ -350,7 +351,7 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
   <ol>
     <li><a href="#what"><b>01</b>是什麼</a></li>
     <li><a href="#who"><b>02</b>誰需要</a></li>
-    <li><a href="#assist"><b>03</b>誰評估</a></li>
+    <li><a href="#assist"><b>03</b>誰審查</a></li>
     <li><a href="#how"><b>04</b>流程</a></li>
     <li><a href="#time"><b>05</b>時程</a></li>
     <li><a href="#cost"><b>06</b>費用</a></li>
@@ -374,22 +375,22 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
 <div class="wrap narrow">
 
   <p class="lead">收單銀行、合作夥伴或企業客戶要求您提供 PCI DSS 合規證明（AOC）時，第一步是確認三件事：您屬於哪一種角色、哪個等級，以及要用什麼方式驗證。</p>
-  <p>本文依 PCI DSS v4.0.1，整理第一次接觸 PCI DSS 合規時最常被問到的六個問題，並補充取得 AOC 之後每季與每年要做的事。內容以第一次接受 QSA 評估的服務供應商為例，特約商店的不同之處會在各段說明。想了解評估服務，請見 <a href="https://www.securevectors.com/zh-hant/pci-dss">PCI DSS 評估與認證</a>。</p>
+  <p>本文依 PCI DSS v4.0.1，整理第一次接觸 PCI DSS 合規時最常被問到的六個問題，並補充取得 AOC 之後每季與每年要做的事。內容以第一次接受 QSA 審查的服務供應商為例，特約商店的不同之處會在各段說明。想了解審查服務，請見 <a href="https://www.securevectors.com/zh-hant/pci-dss">PCI DSS 認證服務</a>。</p>
 
   <div class="keybox">
     <h2>重點整理</h2>
     <ul>
       <li>PCI DSS 是保護信用卡資料的國際標準，現行版本為 v4.0.1。只要儲存、處理或傳輸卡號，或可能影響卡號安全，就需要符合。</li>
-      <li>驗證方式依等級而定：等級 1 須完成 ROC 與 AOC（服務供應商須由 QSA 評估），其他等級多以 SAQ 自我評估。依 Mastercard 規定，第三方處理商、3DS 服務供應商與電子錢包業者不論交易量，一律列為等級 1；第三方支付年交易量超過 30 萬筆，即為等級 1。</li>
-      <li>第一次評估約需 3–5 個月；中小型服務供應商的 QSA 評估費用約新台幣 45–80 萬元（不含差旅）。</li>
-      <li>取得 AOC 之後，依等級與 SAQ 類型，每季執行 ASV 掃描、每年執行滲透測試，並每年重新評估。</li>
+      <li>驗證方式依等級而定：等級 1 由 QSA 出具 ROC 與 AOC，其他等級多以 SAQ 自我評估。依 Mastercard 規定，第三方處理商、3DS 服務供應商與電子錢包業者不論交易量，一律列為等級 1；第三方支付年交易量超過 30 萬筆，即為等級 1。</li>
+      <li>第一次審查約需 3–5 個月；中小型服務供應商的 QSA 審查費用約新台幣 45–80 萬元（不含差旅，僅供參考）。</li>
+      <li>取得 AOC 之後，依等級與 SAQ 類型，每季執行 ASV 掃描、每年執行滲透測試，並彙整全年證據進行年度審查。</li>
     </ul>
   </div>
 
   <figure>
     <p class="ftag">SECURE VECTORS · PCI DSS</p>
     <p class="ftitle">PCI DSS 年度合規週期（以服務供應商等級 1 為例）</p>
-    <div class="start"><span class="pill p1">首次評估 約 3–5 個月</span><span class="ar">→</span><span class="pill p2">取得 AOC</span><span class="ar">→ 接下來 12 個月：</span></div>
+    <div class="start"><span class="pill p1">首次審查 約 3–5 個月</span><span class="ar">→</span><span class="pill p2">取得 AOC</span><span class="ar">→ 接下來 12 個月：</span></div>
     <div class="tw" style="margin:0">
     <table class="cad">
       <thead><tr><th>項目</th><th>Q1</th><th>Q2</th><th>Q3</th><th>Q4</th></tr></thead>
@@ -398,7 +399,7 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
         <tr><td>內部弱點掃描<small>11.3.1</small></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td></tr>
         <tr><td>網段隔離測試<small>11.4.6・每 6 個月</small></td><td></td><td><span class="dot p"></span></td><td></td><td><span class="dot p"></span></td></tr>
         <tr><td>內部與外部滲透測試<small>11.4.2、11.4.3・每年</small></td><td colspan="4"><span class="span4"></span><small>年度內擇期執行；重大變更後也須測試</small></td></tr>
-        <tr><td>重新評估，提交新的 AOC</td><td></td><td></td><td></td><td><span class="dot o"></span></td></tr>
+        <tr><td>年度審查<small>在前一份 AOC 屆滿一年前，彙整這一年的證據（每季掃描報告、滲透測試報告、日誌與紀錄），交由 QSA 審查並取得新的 AOC，讓合規狀態不中斷</small></td><td></td><td></td><td></td><td><span class="dot o"></span></td></tr>
       </tbody>
     </table>
     </div>
@@ -421,16 +422,16 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
       <div class="goal"><p class="gn">維護資訊安全政策</p><ul><li><i>12</i>以政策與計畫支援資訊安全</li></ul></div>
     </div>
 
-    <h3>評估完成後會拿到哪些文件？</h3>
+    <h3>審查完成後會拿到哪些文件？</h3>
     <div class="tw"><table>
       <thead><tr><th>文件</th><th>說明</th><th class="nw">適用對象</th></tr></thead>
       <tbody>
-        <tr><td class="lv">AOC<small>合規證明</small><small class="ef">Attestation of Compliance</small></td><td>評估結果的摘要聲明，也是交給收單銀行、卡組織或客戶的正式文件，每 12 個月更新一次</td><td class="nw">所有等級</td></tr>
-        <tr><td class="lv">ROC<small>合規報告</small><small class="ef">Report on Compliance</small></td><td>評估人員逐項記錄評估結果的完整報告，服務供應商須由 QSA 執行；完成後簽署 ROC 版的 AOC</td><td class="nw">等級 1</td></tr>
+        <tr><td class="lv">AOC<small>合規證明</small><small class="ef">Attestation of Compliance</small></td><td>審查結果的摘要聲明，也是交給收單銀行、卡組織或客戶的正式文件，每 12 個月更新一次</td><td class="nw">所有等級</td></tr>
+        <tr><td class="lv">ROC<small>合規報告</small><small class="ef">Report on Compliance</small></td><td>QSA 逐項記錄審查結果的完整報告，並一併出具 AOC</td><td class="nw">等級 1</td></tr>
         <tr><td class="lv">SAQ<small>自我評估問卷</small><small class="ef">Self-Assessment Questionnaire</small></td><td>依付款方式選擇類型，由企業自行填寫；完成後簽署 SAQ 所附的 AOC</td><td class="nw">等級 2 以下</td></tr>
       </tbody>
     </table></div>
-    <p>PCI SSC 不發證書，企業的 PCI DSS 合規性以 AOC 為正式證明。市場上常說的「PCI DSS 證書」，是 QSAC 依評估結果另外提供的證明，正式依據仍是 AOC。安律國際核發的證明，可以在 <a href="https://cert.securevectors.com/">證書查詢平台</a> 驗證。</p>
+    <p>PCI SSC 不發證書，企業的 PCI DSS 合規性以 AOC 為正式證明。市場上常說的「PCI DSS 證書」，是 QSAC 依審查結果另外提供的證明，正式依據仍是 AOC。安律國際核發的證明，可以在 <a href="https://cert.securevectors.com/">證書查詢平台</a> 驗證。</p>
   </section>
 
   <section class="part" id="who">
@@ -491,8 +492,8 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
     </table></div>
     <div class="tnote">
       <p>交易量以單一卡組織的年交易量計算。Visa 自 2024 年 4 月起，將特約商店等級 3、4 合併為等級 3；Mastercard 仍分 4 級。</p>
-      <details class="mcn"><summary>※ Mastercard 補充規定</summary><div class="a"><p>依 Mastercard 規定，第三方處理商（TPP）、3DS 服務供應商、電子錢包業者（SDWO）與代碼服務供應商（TSP）不論交易量，一律列為等級 1；第三方支付（Payment Facilitator）年交易量超過 30 萬筆為等級 1。等級 2 服務供應商若發生確認的資料外洩，會改列為等級 1。</p>
-      <p>Mastercard 等級 2 特約商店若適用 SAQ A、A-EP 或 D，須另由 QSA 或 ISA（受過 PCI SSC 訓練的內部評估員）協助驗證。</p></div></details>
+      <details class="mcn"><summary>※ 卡組織補充規定（Mastercard・JCB）</summary><div class="a"><p>依 Mastercard 規定，第三方處理商（TPP）、3DS 服務供應商、電子錢包業者（SDWO）與代碼服務供應商（TSP）不論交易量，一律列為等級 1；第三方支付（Payment Facilitator）年交易量超過 30 萬筆為等級 1。等級 2 服務供應商若發生確認的資料外洩，會改列為等級 1。</p>
+      <p>Mastercard 等級 2 特約商店若適用 SAQ A、A-EP 或 D，須另由 QSA 或 ISA（受過 PCI SSC 訓練的內部安全審查員）協助驗證。</p><p>JCB 對年交易量 100 萬筆以上的特約商店與第三方處理商，要求每年由 QSA 現場審查；網路支付服務供應商（IPSP）不論交易量，都須接受現場審查。</p></div></details>
       <p>實際等級以收單機構的通知為準。</p>
     </div>
 
@@ -526,49 +527,49 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
   </section>
 
   <section class="part" id="assist">
-    <h2><span class="no">03</span>誰來評估？QSA、ASV 與收單機構的角色</h2>
-    <p class="answer">PCI DSS 評估由 PCI SSC 認可的 QSA 執行。QSAC 是聘有 QSA 的公司，可以提供顧問輔導，也可以執行正式評估。</p>
+    <h2><span class="no">03</span>誰來審查？QSA、ASV 與收單機構的角色</h2>
+    <p class="answer">PCI DSS 審查由 PCI SSC 認可的 QSA 執行。QSAC 是聘有 QSA 的公司，可以提供顧問輔導，也可以執行正式審查。</p>
     <div class="tw"><table>
       <thead><tr><th>角色</th><th>負責什麼</th></tr></thead>
       <tbody>
-        <tr><td class="lv">QSA<small>合格安全評估員</small></td><td>執行評估，出具 ROC 與 AOC</td></tr>
-        <tr><td class="lv">QSAC<small>合格安全評估機構</small></td><td>聘有 QSA，提供差距分析、輔導與正式評估 ※</td></tr>
+        <tr><td class="lv">QSA<small>合格安全審查員</small></td><td>執行審查，出具 ROC 與 AOC</td></tr>
+        <tr><td class="lv">QSAC<small>合格安全審查機構</small></td><td>聘有 QSA，提供差距分析、輔導與正式審查 ※</td></tr>
         <tr><td class="lv">ASV<small>核可掃描廠商</small></td><td>執行外部弱點掃描，受評企業須每季完成一次</td></tr>
         <tr><td class="lv">收單機構<small>收單銀行等</small></td><td>通知您的等級、驗證方式與 AOC 繳交時間</td></tr>
       </tbody>
     </table></div>
-    <div class="tnote"><p>※ QSA 不能評估自己協助設計或建置的控制措施，須由未參與的另一位 QSA 執行評估。</p></div>
+    <div class="tnote"><p>※ QSA 不能審查自己協助設計或建置的控制措施，須由未參與的另一位 QSA 執行審查。</p></div>
     <p>服務供應商另有專屬要求，例如每季檢視同仁是否依安全政策作業（要求 12.4.2），詳見〈<a href="https://www.securevectors.com/zh-hant/news/pci-dss-v4-0-12-4-2-2">如何符合 PCI DSS v4.0 條款 12.4.2</a>〉。</p>
 
     <h3>選擇 QSAC 的 5 個重點</h3>
     <ol>
       <li><b>資格</b>：到 <a href="https://www.pcisecuritystandards.org/assessors_and_solutions/qualified_security_assessors">PCI SSC 官網</a> 確認對方名列 QSAC，而且服務範圍涵蓋您的營運地點。</li>
-      <li><b>是否同時是 ASV</b>：每季掃描和年度評估由同一家處理，溝通比較單純。</li>
+      <li><b>是否同時是 ASV</b>：每季掃描和年度審查由同一家處理，溝通比較單純。</li>
       <li><b>服務供應商經驗</b>：請對方分享同類業者的案例。</li>
-      <li><b>在地支援</b>：中文文件、現場評估，以及日後的溝通。</li>
-      <li><b>報價透明</b>：評估天數、抽樣方式與報告時程，是否說明清楚。</li>
+      <li><b>在地支援</b>：中文文件、現場審查，以及日後的溝通。</li>
+      <li><b>報價透明</b>：審查天數、抽樣方式與報告時程，是否說明清楚。</li>
     </ol>
   </section>
 
   <section class="part" id="how">
     <h2><span class="no">04</span>PCI DSS 認證流程：8 個步驟</h2>
-    <p class="answer">PCI DSS 評估（稽核）分兩個階段：先準備與改善，再由 QSA 評估並出具報告。點選各步驟可以看說明。</p>
+    <p class="answer">PCI DSS 審查（稽核）分兩個階段：先準備與改善，再由 QSA 審查並出具報告。點選各步驟可以看說明。</p>
     <div class="hdr-row"><span></span><button type="button" class="allbtn" data-target="#how .steps">全部展開</button></div>
     <div class="phase p1">
       <div class="ph"><b>階段一：準備與改善</b><span>約 2–3 個月</span></div>
       <div class="steps">
-        <details><summary><span class="num">1</span><span class="nm">界定範圍</span><span class="sm">畫出卡號流向</span></summary><div class="a"><p>畫出卡號在系統中的流向，確認哪些系統要納入評估。範圍越清楚，後面要處理的系統越少。</p></div></details>
+        <details><summary><span class="num">1</span><span class="nm">界定範圍</span><span class="sm">畫出卡號流向</span></summary><div class="a"><p>畫出卡號在系統中的流向，確認哪些系統要納入審查。範圍越清楚，後面要處理的系統越少。</p></div></details>
         <details><summary><span class="num">2</span><span class="nm">差距分析</span><span class="sm">對照 12 項要求</span></summary><div class="a"><p>逐項對照 12 項要求，找出還不符合的地方，排好改善順序。</p></div></details>
         <details><summary><span class="num">3</span><span class="nm">改善與建置</span><span class="sm">架構、設備、政策</span></summary><div class="a"><p>調整系統與網路架構，補上需要的安全設備，制定或更新政策與作業程序。</p></div></details>
         <details><summary><span class="num">4</span><span class="nm">技術檢測</span><span class="sm">掃描、測試與修補</span></summary><div class="a"><p>執行弱點掃描（含 ASV）、滲透測試、無線網路掃描、卡號掃描與程式碼檢測，並修補發現的問題。延伸閱讀：〈<a href="https://www.securevectors.com/zh-hant/news/pci-dss-vulnerability-scan-vs-penetration-test">弱點掃描不是滲透測試</a>〉〈<a href="https://www.securevectors.com/zh-hant/news/pci-dss-6-4-3-11-6-1-payment-page-scripts">6.4.3 與 11.6.1 支付頁面腳本</a>〉。</p></div></details>
       </div>
     </div>
     <div class="phase p2">
-      <div class="ph"><b>階段二：評估與報告</b><span>約 1–1.5 個月</span></div>
+      <div class="ph"><b>階段二：審查與報告</b><span>約 1–1.5 個月</span></div>
       <div class="steps">
         <details><summary><span class="num">5</span><span class="nm">整理證據</span><span class="sm">設定、日誌與紀錄</span></summary><div class="a"><p>準備系統設定、日誌、紀錄與訓練證明等文件。可參考〈<a href="https://www.securevectors.com/zh-hant/news/fim-file-integrity-monitoring-pci-dss-11-5-2">FIM 檔案完整性監控合規解讀</a>〉。</p></div></details>
-        <details><summary><span class="num">6</span><span class="nm">內部預審</span><span class="sm">評估前先自我檢查</span></summary><div class="a"><p>正式評估前先自己檢查一次，確認改善都已完成。</p></div></details>
-        <details><summary><span class="num">7</span><span class="nm">QSA 現場評估</span><span class="sm">訪談、抽樣與檢查</span></summary><div class="a"><p>QSA 透過訪談、抽樣與設定檢查，確認實際做法和文件一致。中小型服務供應商約需 3–5 天。</p></div></details>
+        <details><summary><span class="num">6</span><span class="nm">內部預審</span><span class="sm">審查前先自我檢查</span></summary><div class="a"><p>正式審查前先自己檢查一次，確認改善都已完成。</p></div></details>
+        <details><summary><span class="num">7</span><span class="nm">QSA 現場審查</span><span class="sm">訪談、抽樣與檢查</span></summary><div class="a"><p>QSA 透過訪談、抽樣與設定檢查，確認實際做法和文件一致。中小型服務供應商約需 3–5 天。</p></div></details>
         <details><summary><span class="num">8</span><span class="nm">報告與繳交</span><span class="sm">ROC、AOC 交收單機構</span></summary><div class="a"><p>QSA 出具 ROC 與 AOC，由您交給收單機構或卡組織。</p></div></details>
       </div>
     </div>
@@ -577,29 +578,19 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
 
   <section class="part" id="time">
     <h2><span class="no">05</span>PCI DSS 認證要多久？</h2>
-    <p class="answer">第一次評估，從啟動到取得 AOC 約需 3–5 個月。</p>
-    <div class="bars" role="img" aria-label="準備階段 1 至 2 個月；資料準備階段約 1 個月；QSA 現場評估 3 至 5 天；報告階段 0.5 至 1 個月">
+    <p class="answer">第一次審查，從啟動到取得 AOC 約需 3–5 個月。</p>
+    <div class="bars" role="img" aria-label="準備階段 1 至 2 個月；資料準備階段約 1 個月；QSA 現場審查 3 至 5 天；報告階段 0.5 至 1 個月">
       <div class="bar"><span>準備階段</span><span class="t"><i style="left:0;width:40%"></i></span><span class="d">1–2 個月</span></div>
       <div class="bar"><span>資料準備階段</span><span class="t"><i style="left:40%;width:20%"></i></span><span class="d">約 1 個月</span></div>
-      <div class="bar"><span>QSA 現場評估</span><span class="t"><i class="o" style="left:60%;width:3%"></i></span><span class="d">3–5 天</span></div>
+      <div class="bar"><span>QSA 現場審查</span><span class="t"><i class="o" style="left:60%;width:3%"></i></span><span class="d">3–5 天</span></div>
       <div class="bar"><span>報告階段</span><span class="t"><i style="left:63%;width:20%"></i></span><span class="d">0.5–1 個月</span></div>
     </div>
     <p>時程主要受這幾件事影響：範圍大小、架構是否需要調整、設備採購時間、檢測後的修補次數，以及內部能投入的人力。</p>
-
-    <h3>您目前是哪一種情況？</h3>
-    <div class="tabs" role="tablist" aria-label="時程情況" data-carry="情況">
-      <button type="button" role="tab" aria-selected="true" aria-controls="sc1" id="t-sc1">第一次評估</button>
-      <button type="button" role="tab" aria-selected="false" aria-controls="sc2" id="t-sc2">已縮小範圍</button>
-      <button type="button" role="tab" aria-selected="false" aria-controls="sc3" id="t-sc3">年度複評</button>
-    </div>
-    <div class="panel" role="tabpanel" id="sc1" aria-labelledby="t-sc1"><h4>第一次評估的服務供應商</h4><p class="dur">約 3–5 個月</p><p>架構調整與檢測修補最花時間。越早完成範圍界定與差距分析，後面越順利。</p></div>
-    <div class="panel" role="tabpanel" id="sc2" aria-labelledby="t-sc2"><h4>已縮小範圍</h4><p class="dur">通常比第一次快</p><p>例如付款頁面交給金流業者託管，或用代碼（token）取代卡號，要處理的系統就少了。</p></div>
-    <div class="panel" role="tabpanel" id="sc3" aria-labelledby="t-sc3"><h4>年度複評</h4><p class="dur">通常比第一次快</p><p>前一年的改善若已完成、架構沒有大幅變動，而且每季掃描與年度測試的紀錄都有保存，複評會順利許多。</p></div>
   </section>
 
   <section class="part" id="cost">
     <h2><span class="no">06</span>PCI DSS 認證費用怎麼估？</h2>
-    <p class="answer">以第一次評估的中小型服務供應商為例，QSA 評估費用約新台幣 45–80 萬元（不含差旅）。另外可能需要系統、設備與技術檢測等改善費用。</p>
+    <p class="answer">以第一次審查的中小型服務供應商為例，QSA 審查費用約新台幣 45–80 萬元（不含差旅）。另外可能需要系統、設備與技術檢測等改善費用。以上金額僅供參考，實際費用依貴公司環境與審查範圍而定。</p>
 
     <h3>可能增加的費用</h3>
     <div class="md">
@@ -617,7 +608,7 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
             <div class="tw" style="margin:0"><table>
               <thead><tr><th>項目</th><th>參考金額（新台幣）</th><th>性質</th></tr></thead>
               <tbody>
-                <tr><td class="nw">QSA 評估</td><td>45–80 萬元（不含差旅）</td><td class="nw">每次評估</td></tr>
+                <tr><td class="nw">QSA 審查</td><td>45–80 萬元（不含差旅）</td><td class="nw">每次審查</td></tr>
                 <tr><td class="nw">系統</td><td>45–50 萬元</td><td class="nw">一次性</td></tr>
                 <tr><td class="nw">安全設備</td><td>30–50 萬元起；雲端 WAF 每年 5–30 萬元</td><td class="nw">一次性／每年</td></tr>
                 <tr><td class="nw">資料加密</td><td>最高約 100 萬元</td><td class="nw">一次性</td></tr>
@@ -626,18 +617,19 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
                 <tr><td class="nw">卡組織註冊</td><td>10–16 萬元</td><td class="nw">每年</td></tr>
               </tbody>
             </table></div>
+            <p class="note" style="margin-top:8px">以上金額僅供參考，實際費用依貴公司環境與審查範圍而定。</p>
           </div>
         </div>
       </div>
     </div>
 
-    <h3>影響 QSA 評估費用的因素</h3>
+    <h3>影響 QSA 審查費用的因素</h3>
     <ol>
       <li><b>系統複雜度</b>：主機數量、作業系統種類、安裝的元件，以及安全設定的組數。</li>
       <li><b>安全設備與網段</b>：設備越多、網段越複雜，要檢查的設定、更新、權限與日誌就越多。</li>
       <li><b>介接的收單機構與服務供應商</b>：介接越多，資料流越複雜。</li>
       <li><b>卡號的儲存與加密方式</b>：儲存方式越多元，要檢查的項目越多。</li>
-      <li><b>營運據點數</b>：門市、機房與辦公室越多，評估天數越多；存有卡號的備援機房也要納入。</li>
+      <li><b>營運據點數</b>：門市、機房與辦公室越多，審查天數越多；存有卡號的備援機房也要納入。</li>
     </ol>
     <p>費用也因地區而異，因為 PCI SSC 的年費與 QSA 的人力成本各地不同。實際報價依上述因素估算。</p>
   </section>
@@ -653,19 +645,19 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
         <tr><td class="nw">每季（服務供應商）</td><td>檢視同仁是否依安全政策作業</td><td class="en nw">12.4.2</td></tr>
         <tr><td class="nw">每 6 個月（服務供應商）</td><td>網段隔離測試；隔離方式變更後也要測</td><td class="en nw">11.4.6</td></tr>
         <tr><td class="nw">每年，以及重大變更後</td><td>內部與外部滲透測試</td><td class="en nw">11.4.2、11.4.3</td></tr>
-        <tr><td class="nw">每年</td><td>重新評估，提交新的 AOC</td><td></td></tr>
+        <tr><td class="nw">每年（前一份 AOC 屆滿前）</td><td>彙整全年證據進行年度審查，取得新的 AOC</td><td></td></tr>
       </tbody>
     </table></div>
     <p>系統放在雲端，仍須對自己管理的部分（例如虛擬網路內的主機與應用程式）執行內部滲透測試；雲端業者負責的基礎設施，以其 AOC 與責任矩陣（Responsibility Matrix）為準。以 SAQ 自評的企業，要做哪些項目依 SAQ 類型而定。</p>
     <p>ASV 掃描常見的失敗原因，可參考〈<a href="https://www.securevectors.com/zh-hant/news/why-your-asv-scan-keeps-failing-cvss-thresholds-false-positives-what-to-fix">為什麼您的 ASV 掃描總是失敗</a>〉。需要集中管理掃描排程、證據與到期提醒，可參考 <a href="https://www.securevectors.com/zh-hant/secucompliance">SecuCompliance</a>；跨部門協作可搭配 <a href="https://www.securevectors.com/zh-hant/secucollab">SecuCollab</a>。</p>
 
     <h3>相鄰標準</h3>
-    <p>如果您的業務也包含 3-D Secure 驗證（ACS、DS、3DS Server），另外適用 <a href="https://www.securevectors.com/zh-hant/pci-3ds">PCI 3DS</a>；處理 PIN 碼的業者則適用 <a href="https://www.securevectors.com/zh-hant/pci-pin-security">PCI PIN Security</a>。兩者都可以和 PCI DSS 安排在同一時程評估。</p>
+    <p>如果您的業務也包含 3-D Secure 驗證（ACS、DS、3DS Server），另外適用 <a href="https://www.securevectors.com/zh-hant/pci-3ds">PCI 3DS</a>；處理 PIN 碼的業者則適用 <a href="https://www.securevectors.com/zh-hant/pci-pin-security">PCI PIN Security</a>。兩者都可以和 PCI DSS 安排在同一時程審查。</p>
   </section>
 
   <section class="part" id="local">
     <h2>在地補充：台灣與香港</h2>
-    <p class="answer">PCI DSS 的要求全球一致，差別在於誰來要求、評估範圍涵蓋哪些據點，以及證據能否跨境調閱。</p>
+    <p class="answer">PCI DSS 的要求全球一致，差別在於誰來要求、審查範圍涵蓋哪些據點，以及證據能否跨境調閱。</p>
     <div class="tabs" role="tablist" aria-label="地區" data-carry="地區">
       <button type="button" role="tab" aria-selected="true" aria-controls="lc-tw" id="t-tw">台灣</button>
       <button type="button" role="tab" aria-selected="false" aria-controls="lc-hk" id="t-hk">香港</button>
@@ -674,16 +666,16 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
       <ul>
         <li><b>代收代付平台的直接依據</b>：2017 年《信用卡收單機構簽訂「提供代收代付服務平台業者」為特約商店自律規範》第三條第八款明定，收單機構應依 PCI DSS 規範，向涉及蒐集或儲存卡號的代收代付平台業者徵提符合 PCI DSS 的驗證文件。第三方支付業者被要求提供 AOC，多半出自這項規範。</li>
         <li><b>刷卡設備</b>：同一規範第三條第十一款要求，平台提供給實體賣家的刷卡設備，硬體規格與軟體驗證均須符合支付卡產業規範；實務上指 EMVCo 與 PCI PTS 等認證。</li>
-        <li><b>付款 APP</b>：第三條第九款要求平台的 APP，由第三方機構參酌經濟部工業局《行動應用 APP 基本資安檢測規範》或 PA-DSS 確認安全防護。PA-DSS 已於 2022 年停用，付款軟體改以 PCI Secure Software Standard 評估。</li>
+        <li><b>付款 APP</b>：第三條第九款要求平台的 APP，由第三方機構參酌經濟部工業局《行動應用 APP 基本資安檢測規範》或 PA-DSS 確認安全防護。PA-DSS 已於 2022 年停用，付款軟體改以 PCI Secure Software Standard 驗證。</li>
         <li><b>其他要求來源</b>：國際卡組織，以及跨國企業客戶的供應商稽核。收單機構續約時，通常會要求更新 AOC。</li>
       </ul>
     </div>
     <div class="panel" role="tabpanel" id="lc-hk" aria-labelledby="t-hk"><h4>香港</h4>
       <ul>
-        <li><b>誰來要求</b>：PCI DSS 由卡組織與收單機構要求。金管局對儲值支付工具（SVF）持牌機構的監管指引沒有直接點名 PCI DSS，但要求建立科技風險管理架構並定期執行安全測試；PCI DSS 的評估與測試紀錄，可以作為佐證。</li>
-        <li><b>跨境據點也在範圍內</b>：在香港營運、但開發、客服或資料處理設在中國大陸的業者，大陸據點若接觸卡號或可能影響卡號安全，同樣要納入評估，QSA 可能需要到當地抽樣或現場評估。</li>
-        <li><b>資料能放在哪裡</b>：涉及中國大陸個人資訊的跨境傳輸，另受《個人信息保護法》規範；大灣區 9 個城市與香港之間，自 2023 年 12 月起另有便利措施。這會影響卡號、日誌與評估證據的存放位置，以及能否遠端調閱，建議在範圍界定時一併確認。</li>
-        <li><b>現場評估</b>：安律國際的 QSA 服務涵蓋全球，可安排香港現場評估；涉及其他地區據點時，於範圍界定時一併規劃。</li>
+        <li><b>誰來要求</b>：PCI DSS 由卡組織與收單機構要求。金管局對儲值支付工具（SVF）持牌機構的監管指引沒有直接點名 PCI DSS，但要求建立科技風險管理架構並定期執行安全測試；PCI DSS 的審查與測試紀錄，可以作為佐證。</li>
+        <li><b>跨境據點也在範圍內</b>：在香港營運、但開發、客服或資料處理設在中國大陸的業者，大陸據點若接觸卡號或可能影響卡號安全，同樣要納入審查，QSA 可能需要到當地抽樣或現場審查。</li>
+        <li><b>資料能放在哪裡</b>：涉及中國大陸個人資訊的跨境傳輸，另受《個人信息保護法》規範；大灣區 9 個城市與香港之間，自 2023 年 12 月起另有便利措施。這會影響卡號、日誌與審查證據的存放位置，以及能否遠端調閱，建議在範圍界定時一併確認。</li>
+        <li><b>現場審查</b>：安律國際的 QSA 服務涵蓋全球，可安排香港現場審查；涉及其他地區據點時，於範圍界定時一併規劃。</li>
       </ul>
     </div>
   </section>
@@ -702,8 +694,8 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
   <section class="part" id="faq">
     <h2>常見問題</h2>
     <details><summary>Q：付款頁面交給金流業者託管，還需要 PCI DSS 嗎？</summary><div class="a"><p>仍需要。外包可以大幅縮小範圍，但特約商店通常仍須每年完成對應的 SAQ 並提交 AOC。適用哪一種 SAQ，取決於付款頁面的嵌入方式，詳見〈<a href="https://www.securevectors.com/zh-hant/news/what-is-your-saq-type">您適用哪一個 PCI DSS SAQ 類型？</a>〉。</p></div></details>
-    <details><summary>Q：PCI DSS 的 AOC 效期多久？</summary><div class="a"><p>PCI DSS 以 12 個月為驗證週期，每年須重新評估並提交新的 AOC。提交時程依收單機構、卡組織或客戶的要求而定。</p></div></details>
-    <details><summary>Q：顧問輔導和正式評估，可以找同一家 QSAC 嗎？</summary><div class="a"><p>可以。依 PCI SSC 規定，參與設計或建置某項控制措施的 QSA，不能評估同一項控制措施；可由同一家公司內未參與的另一位 QSA 執行評估，QSAC 須保留職務分離的紀錄。</p></div></details>
+    <details><summary>Q：PCI DSS 的 AOC 效期多久？</summary><div class="a"><p>PCI DSS 以 12 個月為驗證週期。每年須在前一份 AOC 屆滿前完成年度審查，並提交新的 AOC，合規狀態才不會中斷。提交時程依收單機構、卡組織或客戶的要求而定。</p></div></details>
+    <details><summary>Q：顧問輔導和正式審查，可以找同一家 QSAC 嗎？</summary><div class="a"><p>可以。依 PCI SSC 規定，參與設計或建置某項控制措施的 QSA，不能審查同一項控制措施；可由同一家公司內未參與的另一位 QSA 執行審查，QSAC 須保留職務分離的紀錄。</p></div></details>
     <details><summary>Q：PCI DSS 和 ISO 27001 有什麼不同？</summary><div class="a"><p>ISO 27001 是資訊安全管理系統驗證，範圍由組織自訂；PCI DSS 專門針對持卡人資料，要求更具體，並包含每季掃描等固定頻率的技術檢測。已取得 ISO 27001 的機構，部分政策與流程可沿用。</p></div></details>
   </section>
 
@@ -712,7 +704,7 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
     <dl class="gloss">
       <div><dt>CDE（持卡人資料環境）</dt><dd>儲存、處理或傳輸卡號的人員、流程與系統。</dd></div>
       <div><dt>PAN（主要帳號）</dt><dd>信用卡卡號。</dd></div>
-      <div><dt>網段隔離（Segmentation）</dt><dd>把 CDE 和其他網路分開，以縮小評估範圍。</dd></div>
+      <div><dt>網段隔離（Segmentation）</dt><dd>把 CDE 和其他網路分開，以縮小審查範圍。</dd></div>
       <div><dt>代碼化（Tokenization）</dt><dd>用代碼（token）取代卡號，讓系統中不再出現實際卡號。</dd></div>
       <div><dt>HSM（硬體安全模組）</dt><dd>用於金鑰管理與加密的專用設備。</dd></div>
       <div><dt>FIM（檔案完整性監控）</dt><dd>偵測重要檔案是否遭未經授權變更。</dd></div>
@@ -731,12 +723,13 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
       <li><a href="https://mastercard.com/content/dam/public/mastercardcom/globalrisk/pdf/Service%20Provider%20Categories%20and%20PCI%20(30%20Sept.%202020).pdf">Mastercard：Service Provider Categories and PCI（服務供應商等級）</a></li>
       <li><a href="https://usa.visa.com/dam/VCOM/download/merchants/cisp-what-to-do-if-compromised.pdf">Visa：What To Do If Compromised v10.0（特約商店等級）</a></li>
       <li><a href="https://review.visa.com.br/content/dam/VCOM/download/business/resources-and-tools/DataSecurityComplianceServiceProviders.pdf">Visa：Data Security Compliance Requirements for Service Providers</a></li>
+      <li><a href="https://www.global.jcb/en/products/security/data-security-program/index.html">JCB：JCB Data Security Program</a></li>
       <li>信用卡收單機構簽訂「提供代收代付服務平台業者」為特約商店自律規範（2017 年 5 月 12 日）第三條</li>
       <li><a href="https://www.visa.ca/content/dam/VCOM/regional/na/canada/security/security-documents/third-party-agent-registration-overview-english.pdf">Visa：Third Party Agent Registration Overview</a></li>
       <li><a href="https://www.hkma.gov.hk/media/eng/doc/key-functions/financial-infrastructure/Guidelines-on-supervision-of-SVF-licensees_Eng.pdf">香港金管局：Guideline on Supervision of SVF Licensees</a></li>
     </ul>
     <p class="byline">文／安律國際 QSA 團隊</p>
-    <p class="disc">＊本文為標準解讀性質。實際評估範圍與方案，將依收單機構要求及貴公司的支付環境個案確認。</p>
+    <p class="disc">＊本文為標準解讀性質。實際審查範圍與方案，將依收單機構要求及貴公司的支付環境個案確認。</p>
   </section>
 
 </div>
@@ -748,14 +741,14 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
       <div>
         <h2>與 PCI 專家談談</h2>
         <p>您在本頁的選擇已自動帶入右側。留下公司與聯絡方式，我們將於一個工作天內回覆。</p>
-        <ul class="cred"><li>PCI SSC 合格安全評估機構（QSA）</li><li>PCI ASV 核可掃描廠商</li><li>PCI 3DS 評估機構</li><li>PCI PIN Security 評估機構</li></ul>
+        <ul class="cred"><li>PCI SSC 合格安全審查機構（QSA）</li><li>核可掃描廠商（ASV）</li><li>PCI 3DS 審查機構（3DS Assessor）</li><li>PIN 審查機構（QPA）</li></ul>
       </div>
       <form class="cf" id="cf" action="#" novalidate>
         <p class="stp"><i>1</i>您在本頁的選擇</p>
         <div class="sum" id="sum"><span class="empty">尚未作答。可回到 <a href="#level">等級判斷</a>，或直接勾選下方需求。</span></div>
         <p class="stp"><i>2</i>需要的服務（可複選）</p>
         <div class="svc" id="svc">
-          <label><input type="checkbox" value="PCI DSS 評估與認證">PCI DSS 評估與認證</label>
+          <label><input type="checkbox" value="PCI DSS 認證審查">PCI DSS 認證審查</label>
           <label><input type="checkbox" value="差距分析與顧問輔導">差距分析與顧問輔導</label>
           <label><input type="checkbox" value="SAQ 協助">SAQ 協助</label>
           <label><input type="checkbox" value="ASV 弱點掃描">ASV 弱點掃描</label>
@@ -790,7 +783,7 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
       <div><h5>關於公司</h5><a href="https://www.securevectors.com/zh-hant/about-us">關於我們</a><a href="https://www.securevectors.com/zh-hant/knowledge-center">最新消息</a><a href="https://www.securevectors.com/zh-hant/events">活動訊息</a><a href="https://www.securevectors.com/zh-hant/testimonials">客戶推薦</a><a href="https://www.securevectors.com/zh-hant/privacy-policy">隱私權政策</a></div>
       <div><h5>聯絡我們</h5><span style="display:block;margin:0 0 6px">台北 · 台灣</span><a href="tel:+886233931006">+886 2-3393-1006</a><a href="mailto:service@securevectors.com">service@securevectors.com</a><a href="https://www.securevectors.com/zh-hant/contact-us">查看所有據點 →</a></div>
     </div>
-    <div class="bottom"><span>PCI SSC 合格安全評估機構（QSA）· PCI ASV 核可掃描廠商 · PCI 3DS 評估機構 · PCI PIN Security 評估機構</span><span>© 2026 安律國際股份有限公司</span></div>
+    <div class="bottom"><span>PCI SSC 合格安全審查機構（QSA）· 核可掃描廠商（ASV）· PCI 3DS 審查機構（3DS Assessor）· PIN 審查機構（QPA）</span><span>© 2026 安律國際股份有限公司</span></div>
   </div>
 </footer>
 
@@ -824,26 +817,26 @@ document.body.classList.remove('no-js');document.body.classList.add('js');
     res.innerHTML='<p class="rl">'+lv+(saq?'<span class="saq">建議 SAQ '+saq+'</span>':'')+'</p>'+txt+'<div class="acts">'+links+'</div><p class="carry">✓ 已帶入頁尾的聯絡表單</p>';
   }
   var A=function(h,t){return '<a href="'+h+'">'+t+'</a>'};
-  var L1=['PCI DSS 評估與認證','差距分析與顧問輔導','ASV 弱點掃描'];
+  var L1=['PCI DSS 認證審查','差距分析與顧問輔導','ASV 弱點掃描'];
   function calc(){
     carry={情況:carry['情況'],地區:carry['地區']};
     if(st.role)carry['角色']=st.role==='sp'?'服務供應商':'特約商店';
     if(st.role==='sp'){
       if(st.spType)carry['業務']=lbl('spType',st.spType);
       if(st.spType==='tpp'){carry['等級']='服務供應商 等級 1';setSvc(L1);
-        out('l1','服務供應商 等級 1','','<p>依 Mastercard 規定，第三方處理商、3DS 服務供應商、電子錢包與代碼服務供應商不論交易量，一律列為等級 1。驗證方式：由 QSA 評估，完成 ROC 與 AOC，以及每季 ASV 掃描。</p>',A('#assist','接著閱讀：03 誰來評估 →')+A('#cost','看費用怎麼估'));}
+        out('l1','服務供應商 等級 1','','<p>依 Mastercard 規定，第三方處理商、3DS 服務供應商、電子錢包與代碼服務供應商不論交易量，一律列為等級 1。驗證方式：由 QSA 出具 ROC 與 AOC，並每季執行 ASV 掃描。</p>',A('#assist','接著閱讀：03 誰來審查 →')+A('#cost','看費用怎麼估'));}
       else if((st.spType==='other'||st.spType==='pf')&&st.spVol){
         carry['交易量']=lbl('spVol',st.spVol);
         if(st.spVol==='hi'){carry['等級']='服務供應商 等級 1';setSvc(L1);
-          out('l1','服務供應商 等級 1','','<p>年交易量超過 30 萬筆。驗證方式：由 QSA 評估，完成 ROC 與 AOC，以及每季 ASV 掃描。</p>',A('#assist','接著閱讀：03 誰來評估 →')+A('#cost','看費用怎麼估'));}
-        else{carry['等級']='服務供應商 等級 2';carry['建議 SAQ']='D（服務供應商）';setSvc(['PCI DSS 評估與認證','ASV 弱點掃描']);
-          out('','服務供應商 等級 2','D','<p>驗證方式：SAQ D（服務供應商版）、AOC，以及每季 ASV 掃描。收單銀行或企業客戶可能在合約中要求 QSA 簽署的 ROC 與 AOC，建議先向對方確認。</p>',A('#assist','接著閱讀：03 誰來評估 →')+A('#maintain','看通過之後要做的事'));}
+          out('l1','服務供應商 等級 1','','<p>年交易量超過 30 萬筆。驗證方式：由 QSA 出具 ROC 與 AOC，並每季執行 ASV 掃描。</p>',A('#assist','接著閱讀：03 誰來審查 →')+A('#cost','看費用怎麼估'));}
+        else{carry['等級']='服務供應商 等級 2';carry['建議 SAQ']='D（服務供應商）';setSvc(['PCI DSS 認證審查','ASV 弱點掃描']);
+          out('','服務供應商 等級 2','D','<p>驗證方式：SAQ D（服務供應商版）、AOC，以及每季 ASV 掃描。收單銀行或企業客戶可能在合約中要求 QSA 簽署的 ROC 與 AOC，建議先向對方確認。</p>',A('#assist','接著閱讀：03 誰來審查 →')+A('#maintain','看通過之後要做的事'));}
       }
     }
     if(st.role==='m'&&st.mVol){
       carry['交易量']=lbl('mVol',st.mVol);
       if(st.mVol==='1'){carry['等級']='特約商店 等級 1';setSvc(L1);
-        out('l1','特約商店 等級 1','','<p>驗證方式：ROC、AOC，以及每季 ASV 掃描。ROC 多由 QSA 評估；部分卡組織也接受受過 PCI SSC 訓練的內部評估員（ISA）。</p>',A('#how','接著閱讀：04 認證流程 →')+A('#cost','看費用怎麼估'));}
+        out('l1','特約商店 等級 1','','<p>驗證方式：由 QSA 出具 ROC 與 AOC，並每季執行 ASV 掃描。</p>',A('#how','接著閱讀：04 認證流程 →')+A('#cost','看費用怎麼估'));}
       else{
         var lv=st.mVol==='2'?'特約商店 等級 2':'特約商店 等級 3';carry['等級']=lv;
         if(st.pay){carry['付款方式']={'A':'付款頁面外包','A-EP':'自家網頁產生付款欄位','B／B-IP':'獨立式刷卡機','C-VT':'網頁虛擬端末','C':'連網付款系統','P2PE':'P2PE 方案','SPoC':'手機刷卡','D':'自行儲存卡號／多種方式'}[st.pay];carry['建議 SAQ']=st.pay;setSvc(st.pay==='D'?['SAQ 協助','差距分析與顧問輔導','ASV 弱點掃描']:['SAQ 協助','ASV 弱點掃描']);
