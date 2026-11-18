@@ -328,6 +328,16 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
   .mcta a{flex:1;text-align:center;text-decoration:none;font-weight:700;font-size:15px;border-radius:8px;padding:11px 8px;background:var(--orange);color:var(--on-orange)}
   body.js{padding-bottom:70px}
 }
+
+.langsw{position:relative;margin-left:14px;flex:0 0 auto}
+.langsw .lbtn{font:inherit;font-size:13.5px;border:1px solid var(--line);border-radius:6px;padding:6px 10px;background:#fff;color:var(--navy);cursor:pointer;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.langsw .lbtn svg{width:15px;height:15px}
+.langsw .menu{display:none;position:absolute;right:0;top:calc(100% + 6px);background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 24px rgba(13,52,55,.12);padding:6px;min-width:150px;z-index:60}
+.langsw.open .menu{display:block}
+.langsw .menu a{display:block;padding:8px 12px;border-radius:6px;color:var(--navy);text-decoration:none;font-size:14px;white-space:nowrap}
+.langsw .menu a:hover{background:var(--bg-2)}
+.langsw .menu a[aria-current="page"]{font-weight:700;color:var(--teal);background:var(--teal-l)}
+nav.main .lang{display:none}
 </style>
 </head>
 <body class="no-js">
@@ -342,8 +352,8 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
       <a href="https://www.securevectors.com/zh-hans/secucompliance">合规管理方案 ▾</a>
       <a href="https://www.securevectors.com/zh-hans/knowledge-center">新闻与活动 ▾</a>
       <a class="asv" href="https://www.securevectors.com/zh-hans/pci-asv-buy-online">购买 PCI ASV</a>
-      <a class="lang" href="#">简体中文</a>
     </nav>
+    <div class="langsw" id="langsw"><button type="button" class="lbtn" aria-haspopup="true" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg>简体中文 ▾</button><div class="menu"><a data-f="pci-dss-compliance-for-dummies.html" href="pci-dss-compliance-for-dummies.html" lang="zh-Hant">繁體中文</a><a data-f="pci-dss-compliance-for-dummies-zh-hans.html" href="pci-dss-compliance-for-dummies-zh-hans.html" lang="zh-Hans" aria-current="page">简体中文</a><a data-f="pci-dss-compliance-for-dummies-en.html" href="pci-dss-compliance-for-dummies-en.html" lang="en">English</a><a data-f="pci-dss-compliance-for-dummies-ja.html" href="pci-dss-compliance-for-dummies-ja.html" lang="ja">日本語</a></div></div>
   </div>
 </header>
 
@@ -491,8 +501,9 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
       </tbody>
     </table></div>
     <div class="tnote">
+      <p>＊600 万笔为 Visa／Mastercard 的标准。美国运通为 250 万笔以上，JCB 为 100 万笔以上须现场评估。</p>
       <p>交易量以单一卡组织的年交易量计算。Visa 自 2024 年 4 月起，将商户等级 3、4 合并为等级 3；Mastercard 仍分 4 级。</p>
-      <details class="mcn"><summary>※ Mastercard 补充规定</summary><div class="a"><p>依 Mastercard 规定，第三方处理商（TPP）、3DS 服务提供商、电子钱包运营方（SDWO）与令牌服务提供商（TSP）不论交易量，一律列为等级 1；支付服务商（Payment Facilitator）年交易量超过 30 万笔为等级 1。等级 2 服务提供商如发生确认的数据泄露，将改列为等级 1。</p><p>Mastercard 等级 2 商户如适用 SAQ A、A-EP 或 D，须另由 QSA 或 ISA（经 PCI SSC 培训的内部评估员）协助验证。</p></div></details>
+      <details class="mcn"><summary>※ Mastercard 补充规定</summary><div class="a"><p>依 Mastercard 规定，第三方处理商（TPP）、3DS 服务提供商、电子钱包运营方（SDWO）与令牌服务提供商（TSP）不论交易量，一律列为等级 1；支付服务商（Payment Facilitator）年交易量超过 30 万笔为等级 1。等级 2 服务提供商如发生确认的数据泄露，将改列为等级 1。</p><p>Mastercard 等级 2 商户如适用 SAQ A、A-EP 或 D，须另由 QSA 或 ISA（经 PCI SSC 培训的内部评估员）协助验证。</p><p>Mastercard 建议等级 1 与等级 2 服务提供商，另行证明符合 PCI DSS 附录 A3“指定实体补充验证（DESV）”。</p></div></details>
       <p>实际等级以收单机构的通知为准。</p>
     </div>
 
@@ -527,7 +538,7 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
 
   <section class="part" id="assist">
     <h2><span class="no">03</span>谁来评估？QSA、ASV 与收单机构的角色</h2>
-    <p class="answer">PCI DSS 评估由 PCI SSC 认可的 QSA 执行。QSA 公司是聘有 QSA 的机构，可以提供咨询辅导，也可以执行正式评估。</p>
+    <p class="answer">PCI DSS 评估由 PCI SSC 认可的 QSA（合格安全性评估商，业内常称合格安全评估师）执行。QSA 公司是聘有 QSA 的机构，可以提供咨询辅导，也可以执行正式评估。</p>
     <div class="tw"><table>
       <thead><tr><th>角色</th><th>负责什么</th></tr></thead>
       <tbody>
@@ -955,6 +966,17 @@ window.I18N={
   wrap(document.body);
   var mo=new MutationObserver(function(ms){ms.forEach(function(m){m.addedNodes.forEach(function(n){if(n.nodeType===1&&n.tagName!=='WBR')wrap(n)})})});
   ['lvRes','sum'].forEach(function(id){var el=document.getElementById(id);if(el)mo.observe(el,{childList:true,subtree:true})});
+})();
+</script>
+<script>
+(function(){
+  var w=document.getElementById('langsw'), b=w.querySelector('.lbtn');
+  b.addEventListener('click',function(e){e.stopPropagation();var o=w.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+  document.addEventListener('click',function(){w.classList.remove('open');b.setAttribute('aria-expanded','false')});
+  w.querySelectorAll('.menu a').forEach(function(a){a.addEventListener('click',function(){
+    var h='';document.querySelectorAll('.tocbar a').forEach(function(x){var el=document.getElementById(x.getAttribute('href').slice(1));if(el&&el.getBoundingClientRect().top<=160)h=x.getAttribute('href')});
+    a.href=a.getAttribute('data-f')+(h||'');
+  })});
 })();
 </script>
 </body>

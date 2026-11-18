@@ -328,6 +328,16 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
   .mcta a{flex:1;text-align:center;text-decoration:none;font-weight:700;font-size:15px;border-radius:8px;padding:11px 8px;background:var(--orange);color:var(--on-orange)}
   body.js{padding-bottom:70px}
 }
+
+.langsw{position:relative;margin-left:14px;flex:0 0 auto}
+.langsw .lbtn{font:inherit;font-size:13.5px;border:1px solid var(--line);border-radius:6px;padding:6px 10px;background:#fff;color:var(--navy);cursor:pointer;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.langsw .lbtn svg{width:15px;height:15px}
+.langsw .menu{display:none;position:absolute;right:0;top:calc(100% + 6px);background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 24px rgba(13,52,55,.12);padding:6px;min-width:150px;z-index:60}
+.langsw.open .menu{display:block}
+.langsw .menu a{display:block;padding:8px 12px;border-radius:6px;color:var(--navy);text-decoration:none;font-size:14px;white-space:nowrap}
+.langsw .menu a:hover{background:var(--bg-2)}
+.langsw .menu a[aria-current="page"]{font-weight:700;color:var(--teal);background:var(--teal-l)}
+nav.main .lang{display:none}
 </style>
 </head>
 <body class="no-js">
@@ -342,8 +352,8 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
       <a href="https://www.securevectors.com/ja/secucompliance">コンプライアンス管理 ▾</a>
       <a href="https://www.securevectors.com/ja/knowledge-center">ニュース・イベント ▾</a>
       <a class="asv" href="https://www.securevectors.com/ja/pci-asv-buy-online">PCI ASVを購入</a>
-      <a class="lang" href="#">日本語</a>
     </nav>
+    <div class="langsw" id="langsw"><button type="button" class="lbtn" aria-haspopup="true" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg>日本語 ▾</button><div class="menu"><a data-f="pci-dss-compliance-for-dummies.html" href="pci-dss-compliance-for-dummies.html" lang="zh-Hant">繁體中文</a><a data-f="pci-dss-compliance-for-dummies-zh-hans.html" href="pci-dss-compliance-for-dummies-zh-hans.html" lang="zh-Hans">简体中文</a><a data-f="pci-dss-compliance-for-dummies-en.html" href="pci-dss-compliance-for-dummies-en.html" lang="en">English</a><a data-f="pci-dss-compliance-for-dummies-ja.html" href="pci-dss-compliance-for-dummies-ja.html" lang="ja" aria-current="page">日本語</a></div></div>
   </div>
 </header>
 
@@ -485,14 +495,15 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
       <tbody>
         <tr class="hl"><td class="nw">サービスプロバイダー</td><td class="lv">1<small class="ef">Level 1</small></td><td class="nw">30万件超 ※</td><td class="nw">ROC＋AOC＋四半期ASV</td></tr>
         <tr><td class="nw">サービスプロバイダー</td><td class="lv">2<small class="ef">Level 2</small></td><td class="nw">30万件以下</td><td class="nw">SAQ D＋AOC＋四半期ASV</td></tr>
-        <tr class="hl"><td class="nw">加盟店</td><td class="lv">1<small class="ef">Level 1</small></td><td class="nw">600万件超</td><td class="nw">ROC＋AOC＋四半期ASV</td></tr>
+        <tr class="hl"><td class="nw">加盟店</td><td class="lv">1<small class="ef">Level 1</small></td><td class="nw">600万件超（※JCBは100万件以上）</td><td class="nw">ROC＋AOC＋四半期ASV</td></tr>
         <tr><td class="nw">加盟店</td><td class="lv">2<small class="ef">Level 2</small></td><td class="nw">100万〜600万件</td><td class="nw">SAQ＋AOC（ASVはSAQ種類による）</td></tr>
         <tr><td class="nw">加盟店</td><td class="lv">3<small class="ef">Level 3</small></td><td class="nw">100万件以下</td><td class="nw">SAQ＋AOC（ASVはSAQ種類による）</td></tr>
       </tbody>
     </table></div>
     <div class="tnote">
+      <p>＊600万件はVisa・Mastercardの基準です。American Expressは250万件以上、JCBは100万件以上でオンサイト審査が必要です。</p>
       <p>取引件数はペイメントブランドごとの年間件数です。Visaは2024年4月から加盟店のレベル3と4をレベル3に統合しました。Mastercardは引き続き4段階です。</p>
-      <details class="mcn"><summary>※ ブランド別の補足規定（Mastercard・JCB）</summary><div class="a"><p>Mastercardの規定では、第三者処理業者（TPP）、3-Dセキュアサービスプロバイダー、ステージド・デジタルウォレット事業者（SDWO）、トークンサービスプロバイダー（TSP）は取引件数にかかわらずレベル1、ペイメントファシリテーターは年間30万件超でレベル1です。レベル2のサービスプロバイダーでデータ侵害が確認された場合は、レベル1に変更されます。</p><p>Mastercardのレベル2加盟店がSAQ A、A-EP、Dに該当する場合は、QSAまたはISA（PCI SSCの研修を受けた社内評価者）による検証も必要です。</p><p>JCBは年間100万件以上の加盟店とTPPに年1回のオンサイト審査を求め、IPSPは件数にかかわらずオンサイト審査の対象です。</p></div></details>
+      <details class="mcn"><summary>※ ブランド別の補足規定（Mastercard・JCB）</summary><div class="a"><p>Mastercardの規定では、第三者処理業者（TPP）、3-Dセキュアサービスプロバイダー、ステージド・デジタルウォレット事業者（SDWO）、トークンサービスプロバイダー（TSP）は取引件数にかかわらずレベル1、ペイメントファシリテーターは年間30万件超でレベル1です。レベル2のサービスプロバイダーでデータ侵害が確認された場合は、レベル1に変更されます。</p><p>Mastercardのレベル2加盟店がSAQ A、A-EP、Dに該当する場合は、QSAまたはISA（PCI SSCの研修を受けた社内評価者）による検証も必要です。</p><p>JCBは年間100万件以上の加盟店とTPPに年1回のオンサイト審査を求め、IPSPは件数にかかわらずオンサイト審査の対象です。</p><p>Mastercardは、レベル1とレベル2のサービスプロバイダーに対し、PCI DSS付録A3「指定事業体向け補足検証（DESV）」への準拠も示すよう推奨しています。</p></div></details>
       <p>実際のレベルはアクワイアラからの通知で確定します。</p>
     </div>
 
@@ -664,9 +675,9 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
     <div class="panel" role="tabpanel" id="lc-jp" aria-labelledby="t-jp"><h4>日本</h4>
       <ul>
         <li><b>割賦販売法</b>：2018年6月1日施行の改正割賦販売法により、加盟店にもクレジットカード番号等の適切な管理が義務付けられました。</li>
-        <li><b>クレジットカード・セキュリティガイドライン</b>：クレジット取引セキュリティ対策協議会のガイドラインでは、加盟店は「カード情報を保持しない非保持化（非保持と同等/相当を含む）、又はカード情報を保持する場合は PCI DSS に準拠する」ことが求められています。</li>
-        <li><b>カード会社と決済代行業者</b>：同ガイドラインでは、カード会社（イシュアー）と決済代行業者等（PSP）は、対面・非対面を問わずPCI DSSに準拠し、維持・運用することが求められています。</li>
-        <li><b>EC加盟店</b>：カード情報の保護に加え、EMV 3-Dセキュアをはじめとする不正利用対策も求められています。</li>
+        <li><b>クレジットカード・セキュリティガイドライン</b>：最新版（6.1版、2026年3月）のガイドラインでは、加盟店は「カード情報の非保持化（非保持と同等/相当を含む）又はカード情報を保持する場合は PCI DSS 準拠」が求められています。</li>
+        <li><b>カード会社と決済代行業者</b>：同ガイドラインでは、カード会社（イシュアー）や決済代行業者等（PSP）は「PCI DSS 準拠」を指針対策としています。</li>
+        <li><b>EC加盟店</b>：カード情報の保護に加え、カード決済時の対策として「EMV 3-Dセキュアの導入」が指針対策とされています（2025年3月公表の6.0版で追加）。</li>
         <li><b>JCBの規定（JCB Data Security Program）</b>：EC・通信販売・電話注文の加盟店と第三者処理業者（TPP）は、JCBの年間取引件数が100万件以上ならQSAによる年1回のオンサイト審査と四半期ごとのASVスキャン、100万件未満なら年1回の自己問診と四半期ごとのスキャンが必要です。インターネット決済サービスプロバイダー（IPSP）は、取引件数にかかわらずオンサイト審査と四半期スキャンが必要です。対面取引の加盟店も2020年4月から同じ基準です。JCBの基準（100万件）はVisa・Mastercard（600万件）より低いため、日本の加盟店はJCBの基準で先にオンサイト審査の対象になる場合があります。</li>
       </ul>
     </div>
@@ -723,7 +734,7 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
       <li><a href="https://mastercard.com/content/dam/public/mastercardcom/globalrisk/pdf/Service%20Provider%20Categories%20and%20PCI%20(30%20Sept.%202020).pdf">Mastercard：Service Provider Categories and PCI</a></li>
       <li><a href="https://usa.visa.com/dam/VCOM/download/merchants/cisp-what-to-do-if-compromised.pdf">Visa：What To Do If Compromised v10.0</a></li>
       <li><a href="https://review.visa.com.br/content/dam/VCOM/download/business/resources-and-tools/DataSecurityComplianceServiceProviders.pdf">Visa：Data Security Compliance Requirements for Service Providers</a></li>
-      <li><a href="https://www.j-credit.or.jp/security/pdf/Creditcardsecurityguidelines_4.0_published.pdf">クレジット取引セキュリティ対策協議会：クレジットカード・セキュリティガイドライン</a></li>
+      <li><a href="https://www.j-credit.or.jp/security/pdf/Creditcardsecurityguidelines_6.1_published.pdf">クレジット取引セキュリティ対策協議会：クレジットカード・セキュリティガイドライン【6.1版】（2026年3月）</a></li>
       <li><a href="https://www.jcb.co.jp/merchant/release/kappu_security.html">JCB：改正割賦販売法（セキュリティ対策）について</a></li>
       <li><a href="https://www.global.jcb/en/products/security/data-security-program/index.html">JCB：JCB Data Security Program</a></li>
     </ul>
@@ -953,6 +964,17 @@ window.I18N={
   wrap(document.body);
   var mo=new MutationObserver(function(ms){ms.forEach(function(m){m.addedNodes.forEach(function(n){if(n.nodeType===1&&n.tagName!=='WBR')wrap(n)})})});
   ['lvRes','sum'].forEach(function(id){var el=document.getElementById(id);if(el)mo.observe(el,{childList:true,subtree:true})});
+})();
+</script>
+<script>
+(function(){
+  var w=document.getElementById('langsw'), b=w.querySelector('.lbtn');
+  b.addEventListener('click',function(e){e.stopPropagation();var o=w.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+  document.addEventListener('click',function(){w.classList.remove('open');b.setAttribute('aria-expanded','false')});
+  w.querySelectorAll('.menu a').forEach(function(a){a.addEventListener('click',function(){
+    var h='';document.querySelectorAll('.tocbar a').forEach(function(x){var el=document.getElementById(x.getAttribute('href').slice(1));if(el&&el.getBoundingClientRect().top<=160)h=x.getAttribute('href')});
+    a.href=a.getAttribute('data-f')+(h||'');
+  })});
 })();
 </script>
 </body>

@@ -328,6 +328,16 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
   .mcta a{flex:1;text-align:center;text-decoration:none;font-weight:700;font-size:15px;border-radius:8px;padding:11px 8px;background:var(--orange);color:var(--on-orange)}
   body.js{padding-bottom:70px}
 }
+
+.langsw{position:relative;margin-left:14px;flex:0 0 auto}
+.langsw .lbtn{font:inherit;font-size:13.5px;border:1px solid var(--line);border-radius:6px;padding:6px 10px;background:#fff;color:var(--navy);cursor:pointer;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.langsw .lbtn svg{width:15px;height:15px}
+.langsw .menu{display:none;position:absolute;right:0;top:calc(100% + 6px);background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 24px rgba(13,52,55,.12);padding:6px;min-width:150px;z-index:60}
+.langsw.open .menu{display:block}
+.langsw .menu a{display:block;padding:8px 12px;border-radius:6px;color:var(--navy);text-decoration:none;font-size:14px;white-space:nowrap}
+.langsw .menu a:hover{background:var(--bg-2)}
+.langsw .menu a[aria-current="page"]{font-weight:700;color:var(--teal);background:var(--teal-l)}
+nav.main .lang{display:none}
 </style>
 </head>
 <body class="no-js">
@@ -342,8 +352,8 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
       <a href="https://www.securevectors.com/secucompliance">Compliance Solutions ▾</a>
       <a href="https://www.securevectors.com/knowledge-center">News &amp; Events ▾</a>
       <a class="asv" href="https://www.securevectors.com/pci-asv-buy-online">Buy PCI ASV</a>
-      <a class="lang" href="#">English</a>
     </nav>
+    <div class="langsw" id="langsw"><button type="button" class="lbtn" aria-haspopup="true" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg>English ▾</button><div class="menu"><a data-f="pci-dss-compliance-for-dummies.html" href="pci-dss-compliance-for-dummies.html" lang="zh-Hant">繁體中文</a><a data-f="pci-dss-compliance-for-dummies-zh-hans.html" href="pci-dss-compliance-for-dummies-zh-hans.html" lang="zh-Hans">简体中文</a><a data-f="pci-dss-compliance-for-dummies-en.html" href="pci-dss-compliance-for-dummies-en.html" lang="en" aria-current="page">English</a><a data-f="pci-dss-compliance-for-dummies-ja.html" href="pci-dss-compliance-for-dummies-ja.html" lang="ja">日本語</a></div></div>
   </div>
 </header>
 
@@ -491,8 +501,9 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
       </tbody>
     </table></div>
     <div class="tnote">
+      <p>*6 million is the Visa/Mastercard threshold. American Express uses 2.5 million or more, and JCB requires an onsite assessment from 1 million.</p>
       <p>Volumes are counted per card brand per year. Since April 2024, Visa has combined merchant Levels 3 and 4 into a single Level 3; Mastercard still uses four merchant levels.</p>
-      <details class="mcn"><summary>※ Mastercard-specific rules</summary><div class="a"><p>Under Mastercard rules, third-party processors (TPPs), 3-D Secure service providers, staged digital wallet operators (SDWOs) and token service providers (TSPs) are Level 1 regardless of volume; payment facilitators are Level 1 above 300,000 transactions a year. A Level 2 service provider with a confirmed account data compromise is reclassified as Level 1.</p><p>Mastercard Level 2 merchants completing SAQ A, A-EP or D must also engage a QSA or an ISA (an internal assessor trained by PCI SSC) for validation.</p></div></details>
+      <details class="mcn"><summary>※ Mastercard-specific rules</summary><div class="a"><p>Under Mastercard rules, third-party processors (TPPs), 3-D Secure service providers, staged digital wallet operators (SDWOs) and token service providers (TSPs) are Level 1 regardless of volume; payment facilitators are Level 1 above 300,000 transactions a year. A Level 2 service provider with a confirmed account data compromise is reclassified as Level 1.</p><p>Mastercard Level 2 merchants completing SAQ A, A-EP or D must also engage a QSA or an ISA (an internal assessor trained by PCI SSC) for validation.</p><p>Mastercard recommends that Level 1 and Level 2 service providers also demonstrate compliance with the Designated Entities Supplemental Validation (DESV, PCI DSS Appendix A3).</p></div></details>
       <p>Your acquirer confirms your actual level.</p>
     </div>
 
@@ -664,7 +675,7 @@ footer .bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:24px;paddin
     <div class="panel" role="tabpanel" id="lc-sg" aria-labelledby="t-sg"><h4>Singapore</h4>
       <ul>
         <li><b>Who asks:</b> PCI DSS is required by the card brands and acquirers.</li>
-        <li><b>MAS requirements run in parallel:</b> since 10 May 2024, payment service licensees are subject to MAS Notice FSM-N13 on Technology Risk Management and FSM-N14 on Cyber Hygiene, alongside the MAS Technology Risk Management Guidelines. PCI DSS assessment and testing records can support these obligations but do not replace them.</li>
+        <li><b>MAS requirements run in parallel:</b> for licensees under the Payment Services Act 2019, and operators and settlement institutions of designated payment systems, MAS Notice FSM-N13 on Technology Risk Management and FSM-N14 on Cyber Hygiene have applied since 10 May 2024, alongside the MAS Technology Risk Management Guidelines. PCI DSS assessment and testing records can support these obligations but do not replace them.</li>
         <li><b>Regional operations:</b> if development, customer support or data processing sits in another country and can affect card data security, those sites are in scope and may require sampling or onsite assessment.</li>
         <li><b>Onsite assessment:</b> Secure Vectors' QSA services are available worldwide, including onsite assessments in Singapore.</li>
       </ul>
@@ -949,6 +960,17 @@ window.I18N={
   wrap(document.body);
   var mo=new MutationObserver(function(ms){ms.forEach(function(m){m.addedNodes.forEach(function(n){if(n.nodeType===1&&n.tagName!=='WBR')wrap(n)})})});
   ['lvRes','sum'].forEach(function(id){var el=document.getElementById(id);if(el)mo.observe(el,{childList:true,subtree:true})});
+})();
+</script>
+<script>
+(function(){
+  var w=document.getElementById('langsw'), b=w.querySelector('.lbtn');
+  b.addEventListener('click',function(e){e.stopPropagation();var o=w.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+  document.addEventListener('click',function(){w.classList.remove('open');b.setAttribute('aria-expanded','false')});
+  w.querySelectorAll('.menu a').forEach(function(a){a.addEventListener('click',function(){
+    var h='';document.querySelectorAll('.tocbar a').forEach(function(x){var el=document.getElementById(x.getAttribute('href').slice(1));if(el&&el.getBoundingClientRect().top<=160)h=x.getAttribute('href')});
+    a.href=a.getAttribute('data-f')+(h||'');
+  })});
 })();
 </script>
 </body>
